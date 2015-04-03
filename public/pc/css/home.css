@@ -87,12 +87,14 @@ input,button,select,textarea{outline:none}
 }
 
 #main-search{
+
     height: 40px;
     width: 350px;
     background-color: #fff;
     border-radius: 3px;
-    margin-top:10px;
-    float: left;
+    margin-top:70px;
+
+
 
 }
 
@@ -102,6 +104,7 @@ input,button,select,textarea{outline:none}
     width: 300px;
     margin: 1px 10px;
     color: #3c3c3c;
+
 }
 
 .main{
@@ -112,4 +115,28 @@ input,button,select,textarea{outline:none}
     text-align: center;
     font-size: 35px;
     line-height: 80px;
+}
+
+.image-nav{
+    width: 60px;
+    height:60px;
+    overflow: hidden;
+    background: url("../imgs/1.jpg");
+    background-size: 60px 60px;
+    border-radius: 50%;
+    float: left;
+    margin-right:20px;
+}
+
+.search-area{
+    float:left;
+    margin-top:70px;
+}
+
+.search-cover{
+    width: 100%;
+    height: 150px;
+    background-color: rgba(0,0,0,0.6);
+    position: relative;
+    top:450px;
 }
