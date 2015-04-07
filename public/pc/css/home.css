@@ -145,23 +145,58 @@ input,button,select,textarea{outline:none}
     top:345px;
 }
 
-.mid-scroll{
-    width: 1090px;
-    margin: 0 auto;
-    background-color: #fff;
 
-
+.mid-header h2{
+    font-size: 28px;
+    text-align: center;
+    line-height: 100px;
 }
-.mid-scroll li{
+
+.hot-text li{
     float:left;
-    width: 250px;
-    height: 300px;
-    margin-right: 30px;
-    overflow: hidden;
+    width: 270px;
+    margin-left: 20px;
+}
+.hot-text li img{
+    border-radius: 5px;
 }
 
-.scroll-contain{
-    width: 100%;
-    background-color: #ccc;
-    padding: 20px;
+
+.hot-text{
+    margin-left: -20px;
+    min-width: 1160px;
+}
+
+.left-text,.right-text{
+    background-color: #aaa;
+    width: 270px;
+    height: 500px;
+    border-radius: 5px;
+}
+
+.mid-text{
+    width: 540px;
+    height: 500px;
+}
+
+.mid-top,.mid-bottom{
+    height:240px;
+    width:540px;
+    background-color: #333;
+    border-radius: 5px;
+}
+.mid-bottom{
+    margin-top: 20px;
+}
+
+.left-text{
+    float:left;
+    margin-right: 30px;
+}
+.mid-text{
+    float:left;
+}
+.right-text{
+    float:left;
+    margin-left:30px;
 }
