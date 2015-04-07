@@ -167,36 +167,36 @@ input,button,select,textarea{outline:none}
     min-width: 1160px;
 }
 
-.left-text,.right-text{
+
+.top-left{
+    width: 750px;
+    height:400px;
     background-color: #aaa;
-    width: 270px;
-    height: 500px;
-    border-radius: 5px;
-}
-
-.mid-text{
-    width: 540px;
-    height: 500px;
-}
-
-.mid-top,.mid-bottom{
-    height:240px;
-    width:540px;
-    background-color: #333;
-    border-radius: 5px;
-}
-.mid-bottom{
-    margin-top: 20px;
-}
-
-.left-text{
-    float:left;
+    float: left;
     margin-right: 30px;
+    border-radius: 5px;
 }
-.mid-text{
+
+.top-right{
+    width: 360px;
+    height:400px;
+    background-color: #ccc;
     float:left;
+    border-radius: 5px;
 }
-.right-text{
-    float:left;
-    margin-left:30px;
+
+.bottom-item{
+    margin-top:30px;
+}
+
+.bottom-left,.bottom-mid,.bottom-right{
+    width:360px;
+    height:400px;
+    background-color: #555;
+    float: left;
+    border-radius: 5px;
+}
+
+.bottom-left,.bottom-mid{
+    margin-right: 30px;
 }
