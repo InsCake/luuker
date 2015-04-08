@@ -1,6 +1,6 @@
 body{
     font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,sans-serif !important;
-
+    background-color: #ebebeb;
 }
 
 a:hover{
@@ -169,16 +169,16 @@ input,button,select,textarea{outline:none}
 
 
 .top-left{
-    width: 750px;
+    width: 744px;
     height:400px;
     background-color: #aaa;
     float: left;
-    margin-right: 30px;
+    margin-right: 48px;
     border-radius: 5px;
 }
 
 .top-right{
-    width: 360px;
+    width: 348px;
     height:400px;
     background-color: #ccc;
     float:left;
@@ -190,7 +190,7 @@ input,button,select,textarea{outline:none}
 }
 
 .bottom-left,.bottom-mid,.bottom-right{
-    width:360px;
+    width:348px;
     height:400px;
     background-color: #555;
     float: left;
@@ -198,5 +198,74 @@ input,button,select,textarea{outline:none}
 }
 
 .bottom-left,.bottom-mid{
-    margin-right: 30px;
+    margin-right: 48px;
+}
+
+.login-container{
+    width: 400px;
+    height: 500px;
+    border: 1px solid #000;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.login-header{
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+}
+
+.login-logo{
+    width: 80px;
+    height: 40px;
+    background-color: #fff;
+    margin-top: 8px;
+    float: left;
+}
+
+.login-body{
+    margin-top: 50px;
+}
+
+.login-method{
+    margin:0 30px;
+    height: 120px;
+    border-bottom: 1px solid #aaa;
+}
+.login-weibo, .login-qq, .login-wechat{
+    width: 60px;
+    height: 60px;
+    background-color: #333;
+    border-radius: 50%;
+    float: left;
+    margin-left: 30px;
+}
+
+.login-body h3{
+    margin:0 auto;
+    width: 20px;
+    height: 16px;
+    margin-top: -8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+
+.login-box input{
+    width: 180px;  height: 30px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    margin-top: 30px;
+}
+
+.login-confirm{
+
+    background-color: #ccc;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 30px;
 }
