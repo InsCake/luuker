@@ -75,6 +75,9 @@ var user = require('./routes/user');
 app.get('/', function(req, res) {
     res.render('pc/home');
 });
+app.get('/go', function(req, res) {
+    res.render('pc/second');
+});
 app.use('/user', user);
 
 

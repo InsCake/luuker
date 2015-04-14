@@ -206,7 +206,7 @@ input,button,select,textarea{outline:none}
 }
 
 .login-container{
-    width: 400px;
+    width: 340px;
     height: 500px;
     padding: 20px;
     background-color: #fff;
@@ -222,7 +222,7 @@ input,button,select,textarea{outline:none}
 .login-header{
     height: 30px;
     width: 100%;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px dashed #aaa;
 }
 
 .login-logo{
@@ -265,12 +265,12 @@ input,button,select,textarea{outline:none}
     border-bottom: 1px solid #aaa;
 }
 .login-weibo, .login-qq, .login-wechat{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-color: #333;
     border-radius: 50%;
     float: left;
-    margin-left: 30px;
+    margin-left: 22px;
 }
 
 .login-body h3{
@@ -285,7 +285,7 @@ input,button,select,textarea{outline:none}
 
 
 .login-box input{
-    width: 206px;
+    width: 242px;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #aaa;
@@ -301,24 +301,24 @@ input,button,select,textarea{outline:none}
 
 .login-email{
     background: url("../imgs/icon.png") no-repeat;
-    background-position: right -23px;
-    background-size: 16%;
+    background-position: right -22px;
+    background-size: 13%;
 }
 
 .login-pwd{
     background: url("../imgs/icon.png") no-repeat;
-    background-position: right -55px;
-    background-size: 16%;
+    background-position: right -53px;
+    background-size: 13%;
 }
 
 .login-confirm{
 
     background-color: #ccc;
-    width: 120px;
-    height: 30px;
+    width: 242px;
+    height: 32px;
     border-radius: 5px;
     text-align: center;
-    line-height: 30px;
+    line-height: 32px;
     margin: 30px auto;
     cursor: pointer;
 }
