@@ -60,42 +60,46 @@
 // module.exports = app;
 
 var express = require('express');
-var app = express();
-
+var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: 'root',
-    database: 'luuker'
-});
 
-connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-    if (err) throw err;
-
-    console.log('The solution is: ', rows[0].solution);
-});
-
-connection.end();
-
-
+var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
+
+var user = require('./routes/user');
+
+app.get('/', function(req, res) {
     res.render('pc/home');
-})
-app.get('/login', function (req, res) {
-    res.send('Hello World!')
-})
+});
+app.use('/user', user);
 
 
-var server = app.listen(3000, function () {
+//var connection = mysql.createConnection({
+//    host     : 'localhost',
+//    port     : '3306',
+//    user     : 'root',
+//    password : 'root',
+//    database : 'luuker'
+//});
+//
+//connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+//    if(err) throw err;
+//
+//    console.log('The solution is: ', rows[0].solution);
+//});
+//
+//connection.end();
 
-    var host = server.address().address
-    var port = server.address().port
 
-    console.log('Example app listening at http://%s:%s', host, port)
+var server = app.listen(3000, function() {
 
-})
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Example app listening at http://%s:%s', host, port);
+
+});
