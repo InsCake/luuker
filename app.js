@@ -59,25 +59,43 @@
 
 // module.exports = app;
 
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    port: '3306',
+    user: 'root',
+    password: 'root',
+    database: 'luuker'
+});
+
+connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+    if (err) throw err;
+
+    console.log('The solution is: ', rows[0].solution);
+});
+
+connection.end();
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-  res.render('pc/home');
+    res.render('pc/home');
 })
 app.get('/login', function (req, res) {
-  res.send('Hello World!')
+    res.send('Hello World!')
 })
 
 
 var server = app.listen(3000, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+    var host = server.address().address
+    var port = server.address().port
 
-  console.log('Example app listening at http://%s:%s', host, port)
+    console.log('Example app listening at http://%s:%s', host, port)
 
 })
