@@ -44,10 +44,11 @@ input,button,select,textarea{outline:none}
     margin-right: 20px;
 }
 
-.sign-up,.login{
+.sign-up,.login,.username{
     float:left;
     font-size: 14px;
     color: #fff;
+    cursor: pointer;
 
 }
 
@@ -205,7 +206,7 @@ input,button,select,textarea{outline:none}
     margin-right: 48px;
 }
 
-.login-container{
+.login-container,.register-container{
     width: 340px;
     height: 500px;
     padding: 20px;
@@ -299,19 +300,19 @@ input,button,select,textarea{outline:none}
 }
 
 
-.login-email{
+.login-email,.join-email{
     background: url("../imgs/icon.png") no-repeat;
     background-position: right -22px;
     background-size: 13%;
 }
 
-.login-pwd{
+.login-pwd,.join-pwd{
     background: url("../imgs/icon.png") no-repeat;
     background-position: right -53px;
     background-size: 13%;
 }
 
-.login-confirm{
+.login-confirm,.join-confirm{
 
     background-color: #ccc;
     width: 242px;
@@ -323,7 +324,7 @@ input,button,select,textarea{outline:none}
     cursor: pointer;
 }
 
-.login-confirm a{
+.login-confirm,.join-confirm a{
     color: #fff;
 }
 
@@ -341,4 +342,7 @@ input,button,select,textarea{outline:none}
     position: fixed;
     top: 0;
 }
+
+
+
 

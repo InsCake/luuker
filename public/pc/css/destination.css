@@ -1,0 +1,89 @@
+.des-header{
+    height: 40px;
+    width: 100%;
+}
+
+.des-main{
+    background: url("../imgs/japan.png");
+    width: 100%;
+    height: 300px;
+    padding: 0 60px;
+}
+ .des-main-name{
+     color: #fff;
+     line-height: 300px;
+ }
+
+ .chn-name{
+     font-size: 60px;
+ }
+
+ .eng-name{
+     font-size: 20px;
+ }
+
+ .des-intro{
+     margin-top: 20px;
+     width: 500px;
+ }
+
+ .des-book-box{
+     margin: 30px 0;
+ }
+ .det-social{
+     width: 300px;
+     height: 400px;
+     background-color: #aaa;
+ }
+ .des-book {
+     width: 820px;
+     height: 400px;
+     background: #eee;
+     margin-left: 20px;
+
+ }
+
+ .des-nav{
+     height: 40px;
+     width: 100%;
+     background-color: #f5f5f5;
+ }
+ .des-nav li{
+     float: left;
+     width: 25%;
+     line-height: 40px;
+     text-align: center;
+     cursor: pointer;
+ }
+
+ .des-nav-tit{
+     height: 70px;
+     padding-left: 50px;
+     line-height: 70px;
+ }
+ .des-nav-box{
+    margin-top: 20px;
+ }
+ .nav-list-img{
+     width: 200px;
+     height: 200px;
+     background-color: #419641;
+ }
+
+ .des-food-ranking{
+     width: 250px;
+     height: 450px;
+     background-color: #aaa;
+ }
+ 
+ .des-food-cir{
+     width: 870px;
+     margin-left: 20px;
+     height: 450px;
+     background-color: #cccccc;
+ }
+
+ .des-nav-active{
+     background-color: #fff;
+     border-bottom: 3px solid #d12610;
+ }

@@ -61,7 +61,6 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var mysql = require('mysql');
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -76,26 +75,11 @@ app.get('/', function(req, res) {
     res.render('pc/home');
 });
 app.get('/go', function(req, res) {
-    res.render('pc/second');
+    res.render('pc/destination');
 });
 app.use('/user', user);
 
 
-//var connection = mysql.createConnection({
-//    host     : 'localhost',
-//    port     : '3306',
-//    user     : 'root',
-//    password : 'root',
-//    database : 'luuker'
-//});
-//
-//connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//    if(err) throw err;
-//
-//    console.log('The solution is: ', rows[0].solution);
-//});
-//
-//connection.end();
 
 
 var server = app.listen(3000, function() {
