@@ -23,7 +23,7 @@ router.post('/login', function(req, res, next) {
         console.log(user);
         if(rows.length > 0) {
             if(user.name == rows[0].name && user.pwd == rows[0].password) {
-                console.log('login success!');
+                req.session.user = rows[0];
 
                 res.json({
                     msg : rows[0].name
