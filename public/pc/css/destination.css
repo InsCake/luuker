@@ -1,6 +1,10 @@
 .des-header{
     height: 40px;
     width: 100%;
+    line-height: 40px;
+}
+.des-header a{
+    color: #666;
 }
 
 .des-main{
@@ -87,3 +91,24 @@
      background-color: #fff;
      border-bottom: 3px solid #d12610;
  }
+
+
+.header-nav{
+    float: right;
+    margin-right: 20px;
+}
+
+.header-nav li {
+    float:left;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.header-slogan{
+    color: #666;
+    font-size: 12px;
+    display: block;
+    float: left;
+}

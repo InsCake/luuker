@@ -84,6 +84,9 @@ app.get('/', function(req, res) {
 app.get('/go', function(req, res) {
     res.render('pc/destination');
 });
+app.get('/user', function(req, res) {
+    res.render('pc/user');
+});
 app.use('/user', user);
 
 

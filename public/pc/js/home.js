@@ -36,6 +36,7 @@ $(function() {
                    $('.max-mask').fadeOut();
                    $('.header-nav').find('.login,.sign-up').hide();
                    $('.header-nav').find('.username').text(res.msg).show();
+                   $('.header-nav').find('.exit').text('退出');
                }
 
             }
