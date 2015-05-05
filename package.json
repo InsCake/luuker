@@ -11,6 +11,7 @@
         "serve-favicon"   : "~2.2.0",
         "ejs"             : "~2.3.1",
         "mysql"           : "~2.6.1",
-        "express-session" : "~1.11.1"
+        "express-session" : "~1.11.1",
+        "bower"           : "^1.4.1"
     }
 }

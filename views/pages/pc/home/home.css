@@ -129,7 +129,7 @@ input,button,select,textarea{outline:none}
     width: 60px;
     height:60px;
     overflow: hidden;
-    background: url("../imgs/1.jpg");
+    background: url("../../images/1.jpg");
     background-size: 60px 60px;
     border-radius: 50%;
     float: left;
@@ -236,7 +236,7 @@ input,button,select,textarea{outline:none}
 .login-exit{
     width: 40px;
     height: 40px;
-    background: url("../imgs/chahao.png");
+    background: url("../../images/chahao.png");
     background-size: 100%;
     position: absolute;
     right: -11px;
@@ -300,13 +300,13 @@ input,button,select,textarea{outline:none}
 
 
 .login-email,.join-email{
-    background: url("../imgs/icon.png") no-repeat;
+    background: url("../../images/icon.png") no-repeat;
     background-position: right -22px;
     background-size: 13%;
 }
 
 .login-pwd,.join-pwd{
-    background: url("../imgs/icon.png") no-repeat;
+    background: url("../../images/icon.png") no-repeat;
     background-position: right -53px;
     background-size: 13%;
 }

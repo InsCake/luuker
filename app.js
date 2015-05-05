@@ -61,11 +61,11 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var session = require('express-session')
+var session = require('express-session');
 
 var app = express();
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static('views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(session({
@@ -78,14 +78,18 @@ app.use(session({
 var user = require('./routes/user');
 
 app.get('/', function(req, res) {
-    console.log(req.session.user);
-    res.render('pc/home');
+    var data = {
+        page: 'home',
+        site: 'pc'
+    };
+    res.render('layouts/layout', data);
 });
+
 app.get('/go', function(req, res) {
-    res.render('pc/destination');
+    res.render('pages/pc/destination/destination');
 });
 app.get('/user', function(req, res) {
-    res.render('pc/user');
+    res.render('pages/pc/user/user');
 });
 app.use('/user', user);
 
