@@ -1,0 +1,12 @@
+{
+    "name"         : "luuker",
+    "version"      : "0.0.0",
+    "authors"      : [
+        "m.saihomi@gmail.com"
+    ],
+    "license"      : "MIT",
+    "dependencies" : {
+        "components-bootstrap" : "components/bootstrap#~3.3.4",
+        "pure"                 : "~0.6.0"
+    }
+}
