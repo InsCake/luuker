@@ -1,9 +1,7 @@
 .page-article-write {}
-
 .page-article-write .article-panel-wrap {}
-
-.page-article-write .article-panel { padding : 0 0 50px; background-color : #fff; }
-
-.page-article-write .article-op { padding-left : 20px; }
-
-.page-article-write .article-op > button { margin-bottom : 10px; width : 100%; }
+.page-article-write .article-panel          { padding : 0 0 50px; background-color : #fff; }
+.page-article-write .article-op             { padding-left : 20px; }
+.page-article-write .article-op > button    { margin-bottom : 10px; width : 100%; }
+.page-article-write .article-header         { position: relative; }
+.page-article-write .article-header h1      { position: absolute; bottom: 20px; left: 0; padding: 15px 30px; font-size: 36px; background-color: rgba(0,0,0,0.3); color: #fff; }
