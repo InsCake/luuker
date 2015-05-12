@@ -1,19 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET /article/ */
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-/* GET /user/write */
-router.post('/write', function(req, res, next) {
-    var user = req.body.user;
-
-    console.log(user);
-    res.json({
-        'user' : user
-    });
+router.get('/write', function(req, res, next) {
+    var data = {
+        page   : 'article_write',
+        site   : 'pc',
+        header : 'common'
+    };
+    res.render('layouts/layout', data);
 });
 
 module.exports = router;

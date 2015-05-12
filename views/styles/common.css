@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, sans-serif;
+    font-size: 14px;
+    background-color: #eee;
+}
+
+.wrap {
+    width  : 1200px;
+    margin : 0 auto;
+}
+
+.layout-header {
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+.pt-20 {
+    padding-top: 20px;
+}

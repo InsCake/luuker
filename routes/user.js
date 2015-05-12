@@ -3,7 +3,7 @@ var router = express.Router();
 var mysql = require('mysql');
 
 router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+    res.render('pages/pc/user/user');
 });
 
 router.post('/login', function(req, res, next) {

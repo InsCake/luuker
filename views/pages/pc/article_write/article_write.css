@@ -1,0 +1,9 @@
+.page-article-write {}
+
+.page-article-write .article-panel-wrap {}
+
+.page-article-write .article-panel { padding : 0 0 50px; background-color : #fff; }
+
+.page-article-write .article-op { padding-left : 20px; }
+
+.page-article-write .article-op > button { margin-bottom : 10px; width : 100%; }
