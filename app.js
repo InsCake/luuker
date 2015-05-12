@@ -88,10 +88,32 @@ app.get('/', function(req, res) {
 });
 
 app.get('/go', function(req, res) {
-    res.render('pages/pc/destination/destination');
+    var data = {
+        page   : 'destination',
+        site   : 'pc',
+        header : false
+    };
+    res.render('layouts/layout', data);
 });
-app.use('/user', user);
-app.use('/article', article);
+
+app.get('/user', function(req, res) {
+    var data = {
+        page   : 'user',
+        site   : 'pc',
+        header : false
+    };
+    res.render('layouts/layout', data);
+});
+//app.use('/user', user);
+app.get('/user', function(req, res) {
+    var data = {
+        page   : 'destination',
+        site   : 'pc',
+        header : false
+    };
+    res.render('layouts/layout', data);
+});
+//app.use('/article', article);
 
 
 var server = app.listen(3002, function() {
