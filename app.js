@@ -86,7 +86,6 @@ app.get('/', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
-
 app.get('/go', function(req, res) {
     var data = {
         page   : 'destination',
@@ -95,25 +94,8 @@ app.get('/go', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
-
-app.get('/user', function(req, res) {
-    var data = {
-        page   : 'user',
-        site   : 'pc',
-        header : false
-    };
-    res.render('layouts/layout', data);
-});
-//app.use('/user', user);
-app.get('/user', function(req, res) {
-    var data = {
-        page   : 'destination',
-        site   : 'pc',
-        header : false
-    };
-    res.render('layouts/layout', data);
-});
-//app.use('/article', article);
+app.use('/user', user);
+app.use('/article', article);
 
 
 var server = app.listen(3000, function() {
