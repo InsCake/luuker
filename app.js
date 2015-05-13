@@ -77,6 +77,7 @@ app.use(session({
 
 var user = require('./routes/user');
 var article = require('./routes/article');
+var backstage = require('./routes/backstage');
 
 app.get('/', function(req, res) {
     var data = {
@@ -94,8 +95,10 @@ app.get('/go', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
+
 app.use('/user', user);
 app.use('/article', article);
+app.use('/backstage',backstage);
 
 
 var server = app.listen(3000, function() {

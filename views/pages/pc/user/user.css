@@ -1,63 +1,27 @@
-.des-header{
-    height: 40px;
-    width: 100%;
-    line-height: 40px;
-}
-.des-header a{
-    color: #666;
-}
-
-.header-nav{
-    float: right;
-    margin-right: 20px;
-}
-
-.header-nav li {
-    float:left;
-    font-size: 14px;
-    color: #666;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.header-slogan{
-    color: #666;
-    font-size: 12px;
-    display: block;
-    float: left;
-}
-
-.head-show{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background:url("../imgs/head.jpg");
-    text-align: center;
-    line-height: 300px;
-}
-
-.head-change{
-    background-color: rgba(255,255,255,0.2);
-}
 .user-main{
     border-bottom: 1px solid #ccc;
 }
-.data-box{
+.user-main .data-box{
     margin: 50px 150px;
 }
-
-.name-edit{
+.data-box .head-edit{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background:url("/images/head.jpg");
+    text-align: center;
+    line-height: 300px;
+}
+.data-box .name-edit{
     margin-left: 50px;
 }
-
-.name-edit span{
+.data-box .name-edit span{
     font-size: 50px;
     color: #666;
     display: block;
     margin-top: 120px;
 }
-
-.update-name{
+.data-box .name-edit .update-name{
     width: 300px;
     height: 40px;
     border-radius: 3px;
@@ -66,28 +30,26 @@
     color: #666;
 }
 
-.update-confirm{
+.data-box .name-edit .update-confirm{
     height: 40px;
     width: 60px;
     margin-left: -2px;
     border: 1px solid #ccc;
     color: #fff;
 }
-
-.update-box{
-    line-height: 40px;
+.user-footer{
+    overflow: hidden;
 }
-
 .user-nav{
     height: 50px;
     margin-left: -16px;
 }
-.user-nav li{
+.user-nav .nav{
     float: left;
     width: 100px;
     text-align: center;
     border-left: 1px solid #ccc;
-    margin-top:20px;
+    margin-top:10px;
     color: #666;
     cursor: pointer;
 }
