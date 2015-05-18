@@ -46,7 +46,7 @@ router.post('/sign_in', function (req, res, next) {
             if (user.name == rows[0].name && user.pwd == rows[0].password) {
 
                 req.session.user = rows[0];
-                welcome = rows[0].name;
+    console.log(req.session.user)
 
                 res.json({
                     msg: rows[0].name
