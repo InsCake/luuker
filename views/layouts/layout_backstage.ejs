@@ -15,14 +15,15 @@
     <%- include('../pages/' + site + '/' + page + '/res/res.' + page + '_css.ejs'); %>
 </head>
 <body>
-<% if (header) { %>
-<%- include('../layouts/header') %>
-<% } %>
+    <% if (header) { %>
+        <%- include('../layouts/header_backstage') %>
+    <% } %>
 
-<%- include('../pages/' + site + '/' + page + '/' + page); %>
+    <%- include('../pages/' + site + '/' + page + '/' + page); %>
 
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/components-bootstrap/js/bootstrap.min.js"></script>
-<%- include('../pages/' + site + '/' + page + '/res/res.' + page + '_js.ejs'); %>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/components-bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <%- include('../pages/' + site + '/' + page + '/res/res.' + page + '_js.ejs'); %>
 </body>
 </html>

@@ -4,6 +4,7 @@ var mysql = require('mysql');
 
 router.get('/', function(req, res, next) {
     res.render('pages/pc/user/user');
+
 });
 
 router.post('/login', function(req, res, next) {

@@ -67,11 +67,11 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
-    secret            : 'keyboard cat',
-    resave            : false,
-    saveUninitialized : true
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
 }));
 
 
@@ -79,29 +79,29 @@ var user = require('./routes/user');
 var article = require('./routes/article');
 var backstage = require('./routes/backstage');
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     var data = {
-        page   : 'home',
-        site   : 'pc',
-        header : false
+        page: 'home',
+        site: 'pc',
+        header: false
     };
     res.render('layouts/layout', data);
 });
-app.get('/go', function(req, res) {
+app.get('/go', function (req, res) {
     var data = {
-        page   : 'destination',
-        site   : 'pc',
-        header : false
+        page: 'destination',
+        site: 'pc',
+        header: false
     };
     res.render('layouts/layout', data);
 });
 
 app.use('/user', user);
 app.use('/article', article);
-app.use('/backstage',backstage);
+app.use('/backstage', backstage);
 
 
-var server = app.listen(3000, function() {
+var server = app.listen(3002, function () {
 
     var host = server.address().address;
     var port = server.address().port;
