@@ -11,6 +11,8 @@ router.get('/', function (req, res, next) {
         site: 'backstage',
         header: true
     };
+        console.log(req.session.user) ;
+
     res.render('layouts/layout_backstage', data);
 });
 
@@ -45,12 +47,8 @@ router.post('/sign_in', function (req, res, next) {
         if (rows.length > 0) {
             if (user.name == rows[0].name && user.pwd == rows[0].password) {
 
-                req.session.user = rows[0];
-    console.log(req.session.user)
-
-                res.json({
-                    msg: rows[0].name
-                });
+                req.session.user = rows[0].name;
+                res.redirect('/');
             } else {
                 res.json({
                     msg: 'failed'
