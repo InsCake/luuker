@@ -101,11 +101,10 @@ app.get('/go', function(req, res) {
 
 app.use('/user', user);
 app.use('/article', article);
-app.use('/backstage', backstage);
-app.use('/upload', upload);
+app.use('/backstage',backstage);
 
 
-var server = app.listen(3001, function() {
+var server = app.listen(3000, function() {
 
     var host = server.address().address;
     var port = server.address().port;
