@@ -1,10 +1,13 @@
 * {
-    box-sizing: border-box;
+    box-sizing : border-box;
 }
+
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, sans-serif;
-    font-size: 14px;
-    background-color: #eee;
+    font-family             : "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, sans-serif;
+    font-size               : 14px;
+    background-color        : #eee;
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
 }
 
 .wrap {
@@ -13,13 +16,14 @@ body {
 }
 
 .layout-header {
-    background-color: #fff;
-    margin-bottom: 30px;
+    background-color : #fff;
+    margin-bottom    : 30px;
 }
 
 .pt-10 {
-    padding-top: 10px;
+    padding-top : 10px;
 }
+
 .pt-20 {
-    padding-top: 20px;
+    padding-top : 20px;
 }

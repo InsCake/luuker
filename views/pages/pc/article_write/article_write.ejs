@@ -4,39 +4,48 @@
             <div class="pure-u-4-24">1</div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
-                    <div class="article-header" style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
+                    <div class="article-header"
+                         style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
                         <h1>点击添加标题</h1>
                     </div>
-                    <div class="article-unit" v-repeat="unit: units">
-                        <p class="unit-text" v-if="unit.type == 'text'">{{ unit.value }}</p>
+                    <div class="article-content">
+                        <div class="article-unit" v-repeat="unit: units">
+                            <h3 class="unit-p-title" v-if="unit.type == 'p-title'">{{ unit.value }}</h3>
+                            <p class="unit-text" v-if="unit.type == 'text'">{{ unit.value }}</p>
+                        </div>
                     </div>
                 </article>
                 <section class="article-add-unit pt-20">
-                    <div class="pure-form" v-show="add_unit.active == true" style="padding: 10px; background-color: #fff;">
+                    <div class="pure-form" v-show="add_unit.type != ''"
+                         style="padding: 10px; background-color: #fff;">
                         <div class="add-para-title" v-if="add_unit.type == 'p-title'">
                             <textarea class="pure-input-1" placeholder="添加段落标题"
-                                style="font-size: 20px; height: 42px; resize: none;"></textarea></div>
+                                      v-model="add_unit.value"
+                                      style="font-size: 20px; height: 42px; resize: none;"></textarea></div>
                         <div class="add-text" v-if="add_unit.type == 'text'">
                             <textarea class="pure-input-1" placeholder="添加文字"
-                                style="font-size: 14px; height: 80px; resize: none;"></textarea></div>
+                                      v-model="add_unit.value"
+                                      style="font-size: 14px; height: 80px; resize: none;"></textarea></div>
                         <div class="add-photos" v-if="add_unit.type == 'image'">
-                            <div class="pure-g">
-                                <div class="pure-u-1-3"></div>
-                                <div class="pure-u-1-3"></div>
-                                <div class="pure-u-1-3"></div>
-                            </div>
+                            <input type="file" class="image-input">
                         </div>
                         <div class="add-bar clearfix pt-10">
                             <div class="fr">
-                                <button class="pure-button">取消</button>
-                                <button class="pure-button button-success">添加</button>
+                                <button class="pure-button" v-on="click: showAddUnit('')">取消</button>
+                                <button class="pure-button button-success" v-on="click: addArticleUnit()">添加</button>
                             </div>
                         </div>
                     </div>
                     <div class="pt-10">
-                        <button class="pure-button" v-on="click: showAddUnit('p-title')"><i class="fa fa-font"></i> 添加段落标题</button>
-                        <button class="pure-button" v-on="click: showAddUnit('text')"><i class="fa fa-font"></i></i> 添加文字</button>
-                        <button class="pure-button" v-on="click: showAddUnit('image')"><i class="fa fa-picture-o"></i> 添加图片</button>
+                        <button class="pure-button" v-on="click: showAddUnit('p-title')">
+                            <i class="fa fa-font"></i> 添加段落标题
+                        </button>
+                        <button class="pure-button" v-on="click: showAddUnit('text')">
+                            <i class="fa fa-font"></i> 添加文字
+                        </button>
+                        <button class="pure-button" v-on="click: showAddUnit('image')">
+                            <i class="fa fa-picture-o"></i> 添加图片
+                        </button>
                     </div>
                 </section>
             </div>

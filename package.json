@@ -12,6 +12,9 @@
         "ejs"             : "~2.3.1",
         "mysql"           : "~2.6.1",
         "express-session" : "~1.11.1",
-        "bower"           : "^1.4.1"
+        "bower"           : "^1.4.1",
+        "formidable"      : "~1.0.0",
+        "util"            : "~0.10.0",
+        "multer"            : "~0.1.8"
     }
 }

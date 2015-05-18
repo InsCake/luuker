@@ -62,6 +62,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var multer  = require('multer');
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -73,11 +74,13 @@ app.use(session({
     resave            : false,
     saveUninitialized : true
 }));
+app.use(multer({ dest: './upload/images'}))
 
 
 var user = require('./routes/user');
 var article = require('./routes/article');
 var backstage = require('./routes/backstage');
+var upload = require('./routes/upload');
 
 app.get('/', function(req, res) {
     var data = {
@@ -98,10 +101,11 @@ app.get('/go', function(req, res) {
 
 app.use('/user', user);
 app.use('/article', article);
-app.use('/backstage',backstage);
+app.use('/backstage', backstage);
+app.use('/upload', upload);
 
 
-var server = app.listen(3000, function() {
+var server = app.listen(3001, function() {
 
     var host = server.address().address;
     var port = server.address().port;
