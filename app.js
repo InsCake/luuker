@@ -86,7 +86,8 @@ app.get('/', function(req, res) {
     var data = {
         page   : 'home',
         site   : 'pc',
-        header : false
+        header : false,
+        footer : true
     };
     res.render('layouts/layout', data);
 });
