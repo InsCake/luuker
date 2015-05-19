@@ -31,7 +31,7 @@ var articleWriteVM = new Vue({
                 xhr.send(formData);
 
                 xhr.onreadystatechange = function() {
-                    if(client.readyState == 4 && client.status == 200) {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
                         alert(xhr.statusText);
                     }
                 };

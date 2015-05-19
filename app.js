@@ -62,7 +62,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var multer  = require('multer');
+var multer = require('multer');
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -74,8 +74,7 @@ app.use(session({
     resave            : false,
     saveUninitialized : true
 }));
-app.use(multer({ dest: './upload/images'}))
-
+app.use(multer({ dest : './upload/images' }));
 
 var user = require('./routes/user');
 var article = require('./routes/article');
@@ -86,7 +85,8 @@ app.get('/', function(req, res) {
     var data = {
         page   : 'home',
         site   : 'pc',
-        header : false
+        header : false,
+        footer : true
     };
     res.render('layouts/layout', data);
 });
@@ -94,14 +94,16 @@ app.get('/go', function(req, res) {
     var data = {
         page   : 'destination',
         site   : 'pc',
-        header : false
+        header : true,
+        footer : true
     };
     res.render('layouts/layout', data);
 });
 
 app.use('/user', user);
 app.use('/article', article);
-app.use('/backstage',backstage);
+app.use('/backstage', backstage);
+app.use('/upload', upload);
 
 
 var server = app.listen(3002, function() {

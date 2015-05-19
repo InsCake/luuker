@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send('respond with a resource');
 });
 
@@ -11,7 +11,8 @@ router.get('/write', function(req, res) {
     var data = {
         page   : 'article_write',
         site   : 'pc',
-        header : 'common'
+        header : 'common',
+        footer : true
     };
 
     var connection = mysql.createConnection(mysql_option);
