@@ -68,7 +68,7 @@ input,button,select,textarea{outline:none}
 
 
 
-#scroll{
+.banner{
     position: absolute;
     z-index: -1;
     height:550px;
@@ -129,7 +129,7 @@ input,button,select,textarea{outline:none}
     width: 60px;
     height:60px;
     overflow: hidden;
-    background: url("../../images/1.jpg");
+    background: url("/views/images/1.jpg");
     background-size: 60px 60px;
     border-radius: 50%;
     float: left;
@@ -146,7 +146,7 @@ input,button,select,textarea{outline:none}
     height: 150px;
     background-color: rgba(0,0,0,0.6);
     position: relative;
-    top:345px;
+    top:350px;
 }
 
 
@@ -156,13 +156,14 @@ input,button,select,textarea{outline:none}
     line-height: 100px;
 }
 
-.hot-text li{
+.hot-text .hot-item{
     float:left;
-    width: 270px;
+
     margin-left: 20px;
 }
-.hot-text li img{
+.hot-text .hot-item img{
     border-radius: 5px;
+    width: 270px;
 }
 
 
@@ -236,7 +237,7 @@ input,button,select,textarea{outline:none}
 .login-exit{
     width: 40px;
     height: 40px;
-    background: url("../../images/chahao.png");
+    background: url("/views/images/chahao.png");
     background-size: 100%;
     position: absolute;
     right: -11px;
@@ -306,7 +307,7 @@ input,button,select,textarea{outline:none}
 }
 
 .login-pwd,.join-pwd{
-    background: url("../../images/icon.png") no-repeat;
+    background: url("/views/images/icon.png") no-repeat;
     background-position: right -53px;
     background-size: 13%;
 }

@@ -11,7 +11,7 @@ body {
 }
 
 .wrap {
-    width  : 1200px;
+    width  : 1140px;
     margin : 0 auto;
 }
 
@@ -20,10 +20,24 @@ body {
     margin-bottom    : 30px;
 }
 
+.layout-footer {
+    height: 50px;
+    background-color: #fff;
+}
+
 .pt-10 {
     padding-top : 10px;
 }
 
 .pt-20 {
     padding-top : 20px;
+}
+
+.page {
+    margin-top: 52px;
+}
+
+.tit-mid{
+    font-size: 16px;
+    font-weight: bolder;
 }
