@@ -12,6 +12,7 @@
                         <div class="article-unit" v-repeat="unit: units">
                             <h3 class="unit-p-title" v-if="unit.type == 'p-title'">{{ unit.value }}</h3>
                             <p class="unit-text" v-if="unit.type == 'text'">{{ unit.value }}</p>
+                            <img class="unit-image" v-attr="src: unit.value" v-if="unit.type == 'image'">
                         </div>
                     </div>
                 </article>
@@ -27,7 +28,8 @@
                                       v-model="add_unit.value"
                                       style="font-size: 14px; height: 80px; resize: none;"></textarea></div>
                         <div class="add-photos" v-if="add_unit.type == 'image'">
-                            <input type="file" class="image-input">
+                            <img v-attr="src: add_unit.value" style="width: 100%;">
+                            <input type="file" class="image-input" v-on="change: onImagesSelect($event)">
                         </div>
                         <div class="add-bar clearfix pt-10">
                             <div class="fr">
