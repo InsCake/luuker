@@ -6,94 +6,106 @@ var router = express.Router();
 var mysql = require('mysql');
 
 //------后台主页页面渲染-------
-router.get('/', function(req, res, next) {
-    if(req.session.user == null){
+router.get('/', function (req, res, next) {
+    if (req.session.user == null) {
         res.redirect('/backstage/sign_in');
-    }else{
+    } else {
         var data = {
-            page   : 'home',
-            site   : 'backstage',
-            header : true,
-            user   : req.session.user
+            page: 'home',
+            site: 'backstage',
+            header: true,
+            user: req.session.user
         };
     }
     res.render('layouts/layout_backstage', data);
 });
 
 //------登陆页面渲染----------
-router.get('/sign_in', function(req, res, next) {
+router.get('/sign_in', function (req, res, next) {
     var data = {
-        page   : 'sign_in',
-        site   : 'backstage',
-        header : false
+        page: 'sign_in',
+        site: 'backstage',
+        header: false
     };
     res.render('layouts/layout_backstage', data);
 });
 
 //------模块管理页面渲染------
-router.get('/editor', function(req, res, next) {
-    if(req.session.user == null){
+router.get('/editor', function (req, res, next) {
+
+    if (req.session.user == null) {
         res.redirect('/backstage/sign_in');
-    }else{
+    } else {
         var data = {
-            page   : 'editor',
-            site   : 'backstage',
-            header : true,
-            user   : req.session.user
+            page: 'editor',
+            site: 'backstage',
+            header: true,
+            user: req.session.user
         };
     }
-
 
 
     res.render('layouts/layout_backstage', data);
 });
 
 //------首页头图更改动作------
-router.post('/changeHomeBanner',function(req, res, next) {
+router.get('/homeEditorData', function () {
+    console.log(1)
+
     var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'luuker'
     });
 
-    connection.query("SELECT * FROM geadimg WHERE id = '1'", function(err, rows, fields) {
-        console.log(rows)
-        if(err) throw err;
-        if(rows.length > 0) {
-            res.json({ msg : 'success' });
+    connection.query("SELECT * FROM headimg WHERE id = '1'", function (err, rows, fields) {
+
+        if (err) throw err;
+        if (rows.length > 0) {
+
+
+            res.json({
+                msg: 'success',
+                data: {banner_image_url: 'https://a0.muscache.com/airbnb/static/landing_pages/pretzel/slideshow/hero4-3862c8fa8ac2925dd1ce76a9bc6c4962.jpg'}
+            })
         } else {
-            res.json({ msg : 'null' });
+            res.json({msg: 'null'});
         }
     });
 
     connection.end();
+})
+
+
+router.post('/changeHomeBanner', function (req, res, next) {
+
 });
 
 //------登陆动作-------------
-router.post('/sign_in', function(req, res, next) {
+router.post('/sign_in', function (req, res, next) {
     var user = req.body.user;
 
     var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'luuker'
     });
 
-    connection.query("SELECT * FROM admin WHERE name = '" + user.name + "'", function(err, rows, fields) {
-        if(err) throw err;
-        if(rows.length > 0) {
-            if(user.name == rows[0].name && user.pwd == rows[0].password) {
+    connection.query("SELECT * FROM admin WHERE name = '" + user.name + "'", function (err, rows, fields) {
+        if (err) throw err;
+        if (rows.length > 0) {
+            if (user.name == rows[0].name && user.pwd == rows[0].password) {
                 req.session.user = rows[0];
-                res.json({ msg : 'success' });
+                res.json({msg: 'success'});
             } else {
-                res.json({ msg : 'failed' });
+                res.json({msg: 'failed'});
             }
         } else {
-            res.json({ msg : 'null' });
+            res.json({msg: 'null'});
         }
     });
 
@@ -101,26 +113,26 @@ router.post('/sign_in', function(req, res, next) {
 });
 
 //------登出动作-------------
-router.get('/sign_out', function(req, res, next){
+router.get('/sign_out', function (req, res, next) {
     req.session.user = null;
     res.redirect('/backstage/sign_in');
 });
 
 //------修改密码动作---------
-router.post('/change_pwd', function(req, res, next){
-     var pwd = req.body.user
-     var user = req.session.user
+router.post('/change_pwd', function (req, res, next) {
+    var pwd = req.body.user
+    var user = req.session.user
 
-     var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });  
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'luuker'
+    });
 
-    connection.query("UPDATE admin SET password = '" + pwd.pwd_new_1 + "'", function(err, rows, fields) {
-        res.json({ msg : 'success' });
+    connection.query("UPDATE admin SET password = '" + pwd.pwd_new_1 + "'", function (err, rows, fields) {
+        res.json({msg: 'success'});
     });
 
     connection.end();
