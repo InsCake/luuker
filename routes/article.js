@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/write', function(req, res, next) {
+router.get('/write', function(req, res) {
     var data = {
         page   : 'article_write',
         site   : 'pc',
@@ -15,6 +15,7 @@ router.get('/write', function(req, res, next) {
     };
 
     var connection = mysql.createConnection(mysql_option);
+
     connection.query("SELECT * FROM article_unit", function(err, rows, fields) {
         if(err) throw err;
         console.log(rows);
