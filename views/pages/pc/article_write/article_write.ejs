@@ -6,7 +6,7 @@
                 <article class="article-panel">
                     <div class="article-header"
                          style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
-                        <h1>点击添加标题</h1>
+                        <h1 id="article_name" contenteditable="true">点击添加标题</h1>
                     </div>
                     <div class="article-content">
                         <div class="article-unit" v-repeat="unit: units">
@@ -53,10 +53,7 @@
             </div>
             <div class="pure-u-4-24">
                 <div class="article-op">
-                    <button class="pure-button">
-                        <i class="fa fa-check"></i>
-                        完成
-                    </button>
+                    <button class="pure-button" v-on="click: submitArticle()"><i class="fa fa-check"></i> 完成</button>
                 </div>
             </div>
         </div>

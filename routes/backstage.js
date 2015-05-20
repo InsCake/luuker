@@ -49,7 +49,7 @@ router.get('/editor', function (req, res, next) {
 });
 
 //------首页头图更改动作------
-router.get('/homeEditorData', function () {
+router.get('/homeEditorData', function (req, res) {
     console.log(1)
 
     var connection = mysql.createConnection({

@@ -1,0 +1,26 @@
+<div class="page-article" id="article">
+    <div class="wrap">
+        <div class="pure-g">
+            <div class="pure-u-4-24">1</div>
+            <div class="pure-u-16-24 article-panel-wrap">
+                <article class="article-panel">
+                    <div class="article-header"
+                         style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
+                        <h1 id="article_name">{{ article.article.name }}</h1>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-unit" v-repeat="unit: article.article_units">
+                            <h3 class="unit-p-title" v-if="unit.type == 'p-title'">{{ unit.value }}</h3>
+                            <p class="unit-text" v-if="unit.type == 'text'">{{ unit.value }}</p>
+                            <img class="unit-image" v-attr="src: unit.value" v-if="unit.type == 'image'">
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="pure-u-4-24">
+                <div class="article-op">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

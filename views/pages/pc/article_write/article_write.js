@@ -21,6 +21,7 @@ var articleWriteVM = new Vue({
             this.add_unit.type = unit_type;
         },
         addArticleUnit : function() {
+            var self = this;
             if(this.add_unit.type == 'image') {
                 var formData = new FormData();
                 var file = document.querySelector('.image-input').files[0];
@@ -32,7 +33,13 @@ var articleWriteVM = new Vue({
 
                 xhr.onreadystatechange = function() {
                     if(xhr.readyState == 4 && xhr.status == 200) {
-                        alert(xhr.statusText);
+                        self.add_unit.value = xhr.response;
+                        self.units.push({
+                            type  : self.add_unit.type,
+                            value : self.add_unit.value
+                        });
+                        self.add_unit.type = '';
+                        self.add_unit.value = '';
                     }
                 };
                 return;
@@ -50,6 +57,23 @@ var articleWriteVM = new Vue({
                 image = e.target.files[0];
             var WINURL = window.URL || window.webkitURL;
             self.add_unit.value = WINURL.createObjectURL(image);
+        },
+        submitArticle  : function() {
+            var self = this;
+            $.ajax({
+                url      : '/article/write',
+                type     : 'POST',
+                dataType : 'json',
+                data     : {
+                    article : {
+                        name: $('#article_name').html(),
+                        units : self.units
+                    }
+                },
+                success  : function(res) {
+                    console.log(res);
+                }
+            })
         }
     }
 });

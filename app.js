@@ -74,7 +74,7 @@ app.use(session({
     resave            : false,
     saveUninitialized : true
 }));
-app.use(multer({ dest : './upload/images' }));
+app.use(multer({ dest : './views/images/uploads' }));
 
 var user = require('./routes/user');
 var article = require('./routes/article');
@@ -83,19 +83,21 @@ var upload = require('./routes/upload');
 
 app.get('/', function(req, res) {
     var data = {
-        page   : 'home',
-        site   : 'pc',
-        header : false,
-        footer : true
+        page         : 'home',
+        site         : 'pc',
+        header       : false,
+        footer       : true,
+        request_urls : false
     };
     res.render('layouts/layout', data);
 });
 app.get('/go', function(req, res) {
     var data = {
-        page   : 'destination',
-        site   : 'pc',
-        header : true,
-        footer : true
+        page         : 'destination',
+        site         : 'pc',
+        header       : true,
+        footer       : true,
+        request_urls : false
     };
     res.render('layouts/layout', data);
 });
@@ -106,7 +108,7 @@ app.use('/backstage', backstage);
 app.use('/upload', upload);
 
 
-var server = app.listen(3002, function() {
+var server = app.listen(3000, function() {
 
     var host = server.address().address;
     var port = server.address().port;

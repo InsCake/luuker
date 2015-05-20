@@ -2,10 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/images', function(req, res, next) {
-    res.json({
-        msg       : 'success',
-        image_url : req.files.path
-    })
+    console.log(req.files);
+    res.send(req.files.upload.path.slice(5));
 });
 
 
