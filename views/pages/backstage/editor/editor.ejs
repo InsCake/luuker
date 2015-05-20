@@ -1,11 +1,38 @@
-<div class="container page">
+<div class="container page" id="home_editor">
     <div class="mg-head-img">
-        <div class="row">
-            <div class="col-md-4 tit-mid" >首页头图管理</div>
+        <div class="row edit-row">
+            <div class="col-md-4 tit-mid">首页头图管理</div>
+            <div class="col-md-4"><a class="btn btn-default" data-toggle="modal" data-target="#edit-headimg">修改</a></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><img src=""></div>
+            <div class="col-md-6" id="change_img"><img v-attr="src: banner.img_url"></div>
         </div>
     </div>
 
+    <div class="modal fade" id="edit-headimg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">更改头图</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">&nbsp;</label>
+                        <input class="form-control mid-input" placeholder="new image url" v-model="banner.new_img_url">
+                        {{ banner.new_img_url }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="go_editImg" v-on="click: goEditimg()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
