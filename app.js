@@ -95,7 +95,8 @@ app.get('/go', function(req, res) {
     var data = {
         page   : 'destination',
         site   : 'pc',
-        header : false
+        header : true,
+        footer : true
     };
     res.render('layouts/layout', data);
 });
@@ -105,7 +106,7 @@ app.use('/article', article);
 app.use('/backstage',backstage);
 
 
-var server = app.listen(3002, function() {
+var server = app.listen(3005, function() {
 
     var host = server.address().address;
     var port = server.address().port;

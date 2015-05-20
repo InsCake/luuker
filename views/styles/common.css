@@ -17,13 +17,28 @@ body {
 
 .layout-header {
     background-color : #fff;
-    margin-bottom    : 30px;
+    height: 40px;
+    line-height: 40px;
 }
 
+.main-logo h1{
+    margin: 0 20px;
+}
+
+.pure-u-1-8 a{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pure-form input{
+    width: 300px;
+}
 .layout-footer {
     height: 50px;
     background-color: #fff;
 }
+
+
 
 .pt-10 {
     padding-top : 10px;

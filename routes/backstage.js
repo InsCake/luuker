@@ -42,16 +42,15 @@ router.get('/editor', function (req, res, next) {
             header: true,
             user: req.session.user
         };
+
+        res.render('layouts/layout_backstage', data);
     }
 
 
-    res.render('layouts/layout_backstage', data);
 });
 
 //------首页头图更改动作------
-router.get('/homeEditorData', function () {
-    console.log(1)
-
+router.get('/homeEditorData', function (req, res, next) {
     var connection = mysql.createConnection({
         host: 'localhost',
         port: '3306',
@@ -68,7 +67,7 @@ router.get('/homeEditorData', function () {
 
             res.json({
                 msg: 'success',
-                data: {banner_image_url: 'https://a0.muscache.com/airbnb/static/landing_pages/pretzel/slideshow/hero4-3862c8fa8ac2925dd1ce76a9bc6c4962.jpg'}
+                data: {banner_image_url: rows[0].url}
             })
         } else {
             res.json({msg: 'null'});
@@ -80,7 +79,21 @@ router.get('/homeEditorData', function () {
 
 
 router.post('/changeHomeBanner', function (req, res, next) {
+    var url = req.body.url
 
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'luuker'
+    });
+
+    connection.query("UPDATE headimg SET url = '" + url.new_img_url + "'", function (err, rows, fields) {
+        res.json({msg: 'success'});
+    });
+
+    connection.end();
 });
 
 //------登陆动作-------------

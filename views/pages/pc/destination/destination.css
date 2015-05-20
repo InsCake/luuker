@@ -1,3 +1,5 @@
+a{cursor: pointer}
+
 .des-header{
     background: url("/images/japan.png");
     width: 100%;
@@ -55,3 +57,152 @@
 .des-footer .nav-cont{
     margin-top: 20px;
 }
+
+.login-container,.register-container{
+    width: 340px;
+    height: 500px;
+    padding: 20px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -200px;
+    border-radius: 3px;
+
+}
+
+.login-header{
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px dashed #aaa;
+}
+
+.login-logo{
+    width: 80px;
+    height: 40px;
+    background-color: #fff;
+    margin-top: 8px;
+    float: left;
+}
+
+.login-exit{
+    width: 40px;
+    height: 40px;
+    background: url("/images/chahao.png");
+    background-size: 100%;
+    position: absolute;
+    right: -11px;
+    top: -11px;
+    cursor: pointer;
+}
+
+.login-exit:hover{
+    -webkit-animation:rotate 1s infinite linear;
+}
+
+@-webkit-keyframes rotate
+{
+    from {-webkit-transform:rotate(0deg);}
+    to {-webkit-transform:rotate(90deg);}
+
+}
+
+.login-body{
+    margin-top: 50px;
+}
+
+.login-method{
+    margin:0 30px;
+    height: 120px;
+    border-bottom: 1px solid #aaa;
+}
+.login-weibo, .login-qq, .login-wechat{
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 50%;
+    float: left;
+    margin-left: 22px;
+}
+
+.login-body h3{
+    margin:0 auto;
+    width: 20px;
+    height: 16px;
+    margin-top: -8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+
+.login-box input{
+    width: 242px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 40px;
+    color: #444;
+}
+.login-box{
+    text-align: center;
+}
+
+
+.login-email,.join-email{
+    background: url("/images/icon.png") no-repeat;
+    background-position: right -22px;
+    background-size: 13%;
+}
+
+.login-pwd,.join-pwd{
+    background: url("/images/icon.png") no-repeat;
+    background-position: right -53px;
+    background-size: 13%;
+}
+
+.login-confirm,.join-confirm{
+
+    background-color: #ccc;
+    width: 242px;
+    height: 32px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 32px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.login-confirm,.join-confirm a{
+    color: #fff;
+}
+
+.login-footer{
+    font-size: 12px;
+    color: #666;
+    float:right;
+}
+
+
+.max-mask{
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.login-confirm a, .join-confirm a{
+    color: #fff;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.go-login, .go-regist{
+    color: #0078e7;
+}
+
+
