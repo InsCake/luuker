@@ -3,42 +3,6 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 var router = express.Router();
 
-router.get('/:article_id', function(req, res) {
-    var article_id = req.params.article_id;
-    res.render('layouts/layout', {
-        page         : 'article',
-        site         : 'pc',
-        header       : 'common',
-        footer       : true,
-        request_urls : {
-            getArticleData : '/article/articleData/' + article_id
-        }
-    });
-});
-
-router.get('/articleData/:article_id', function(req, res) {
-    var article_id = req.params.article_id;
-
-    var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM article WHERE article_id = " + article_id, function(err, rows) {
-        if(err) throw err;
-        if(rows.length > 0) {
-            var article = rows[0];
-            connection.query("SELECT * FROM article_unit WHERE article_id = " + article_id, function(err, rows) {
-                if(err) throw err;
-                if(rows.length > 0) {
-                    var article_units = rows;
-                    res.json({
-                        data : {
-                            article       : article,
-                            article_units : article_units
-                        }
-                    });
-                }
-            });
-        }
-    });
-});
 
 router.get('/write', function(req, res) {
     var data = {
@@ -48,16 +12,6 @@ router.get('/write', function(req, res) {
         footer       : true,
         request_urls : false
     };
-
-    var connection = mysql.createConnection(mysql_option);
-
-    connection.query("SELECT * FROM article_unit", function(err, rows, fields) {
-        if(err) throw err;
-        console.log(rows);
-    });
-
-    connection.end();
-
     res.render('layouts/layout', data);
 });
 
@@ -92,5 +46,43 @@ router.post('/write', function(req, res) {
         msg : 'success'
     })
 });
+
+router.get('/articleData/:article_id', function(req, res) {
+    var article_id = req.params.article_id;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("SELECT * FROM article WHERE article_id = " + article_id, function(err, rows) {
+        if(err) throw err;
+        if(rows.length > 0) {
+            var article = rows[0];
+            connection.query("SELECT * FROM article_unit WHERE article_id = " + article_id, function(err, rows) {
+                if(err) throw err;
+                if(rows.length > 0) {
+                    var article_units = rows;
+                    res.json({
+                        data : {
+                            article       : article,
+                            article_units : article_units
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
+
+router.get('/:article_id', function(req, res) {
+    var article_id = req.params.article_id;
+    res.render('layouts/layout', {
+        page         : 'article',
+        site         : 'pc',
+        header       : 'common',
+        footer       : true,
+        request_urls : {
+            getArticleData : '/article/articleData/' + article_id
+        }
+    });
+});
+
 
 module.exports = router;
