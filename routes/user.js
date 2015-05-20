@@ -7,7 +7,9 @@ router.get('/', function(req, res, next) {
         page   : 'user',
         site   : 'pc',
         header : true,
-        footer : true
+        footer : true,
+        request_urls : false
+
     };
     res.render('layouts/layout', data);
 

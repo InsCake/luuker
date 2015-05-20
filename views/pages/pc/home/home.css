@@ -182,12 +182,22 @@ input,button,select,textarea{outline:none}
     border-radius: 5px;
 }
 
+.top-left img{
+    width: 744px;
+    height:400px;
+}
+
 .top-right{
     width: 348px;
     height:400px;
     background-color: #ccc;
     float:left;
     border-radius: 5px;
+}
+
+.top-right img{
+    width: 348px;
+    height:400px;
 }
 
 .bottom-item{
@@ -200,6 +210,21 @@ input,button,select,textarea{outline:none}
     background-color: #555;
     float: left;
     border-radius: 5px;
+}
+
+.bottom-right img{
+    width:348px;
+    height:400px;
+}
+
+.bottom-mid img{
+    width:348px;
+    height:400px;
+}
+
+.bottom-left img{
+    width:348px;
+    height:400px;
 }
 
 .bottom-left,.bottom-mid{
