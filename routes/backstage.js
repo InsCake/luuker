@@ -50,9 +50,7 @@ router.get('/editor', function (req, res, next) {
 });
 
 //------首页头图更改动作------
-router.get('/homeEditorData', function (req, res) {
-    console.log(1)
-
+router.get('/homeEditorData', function (req, res, next) {
     var connection = mysql.createConnection({
         host: 'localhost',
         port: '3306',
@@ -62,8 +60,11 @@ router.get('/homeEditorData', function (req, res) {
     });
 
     connection.query("SELECT * FROM headimg WHERE id = '1'", function (err, rows, fields) {
+
         if (err) throw err;
         if (rows.length > 0) {
+
+
             res.json({
                 msg: 'success',
                 data: {banner_image_url: rows[0].url}
