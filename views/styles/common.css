@@ -31,8 +31,13 @@ body {
 }
 
 .pure-form input{
-    width: 300px;
+    width: 250px;
 }
+.pure-button{
+    margin-left: -8px;
+    height: 30px;
+}
+
 .layout-footer {
     height: 50px;
     background-color: #fff;

@@ -50,9 +50,7 @@ router.get('/editor', function (req, res, next) {
 });
 
 //------首页头图更改动作------
-router.get('/homeEditorData', function () {
-    console.log(1)
-
+router.get('/homeEditorData', function (req, res, next) {
     var connection = mysql.createConnection({
         host: 'localhost',
         port: '3306',
