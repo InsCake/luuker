@@ -25,6 +25,11 @@
         <%- include('../layouts/footer') %>
     <% } %>
 
+    <% if (request_urls) { %>
+    <script>
+        var $request_urls = JSON.parse('<%- JSON.stringify(request_urls) %>');
+    </script>
+    <% } %>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/vue/dist/vue.min.js"></script>
     <script src="../bower_components/vue/dist/vue.js"></script>
