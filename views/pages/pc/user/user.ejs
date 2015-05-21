@@ -1,14 +1,13 @@
-<div class="page-user">
+<div class="page-user" id="page_user">
     <div class="wrap user-main">
         <div class="data-box clearfix">
             <div class="head-edit f_l">
                 <img src="/images/head.jpg">
-
             </div>
-            <a class="head-edit-txt">点击更换头像</a>
-
-            <div class="name-edit f_l" id="name_edit">
-                <span>{{ user.oname }}</span><br/>
+            <a class="head-edit-txt" v-on="click: doUploadHead()">点击更换头像</a>
+            <input type="file" id="head_logo" style="display: none;" v-on="change: onHeadSelected()">
+            <div class="name-edit f_l">
+                <span>{{ user.oname }}</span><br />
                 <input class="update-name f_l" placeholder="修改昵称" v-model="user.name">
                 <button class="update-confirm f_l" v-on="click: changeHead()">ok</button>
                 <div></div>
@@ -17,29 +16,30 @@
     </div>
     <div class="wrap user-footer">
         <div class="user-nav">
-            <div class="nav" style="font-weight:bolder">个人资料</div>
-            <div class="nav">我的游记</div>
-            <div class="nav">修改密码</div>
+            <div class="nav" v-class="active: current_tab == 'user_info'"
+                 v-on="click: switchTab('user_info')">个人资料
+            </div>
+            <div class="nav" v-class="active: current_tab == 'my_article'"
+                 v-on="click: switchTab('my_article')">我的游记
+            </div>
+            <div class="nav" v-class="active: current_tab == 'change_pwd'"
+                 v-on="click: switchTab('change_pwd')">修改密码
+            </div>
         </div>
         <div class="user-body">
             <div class="user-txt nav-cont active">
                 <form class="pure-form pure-form-aligned">
                     <fieldset>
-
                         <div class="pure-control-group txt-line">
                             <label for="email">您的邮箱</label>
                             <input id="email" type="email" placeholder="请输入邮箱">
                         </div>
-
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的学校</label>
                             <input id="foo" type="text" placeholder="请输入学校名">
                         </div>
-
-
                         <div class="pure-controls">
-
-                            <button  class="pure-button pure-button-warning" style="margin-left: 4px;">提交
+                            <button class="pure-button pure-button-warning" style="margin-left: 4px;">提交
                             </button>
                         </div>
                     </fieldset>
@@ -48,7 +48,7 @@
             <div class="user-article nav-cont" id="user_article">
                 <div class="article-line">
                     <i class="fa fa-book fa-2x">&nbsp;</i><a href="/article/3">{{ article.title }}</a><a
-                            class="update-article">修改</a>
+                        class="update-article">修改</a>
                 </div>
                 <div class="article-line">
                     <i class="fa fa-book fa-2x">&nbsp;</i><a href="#">今年说什么也要去一次日本</a>
@@ -62,7 +62,7 @@
                     <fieldset>
                         <div class="pure-control-group txt-line">
                             <label for="email">旧密码</label>
-                            <input  placeholder="请输入旧密码" id="old_pwd" v-model="user.opwd">
+                            <input placeholder="请输入旧密码" id="old_pwd" v-model="user.opwd">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">新密码</label>
@@ -73,7 +73,8 @@
                             <input type="text" placeholder="请重复新密码" id="new_pwd" v-model="user.npwd2">
                         </div>
                         <div class="pure-controls">
-                            <a  class="pure-button pure-button-warning" style="margin-left: 4px;" v-on="click: updatePwd()">提交
+                            <a class="pure-button pure-button-warning" style="margin-left: 4px;"
+                               v-on="click: updatePwd()">提交
                             </a>
                         </div>
                     </fieldset>

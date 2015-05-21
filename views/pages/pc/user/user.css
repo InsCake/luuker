@@ -1,118 +1,127 @@
-a{
-    color: #333;
+a {
+    color : #333;
 }
 
-.user-main{
-    border-bottom: 1px solid #ccc;
-}
-.user-main .data-box{
-    margin: 50px 150px;
-    height: 300px;
+.user-main {
+    border-bottom : 1px solid #ccc;
 }
 
-.data-box .head-edit{
-    position: absolute;
-    text-align: center;
-    line-height: 300px;
-    height: 300px;
+.user-main .data-box {
+    margin : 50px 150px;
+    height : 300px;
 }
 
-.data-box .head-edit img{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+.data-box .head-edit {
+    position    : absolute;
+    text-align  : center;
+    line-height : 300px;
+    height      : 300px;
 }
 
-.head-edit-txt{
-    position: relative;
-    left: 106px;
-    top: 145px;
-    display: block;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bolder;
-    color: #fff;
-    width: 100px;
+.data-box .head-edit img {
+    width         : 300px;
+    height        : 300px;
+    border-radius : 50%;
 }
 
-.data-box .name-edit{
-    margin-left: 50px;
-    position: relative;
-    left: 300px;
-    top:150px;
-}
-.data-box .name-edit span{
-    font-size: 50px;
-    color: #666;
-    display: block;
-}
-
-
-.data-box .name-edit .update-name{
-    width: 300px;
-    height: 40px;
-    border-radius: 3px;
-    border:1px solid #ccc;
-    padding-left: 10px;
-    color: #666;
+.head-edit-txt {
+    position    : relative;
+    left        : 106px;
+    top         : 145px;
+    display     : block;
+    cursor      : pointer;
+    font-size   : 16px;
+    font-weight : bolder;
+    color       : #fff;
+    width       : 100px;
 }
 
-.data-box .name-edit .update-confirm{
-    height: 40px;
-    width: 60px;
-    margin-left: -2px;
-    border: 1px solid #ccc;
-    color: #fff;
+.data-box .name-edit {
+    margin-left : 50px;
+    position    : relative;
+    left        : 300px;
+    top         : 150px;
 }
 
-.user-body{
-    padding: 30px 20px;
-}
-.user-footer{
-    overflow: hidden;
-    height: 400px;
-}
-.user-nav{
-    height: 50px;
-    margin-left: -16px;
-}
-.user-nav .nav{
-    float: left;
-    width: 100px;
-    text-align: center;
-    border-left: 1px solid #ccc;
-    margin-top:10px;
-    color: #666;
-    cursor: pointer;
+.data-box .name-edit span {
+    font-size : 50px;
+    color     : #666;
+    display   : block;
 }
 
-.pure-form .txt-line{
-    margin-bottom: 30px;
+.data-box .name-edit .update-name {
+    width         : 300px;
+    height        : 40px;
+    border-radius : 3px;
+    border        : 1px solid #ccc;
+    padding-left  : 10px;
+    color         : #666;
 }
 
-.user-article{
-    margin-left: 150px;
-}
-.user-article a{
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.article-line{
-    margin-bottom: 28px;
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: 4px;
+.data-box .name-edit .update-confirm {
+    height      : 40px;
+    width       : 60px;
+    margin-left : -2px;
+    border      : 1px solid #ccc;
+    color       : #fff;
 }
 
-.nav-cont{
-    display: none;
+.user-body {
+    padding : 30px 20px;
+}
+
+.user-footer {
+    overflow : hidden;
+    height   : 400px;
+}
+
+.user-nav {
+    height      : 50px;
+    margin-left : -16px;
+}
+
+.user-nav .nav {
+    float       : left;
+    width       : 100px;
+    text-align  : center;
+    border-left : 1px solid #ccc;
+    margin-top  : 10px;
+    color       : #666;
+    cursor      : pointer;
+}
+
+.pure-form .txt-line {
+    margin-bottom : 30px;
+}
+
+.user-article {
+    margin-left : 150px;
+}
+
+.user-article a {
+    cursor          : pointer;
+    text-decoration : none;
+}
+
+.article-line {
+    margin-bottom  : 28px;
+    border-bottom  : 1px dashed #ccc;
+    padding-bottom : 4px;
+}
+
+.nav-cont {
+    display : none;
 }
 
 .nav-cont.active {
-    display: block;
+    display : block;
 }
 
-.update-article{
-    margin-left: 30px;
-    color: #0078e7;
+.update-article {
+    margin-left : 30px;
+    color       : #0078e7;
+}
+
+.user-footer .nav.active {
+    font-weight : bold;
 }

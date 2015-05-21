@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var mysql_option = require('../config/database.js');
 
 router.get('/', function(req, res, next) {
+    if(!req.session.user) {
+        res.redirect('../');
+    }
     var data = {
-        page   : 'user',
-        site   : 'pc',
-        header : true,
-        footer : true,
+        page         : 'user',
+        site         : 'pc',
+        header       : true,
+        footer       : true,
         request_urls : false
 
     };
@@ -16,18 +20,18 @@ router.get('/', function(req, res, next) {
 });
 
 //-------用户名更改--------
-router.post('/nameEditorData', function (req, res, next) {
+router.post('/nameEditorData', function(req, res, next) {
     var user = req.body.user;
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'root',
-        database: 'luuker'
+        host     : 'localhost',
+        port     : '3306',
+        user     : 'root',
+        password : 'root',
+        database : 'luuker'
     });
 
-    connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = '1'", function (err, rows, fields) {
+    connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = '1'", function(err, rows, fields) {
         res.json({
             msg : user.name
         });
@@ -36,49 +40,44 @@ router.post('/nameEditorData', function (req, res, next) {
     connection.end();
 })
 
-
-router.post('/showUserName', function (req, res, next) {
+router.post('/showUserName', function(req, res, next) {
     var user = req.body.user;
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'root',
-        database: 'luuker'
+        host     : 'localhost',
+        port     : '3306',
+        user     : 'root',
+        password : 'root',
+        database : 'luuker'
     });
 
-    connection.query("SELECT * FROM user WHERE user_id = '1'", function (err, rows, fields) {
-        res.json({msg: rows[0].name});
+    connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
+        res.json({ msg : rows[0].name });
     });
 
     connection.end();
 });
 
-
-//-----------显示游记-------------
-
-router.post('/showUserArticle', function (req, res, next) {
+//-----------显示游记------------
+router.post('/showUserArticle', function(req, res, next) {
     var article = req.body.article;
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'root',
-        database: 'luuker'
+        host     : 'localhost',
+        port     : '3306',
+        user     : 'root',
+        password : 'root',
+        database : 'luuker'
     });
 
-    connection.query("SELECT * FROM article WHERE article_id = '3'", function (err, rows, fields) {
-        res.json({msg: rows[0].name});
+    connection.query("SELECT * FROM article WHERE article_id = '3'", function(err, rows, fields) {
+        res.json({ msg : rows[0].name });
     });
 
     connection.end();
 });
 
-
 //------------登陆动作------------
-
 router.post('/login', function(req, res, next) {
     var user = req.body.user;
 
@@ -124,7 +123,8 @@ router.post('/join', function(req, res, next) {
         database : 'luuker'
     });
 
-    connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd + "')", function(err, result) {
+    connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd +
+                     "')", function(err, result) {
         if(err) throw err;
         res.json({
             msg      : 'success',
@@ -135,26 +135,33 @@ router.post('/join', function(req, res, next) {
     connection.end();
 });
 
-module.exports = router;
-
 //------------修改前台密码---------------
-
-router.post('/changePwd', function (req, res, next) {
+router.post('/changePwd', function(req, res, next) {
     var pwd = req.body.user
 
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'root',
-        database: 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
-    connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = '1'", function (err, rows, fields) {
+    connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = '1'", function(err, rows, fields) {
         console.log(1)
-        res.json({msg: 'success'});
+        res.json({ msg : 'success' });
     });
 
     connection.end();
 
-})
+});
+
+router.post('/uploadHeadImage', function(req, res) {
+    var image = req.files;
+    var user = req.session.user;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("UPDATE user SET img = '" + image.upload.path.slice(5) +
+                     "' WHERE user_id = " + user.user_id, function(err, result) {
+        if(err) throw err;
+        console.log(111);
+        res.json({ msg : 'success' });
+    });
+    connection.end();
+});
+
+module.exports = router;
