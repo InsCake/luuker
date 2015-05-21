@@ -2,11 +2,13 @@ $(function() {
 
     $('.sign-up').on('click', function() {
         $('.max-mask').fadeIn();
+        $('.ogin-container').hide();
         $('.register-container').fadeIn();
     })
 
     $('.login').on('click',function(){
         $('.max-mask').fadeIn();
+        $('.register-container').hide();
         $('.login-container').fadeIn();
     })
 
@@ -37,6 +39,8 @@ $(function() {
                     $('.header-nav').find('.login,.sign-up').hide();
                     $('.header-nav').find('.username').text(res.msg).show();
                     $('.header-nav').find('.exit').text('退出');
+                    $('.userhead').fadeIn();
+
                 }
 
             }
@@ -67,6 +71,7 @@ $(function() {
 
                 if(res.msg =='success'){
                     alert(res.new_user.name);
+                    $('.max-mask').fadeOut();
                 } else{
                     alert('sb');
                 }

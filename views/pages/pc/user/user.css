@@ -3,17 +3,37 @@
 }
 .user-main .data-box{
     margin: 50px 150px;
+    height: 300px;
 }
+
 .data-box .head-edit{
+    position: absolute;
+    text-align: center;
+    line-height: 300px;
+    height: 300px;
+}
+
+.data-box .head-edit img{
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background:url("/images/head.jpg");
-    text-align: center;
-    line-height: 300px;
 }
+
+.head-edit-txt{
+    position: relative;
+    left: 106px;
+    top: 145px;
+    display: block;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #fff;
+}
+
 .data-box .name-edit{
     margin-left: 50px;
+    position: relative;
+    left: 300px;
 }
 .data-box .name-edit span{
     font-size: 50px;
@@ -37,8 +57,13 @@
     border: 1px solid #ccc;
     color: #fff;
 }
+
+.user-body{
+    padding: 30px 20px;
+}
 .user-footer{
     overflow: hidden;
+    height: 400px;
 }
 .user-nav{
     height: 50px;
@@ -52,4 +77,24 @@
     margin-top:10px;
     color: #666;
     cursor: pointer;
+}
+
+.user-article{
+    margin-left: 200px;
+}
+.user-article a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.article-line{
+    margin-bottom: 20px;
+}
+
+.nav-cont{
+    display: none;
+}
+
+.nav-cont.active {
+    display: block;
 }

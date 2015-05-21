@@ -63,8 +63,7 @@ router.post('/join', function(req, res, next) {
         database : 'luuker'
     });
 
-    connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd +
-                     "')", function(err, result) {
+    connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd + "')", function(err, result) {
         if(err) throw err;
         console.log(result);
         res.json({
