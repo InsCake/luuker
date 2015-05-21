@@ -97,7 +97,6 @@ $(function() {
 });
 
 
-
 var changPwdVM = new Vue({
     el: '#myModal',
     data: {
@@ -129,4 +128,6 @@ var changPwdVM = new Vue({
         }
     }
 });
+
+
 

@@ -25,10 +25,19 @@ var changenameVM = new Vue({
     data: {
         title: 'title！',
         user: {
-            name: ''
+            name: '',
+            oname:''
         }
-
-
+    },
+    compiled: function (){
+        var self = this;
+        $.ajax({
+            url: '/user/showUserName',
+            type: 'POST',
+            success: function (res) {
+                self.user.oname = res.msg;
+            }
+        })
     },
     methods: {
         changeHead: function () {
@@ -41,7 +50,62 @@ var changenameVM = new Vue({
                 },
                 dataType: 'json',
                 success: function (res) {
+                        alert('修改成功') ;
                     $('.name-edit span').text(res.msg);
+                }
+            });
+        }
+    }
+});
+
+var articleshowVM = new Vue({
+    "el": '#user_article',
+    data:{
+        title: 'title！',
+        article: {
+            title: ''
+        }
+    },
+    compiled: function (){
+        var self = this;
+        $.ajax({
+            url: '/user/showUserArticle',
+            type: 'POST',
+            success: function (res) {
+                self.article.title = res.msg;
+
+            }
+        })
+    }
+})
+
+var changepwdVM = new Vue({
+    el: '#update_pwd',
+    data: {
+        title: 'title！',
+        user: {
+            opwd: '',
+            npwd1:'',
+            npwd2:''
+        }
+    },
+    methods: {
+        updatePwd: function () {
+            var self = this;
+            $.ajax({
+                url: '/user/changePwd',
+                type: 'POST',
+                data: {
+                    user: self.user
+                },
+                dataType: 'json',
+                success: function (res) {
+                    if (res.msg == 'success'){
+                        alert('修改成功') ;
+                        window.location.reload();
+                    }else{
+                        alert('sb');
+                    }
                 }
             });
         }

@@ -1,3 +1,7 @@
+a{
+    color: #333;
+}
+
 .user-main{
     border-bottom: 1px solid #ccc;
 }
@@ -28,19 +32,22 @@
     font-size: 16px;
     font-weight: bolder;
     color: #fff;
+    width: 100px;
 }
 
 .data-box .name-edit{
     margin-left: 50px;
     position: relative;
     left: 300px;
+    top:150px;
 }
 .data-box .name-edit span{
     font-size: 50px;
     color: #666;
     display: block;
-    margin-top: 120px;
 }
+
+
 .data-box .name-edit .update-name{
     width: 300px;
     height: 40px;
@@ -79,20 +86,22 @@
     cursor: pointer;
 }
 
-.user-txt .pure-form .txt-line{
+.pure-form .txt-line{
     margin-bottom: 30px;
 }
 
 .user-article{
-    margin-left: 200px;
+    margin-left: 150px;
 }
 .user-article a{
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .article-line{
-    margin-bottom: 20px;
+    margin-bottom: 28px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 4px;
 }
 
 .nav-cont{
@@ -101,4 +110,9 @@
 
 .nav-cont.active {
     display: block;
+}
+
+.update-article{
+    margin-left: 30px;
+    color: #0078e7;
 }

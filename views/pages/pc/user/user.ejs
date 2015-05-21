@@ -6,8 +6,9 @@
 
             </div>
             <a class="head-edit-txt">点击更换头像</a>
+
             <div class="name-edit f_l" id="name_edit">
-                <span></span><br/>
+                <span>{{ user.oname }}</span><br/>
                 <input class="update-name f_l" placeholder="修改昵称" v-model="user.name">
                 <button class="update-confirm f_l" v-on="click: changeHead()">ok</button>
                 <div></div>
@@ -18,6 +19,7 @@
         <div class="user-nav">
             <div class="nav" style="font-weight:bolder">个人资料</div>
             <div class="nav">我的游记</div>
+            <div class="nav">修改密码</div>
         </div>
         <div class="user-body">
             <div class="user-txt nav-cont active">
@@ -35,24 +37,47 @@
                         </div>
 
 
-
                         <div class="pure-controls">
 
-                            <button type="submit" class="pure-button pure-button-warning" style="margin-left: 4px;">提交</button>
+                            <button  class="pure-button pure-button-warning" style="margin-left: 4px;">提交
+                            </button>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="user-article nav-cont">
+            <div class="user-article nav-cont" id="user_article">
                 <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a>今年说什么也要去一次日本</a>
+                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="/article/3">{{ article.title }}</a><a
+                            class="update-article">修改</a>
                 </div>
                 <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a>今年说什么也要去一次日本</a>
+                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="#">今年说什么也要去一次日本</a>
                 </div>
                 <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a>今年说什么也要去一次日本</a>
+                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="#">今年说什么也要去一次日本</a>
                 </div>
+            </div>
+            <div class="user-pwd nav-cont" id="update_pwd">
+                <form class="pure-form pure-form-aligned">
+                    <fieldset>
+                        <div class="pure-control-group txt-line">
+                            <label for="email">旧密码</label>
+                            <input  placeholder="请输入旧密码" id="old_pwd" v-model="user.opwd">
+                        </div>
+                        <div class="pure-control-group txt-line">
+                            <label for="foo">新密码</label>
+                            <input type="text" placeholder="请输入新密码" id="new_pwd" v-model="user.npwd1">
+                        </div>
+                        <div class="pure-control-group txt-line">
+                            <label for="foo">重复密码</label>
+                            <input type="text" placeholder="请重复新密码" id="new_pwd" v-model="user.npwd2">
+                        </div>
+                        <div class="pure-controls">
+                            <a  class="pure-button pure-button-warning" style="margin-left: 4px;" v-on="click: updatePwd()">提交
+                            </a>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
