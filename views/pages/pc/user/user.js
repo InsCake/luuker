@@ -20,3 +20,30 @@ $(document).ready(function(){
     });
 });
 
+var changenameVM = new Vue({
+    el: '#name_edit',
+    data: {
+        title: 'title！',
+        user: {
+            name: ''
+        }
+
+
+    },
+    methods: {
+        changeHead: function () {
+            var self = this;
+            $.ajax({
+                url: '/user/nameEditorData',
+                type: 'POST',
+                data: {
+                    user: self.user
+                },
+                dataType: 'json',
+                success: function (res) {
+                    $('.name-edit span').text(res.msg);
+                }
+            });
+        }
+    }
+});

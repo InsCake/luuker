@@ -15,7 +15,48 @@ router.get('/', function(req, res, next) {
 
 });
 
+//-------用户名更改--------
+router.post('/nameEditorData', function (req, res, next) {
+    var user = req.body.user;
 
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        port: '3306',
+        user: 'root',
+        password: 'root',
+        database: 'luuker'
+    });
+
+    connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = '1'", function (err, rows, fields) {
+        res.json({
+            msg : user.name
+        });
+    });
+
+    connection.end();
+})
+
+
+//router.post('/changeUserName', function (req, res, next) {
+//    var url = req.body.url
+//
+//    var connection = mysql.createConnection({
+//        host: 'localhost',
+//        port: '3306',
+//        user: 'root',
+//        password: 'root',
+//        database: 'luuker'
+//    });
+//
+//    connection.query("UPDATE headimg SET url = '" + url.new_img_url + "'", function (err, rows, fields) {
+//        res.json({msg: 'success'});
+//    });
+//
+//    connection.end();
+//});
+
+
+//------------登陆动作------------
 
 router.post('/login', function(req, res, next) {
     var user = req.body.user;

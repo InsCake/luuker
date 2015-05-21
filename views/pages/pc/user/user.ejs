@@ -6,10 +6,11 @@
 
             </div>
             <a class="head-edit-txt">点击更换头像</a>
-            <div class="name-edit f_l">
-                <span>name</span><br/>
-                <input class="update-name f_l" placeholder="修改昵称">
-                <button class="update-confirm f_l">ok</button>
+            <div class="name-edit f_l" id="name_edit">
+                <span></span><br/>
+                <input class="update-name f_l" placeholder="修改昵称" v-model="user.name">
+                <button class="update-confirm f_l" v-on="click: changeHead()">ok</button>
+                <div></div>
             </div>
         </div>
     </div>
@@ -23,12 +24,12 @@
                 <form class="pure-form pure-form-aligned">
                     <fieldset>
 
-                        <div class="pure-control-group">
+                        <div class="pure-control-group txt-line">
                             <label for="email">您的邮箱</label>
                             <input id="email" type="email" placeholder="请输入邮箱">
                         </div>
 
-                        <div class="pure-control-group">
+                        <div class="pure-control-group txt-line">
                             <label for="foo">您的学校</label>
                             <input id="foo" type="text" placeholder="请输入学校名">
                         </div>

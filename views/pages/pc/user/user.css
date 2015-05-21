@@ -79,6 +79,10 @@
     cursor: pointer;
 }
 
+.user-txt .pure-form .txt-line{
+    margin-bottom: 30px;
+}
+
 .user-article{
     margin-left: 200px;
 }
