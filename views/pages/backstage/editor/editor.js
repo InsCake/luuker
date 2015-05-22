@@ -42,3 +42,15 @@ var homeEditorVM = new Vue({
         }
     }
 });
+
+$(function() {
+    $('.update-btn').on('click',function(){
+        $(this).prev().show();
+        $(this).prev().prev().hide();
+    });
+
+    $('.sub-btn').on('click',function(){
+        $(this).prev().prev().prev().show();
+        $(this).prev().prev().hide();
+    })
+})

@@ -1,4 +1,5 @@
 <div class="container page" id="home_editor">
+    <!--------------首页头图管理--------------->
     <div class="mg-head-img">
         <div class="row edit-row">
             <div class="col-md-4 tit-mid">首页头图管理</div>
@@ -9,6 +10,57 @@
         </div>
     </div>
 
+    <!--------------推荐游记管理--------------->
+    <div class="mg-article">
+        <div class="row edit-row">
+            <div class="col-md-4 tit-mid">游记推荐管理</div>
+        </div>
+        <div class="mg-article-left">
+            <div class="small-top clearfix">
+                <div class="top-left"></div>
+                <div class="top-right"></div>
+            </div>
+            <div class="small-bottom clearfix">
+                <div class="bottom-left"></div>
+                <div class="bottom-mid"></div>
+                <div class="bottom-right"></div>
+            </div>
+        </div>
+        <div class="mg-article-right">
+            <div class="row article-item-row">
+                <div class="col-md-8 article-item" >游记题目</div>
+                <input class="form-control article-input" style="display: none">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            </div>
+            <div class="row article-item-row">
+                <div class="col-md-8 article-item">游记题目</div>
+                <input class="form-control article-input" style="display: none">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            </div>
+            <div class="row article-item-row">
+                <div class="col-md-8 article-item">游记题目</div>
+                <input class="form-control article-input" style="display: none">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            </div>
+            <div class="row article-item-row">
+                <div class="col-md-8 article-item">游记题目</div>
+                <input class="form-control article-input" style="display: none">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            </div>
+            <div class="row article-item-row">
+                <div class="col-md-8 article-item">游记题目</div>
+                <input class="form-control article-input" style="display: none">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------首页管理弹窗--------------->
     <div class="modal fade" id="edit-headimg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -24,7 +76,6 @@
                         <input class="form-control mid-input" placeholder="new image url" v-model="banner.new_img_url">
                         {{ banner.new_img_url }}
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

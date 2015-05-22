@@ -4,4 +4,55 @@
 
 .edit-row{
     margin:20px 0;
+    line-height: 34px;
 }
+
+.mg-head-img, .mg-article{
+    margin-bottom: 40px;
+}
+
+.article-item-row{
+    margin-bottom: 34px;
+    line-height: 34px;
+}
+
+.mg-article-left{
+    width: 500px;
+    float:left;
+}
+.mg-article-right{
+    float: left;
+    width: 564px;
+    margin-left: 40px;
+}
+
+.small-top{
+    margin-bottom: 10px;
+}
+
+.top-left{
+    width:330px;
+    height: 150px;
+    float:left;
+    background-color: #0078e7;
+}
+.top-right,.bottom-left,.bottom-mid,.bottom-right{
+    width: 160px;
+    height: 150px;
+    float: left;
+    background-color: #2b542c;
+}
+
+.top-right,.bottom-mid,.bottom-right{
+    margin-left: 10px;
+}
+
+.col-md-8{
+    text-align: center;
+}
+
+.article-input{
+    width: 396px;
+    float: left;
+}
+

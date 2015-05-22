@@ -175,7 +175,7 @@ input,button,select,textarea{outline:none}
 
 .hot-text{
     margin-left: -20px;
-    min-width: 1160px;
+    min-width: 1161px;
 }
 
 
@@ -186,6 +186,7 @@ input,button,select,textarea{outline:none}
     float: left;
     margin-right: 48px;
     border-radius: 5px;
+    position: absolute;
 }
 
 .top-left img{
@@ -199,6 +200,8 @@ input,button,select,textarea{outline:none}
     background-color: #ccc;
     float:left;
     border-radius: 5px;
+    position: relative;
+    left: 792px;
 }
 
 .top-right img{
@@ -382,6 +385,14 @@ input,button,select,textarea{outline:none}
 
 .go-login, .go-regist{
     color: #0078e7;
+}
+
+.sm-cover{
+    background-color: rgba(0,0,0,0.4);
+    height: 80px;
+    width: 100%;
+    position: relative;
+    top: -82px;
 }
 
 
