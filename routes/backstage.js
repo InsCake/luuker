@@ -14,6 +14,7 @@ router.get('/', function (req, res, next) {
             page: 'home',
             site: 'backstage',
             header: true,
+            footer:true,
             user: req.session.user
         };
     }
@@ -25,7 +26,8 @@ router.get('/sign_in', function (req, res, next) {
     var data = {
         page: 'sign_in',
         site: 'backstage',
-        header: false
+        header: false,
+        footer:false
     };
     res.render('layouts/layout_backstage', data);
 });
@@ -40,6 +42,7 @@ router.get('/editor', function (req, res, next) {
             page: 'editor',
             site: 'backstage',
             header: true,
+            footer:true,
             user: req.session.user
         };
 

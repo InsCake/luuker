@@ -22,7 +22,7 @@
 }
 .mg-article-right{
     float: left;
-    width: 500px;
+    width: 564px;
     margin-left: 40px;
 }
 
@@ -47,7 +47,12 @@
     margin-left: 10px;
 }
 
-.col-md-9{
+.col-md-8{
     text-align: center;
+}
+
+.article-input{
+    width: 396px;
+    float: left;
 }
 
