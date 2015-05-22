@@ -42,7 +42,10 @@ var userVM = new Vue({
             nschool:''
         },
         current_tab : 'user_info',
-        a : { text : '' }
+        a : { mail : '' ,
+              school : ''
+        }
+
     },
     compiled : function() {
         var self = this;
@@ -72,15 +75,15 @@ var userVM = new Vue({
                 self.user.nschool = res.school;
 
                 if(res.mail == ''){
-                    self.a.text = '添加';
+                    self.a.mail = '添加';
                 }else{
-                    self.a.text = '修改';
+                    self.a.mail = '修改';
                 }
 
                 if(res.school == ''){
-                    self.a.text = '添加';
+                    self.a.school = '添加';
                 }else{
-                    self.a.text = '修改';
+                    self.a.school = '修改';
                 }
             }
         })
