@@ -158,8 +158,8 @@ router.post('/changeTxt', function(req, res, next) {
     var txt = req.body.user
 
     var connection = mysql.createConnection(mysql_option);
-
-    connection.query("UPDATE user SET mail = '" + txt.nmail + " WHERE user_id = '1'", function(err, rows, fields) {
+    console.log(1)
+    connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool + "' WHERE user_id = '1'", function(err, rows, fields) {
         res.json({ msg : 'success' });
     });
 
