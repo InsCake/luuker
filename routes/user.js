@@ -149,7 +149,6 @@ router.post('/showUserTxt', function(req, res, next) {
             school : rows[0].school
         })
     });
-
     connection.end();
 });
 
@@ -158,12 +157,11 @@ router.post('/changeTxt', function(req, res, next) {
     var txt = req.body.user
 
     var connection = mysql.createConnection(mysql_option);
-    console.log(1)
+
     connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool + "' WHERE user_id = '1'", function(err, rows, fields) {
         res.json({ msg : 'success' });
     });
-
     connection.end();
-
 });
+
 module.exports = router;

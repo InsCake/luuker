@@ -21,7 +21,8 @@ $(document).ready(function() {
         $(this).hide();
         $('#school_show').hide();
         $('#foo').show();
-    })
+    });
+
 });
 
 var userVM = new Vue({
@@ -40,7 +41,8 @@ var userVM = new Vue({
             nmail : '',
             nschool:''
         },
-        current_tab : 'user_info'
+        current_tab : 'user_info',
+        a : { text : '' }
     },
     compiled : function() {
         var self = this;
@@ -66,6 +68,20 @@ var userVM = new Vue({
             success : function(res) {
                 self.user.mail = res.mail;
                 self.user.school = res.school;
+                self.user.nmail = res.mail;
+                self.user.nschool = res.school;
+
+                if(res.mail == ''){
+                    self.a.text = '添加';
+                }else{
+                    self.a.text = '修改';
+                }
+
+                if(res.school == ''){
+                    self.a.text = '添加';
+                }else{
+                    self.a.text = '修改';
+                }
             }
         })
     },
@@ -126,6 +142,7 @@ var userVM = new Vue({
             });
         },
         updateTxt : function() {
+
             var self = this;
             $.ajax({
                 url      : '/user/changeTxt',
@@ -136,12 +153,13 @@ var userVM = new Vue({
                 dataType : 'json',
                 success  : function(res) {
                     if(res.msg == 'success') {
-                        alert(res.mail);
+                        alert('');
                     } else {
                         alert('sb');
                     }
                 }
             });
+
         }
     }
 });
