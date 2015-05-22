@@ -15,6 +15,7 @@ body{
 
 a{
     cursor: pointer;
+    text-decoration: none;
 }
 
 input,button,select,textarea{outline:none}
@@ -135,7 +136,7 @@ input,button,select,textarea{outline:none}
     width: 60px;
     height:60px;
     overflow: hidden;
-    background: url("/views/images/1.jpg");
+    background: url("/images/1.jpg");
     background-size: 60px 60px;
     border-radius: 50%;
     float: left;
@@ -219,6 +220,7 @@ input,button,select,textarea{outline:none}
     background-color: #555;
     float: left;
     border-radius: 5px;
+    position: relative;
 }
 
 .bottom-right img{
@@ -393,6 +395,23 @@ input,button,select,textarea{outline:none}
     width: 100%;
     position: relative;
     top: -82px;
+}
+
+.sm-cover .rec-head img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    left: 20px;
+    top: -20px;
+}
+
+.sm-cover .rec-head h3{
+    color: #fff;
+    font-size: 24px;
+    font-weight: bolder;
+    margin-left: 100px;
+    margin-top: -20px;
 }
 
 
