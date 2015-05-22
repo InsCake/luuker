@@ -125,3 +125,10 @@ a {
 .user-footer .nav.active {
     font-weight : bold;
 }
+
+.alter-mail, .alter-sch{
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+
+}

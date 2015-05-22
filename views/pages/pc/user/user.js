@@ -10,6 +10,18 @@ $(document).ready(function() {
         var i = $(this).index();
         $('.nav-cont').removeClass('active').eq(i).addClass('active');
     });
+
+    $('.alter-mail').on('click',function(){
+        $(this).hide();
+        $('#mail_show').hide();
+        $('#email').show();
+    });
+
+    $('.alter-sch').on('click',function(){
+        $(this).hide();
+        $('#school_show').hide();
+        $('#foo').show();
+    })
 });
 
 var userVM = new Vue({
@@ -22,7 +34,11 @@ var userVM = new Vue({
             opwd  : '',
             npwd1 : '',
             npwd2 : '',
-            title : ''
+            title : '',
+            mail  : '',
+            school: '',
+            nmail : '',
+            nschool:''
         },
         current_tab : 'user_info'
     },
@@ -40,8 +56,16 @@ var userVM = new Vue({
             url     : '/user/showUserArticle',
             type    : 'POST',
             success : function(res) {
-                alert(res.msg);
                 self.user.title = res.msg;
+            }
+        })
+
+        $.ajax({
+            url     : '/user/showUserTxt',
+            type    : 'POST',
+            success : function(res) {
+                self.user.mail = res.mail;
+                self.user.school = res.school;
             }
         })
     },
@@ -95,6 +119,24 @@ var userVM = new Vue({
                     if(res.msg == 'success') {
                         alert('修改成功');
                         window.location.reload();
+                    } else {
+                        alert('sb');
+                    }
+                }
+            });
+        },
+        updateTxt : function() {
+            var self = this;
+            $.ajax({
+                url      : '/user/changeTxt',
+                type     : 'POST',
+                data     : {
+                    user : self.user
+                },
+                dataType : 'json',
+                success  : function(res) {
+                    if(res.msg == 'success') {
+                        alert(res.mail);
                     } else {
                         alert('sb');
                     }

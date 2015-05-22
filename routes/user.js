@@ -4,9 +4,7 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 
 router.get('/', function(req, res, next) {
-    if(!req.session.user) {
-        res.redirect('../');
-    }
+
     var data = {
         page         : 'user',
         site         : 'pc',
@@ -23,13 +21,7 @@ router.get('/', function(req, res, next) {
 router.post('/nameEditorData', function(req, res, next) {
     var user = req.body.user;
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = '1'", function(err, rows, fields) {
         res.json({
@@ -43,13 +35,7 @@ router.post('/nameEditorData', function(req, res, next) {
 router.post('/showUserName', function(req, res, next) {
     var user = req.body.user;
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
         res.json({ msg : rows[0].name });
@@ -60,15 +46,9 @@ router.post('/showUserName', function(req, res, next) {
 
 //-----------显示游记------------
 router.post('/showUserArticle', function(req, res, next) {
-    var article = req.body.article;
+    var article = req.body.user;
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("SELECT * FROM article WHERE article_id = '3'", function(err, rows, fields) {
         res.json({ msg : rows[0].name });
@@ -81,13 +61,7 @@ router.post('/showUserArticle', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     var user = req.body.user;
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("SELECT * FROM user WHERE name = '" + user.name + "'", function(err, rows, fields) {
         if(err) throw err;
@@ -115,13 +89,7 @@ router.post('/login', function(req, res, next) {
 router.post('/join', function(req, res, next) {
     var new_user = req.body.new_user;
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        port     : '3306',
-        user     : 'root',
-        password : 'root',
-        database : 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd +
                      "')", function(err, result) {
@@ -169,4 +137,33 @@ router.post('/uploadHeadImage', function(req, res) {
     connection.end();
 });
 
+//------------显示邮箱学校--------------
+router.post('/showUserTxt', function(req, res, next) {
+    var txt = req.body.user;
+
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
+        res.json({
+            mail   : rows[0].mail,
+            school : rows[0].school
+        })
+    });
+
+    connection.end();
+});
+
+//------------更新资料------------------
+router.post('/changeTxt', function(req, res, next) {
+    var txt = req.body.user
+
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("UPDATE user SET mail = '" + txt.nmail + " WHERE user_id = '1'", function(err, rows, fields) {
+        res.json({ msg : 'success' });
+    });
+
+    connection.end();
+
+});
 module.exports = router;

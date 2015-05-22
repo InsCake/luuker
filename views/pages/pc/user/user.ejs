@@ -32,14 +32,16 @@
                     <fieldset>
                         <div class="pure-control-group txt-line">
                             <label for="email">您的邮箱</label>
-                            <input id="email" type="email" placeholder="请输入邮箱">
+                                <span id="mail_show">{{ user.mail }}</span><a class="alter-mail">修改</a>
+                            <input v-model="user.nmail" id="email" type="email" placeholder="请输入邮箱" style="display: none">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的学校</label>
-                            <input id="foo" type="text" placeholder="请输入学校名">
+                            <span id="school_show">{{ user.school }}</span><a class="alter-sch">修改</a>
+                            <input v-model="user.nschool" id="foo" type="text" placeholder="请输入学校名" style="display: none">
                         </div>
                         <div class="pure-controls">
-                            <button class="pure-button pure-button-warning" style="margin-left: 4px;">提交
+                            <button v-on="click: updateTxt()" class="pure-button pure-button-warning" style="margin-left: 4px;">提交
                             </button>
                         </div>
                     </fieldset>
