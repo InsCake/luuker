@@ -135,6 +135,12 @@ router.post('/join', function(req, res, next) {
     connection.end();
 });
 
+//------------登出动作------------
+router.get('/log_out', function (req, res, next) {
+    req.session.user = null;
+    res.redirect('/');
+});
+
 //------------修改前台密码---------------
 router.post('/changePwd', function(req, res, next) {
     var pwd = req.body.user
@@ -142,7 +148,6 @@ router.post('/changePwd', function(req, res, next) {
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = '1'", function(err, rows, fields) {
-        console.log(1)
         res.json({ msg : 'success' });
     });
 

@@ -6,11 +6,6 @@ $(document).ready(function() {
         $(".head-edit").css("opacity", "1");
     });
 
-    //$('.nav').on('click', function() {
-    //    $('.nav').css('font-weight', 'normal');
-    //    $(this).css('font-weight', 'bolder');
-    //});
-
     $('.nav').on('click', function() {
         var i = $(this).index();
         $('.nav-cont').removeClass('active').eq(i).addClass('active');
@@ -23,7 +18,11 @@ var userVM = new Vue({
         title       : 'title！',
         user        : {
             name  : '',
-            oname : ''
+            oname : '',
+            opwd  : '',
+            npwd1 : '',
+            npwd2 : '',
+            title : ''
         },
         current_tab : 'user_info'
     },
@@ -34,6 +33,15 @@ var userVM = new Vue({
             type    : 'POST',
             success : function(res) {
                 self.user.oname = res.msg;
+            }
+        });
+
+        $.ajax({
+            url     : '/user/showUserArticle',
+            type    : 'POST',
+            success : function(res) {
+                alert(res.msg);
+                self.user.title = res.msg;
             }
         })
     },
@@ -73,41 +81,7 @@ var userVM = new Vue({
                     alert('success');
                 }
             };
-        }
-    }
-});
-
-var articleshowVM = new Vue({
-    "el"     : '#user_article',
-    data     : {
-        title   : 'title！',
-        article : {
-            title : ''
-        }
-    },
-    compiled : function() {
-        var self = this;
-        $.ajax({
-            url     : '/user/showUserArticle',
-            type    : 'POST',
-            success : function(res) {
-                self.article.title = res.msg;
-            }
-        })
-    }
-})
-
-var changepwdVM = new Vue({
-    el      : '#update_pwd',
-    data    : {
-        title : 'title！',
-        user  : {
-            opwd  : '',
-            npwd1 : '',
-            npwd2 : ''
-        }
-    },
-    methods : {
+        },
         updatePwd : function() {
             var self = this;
             $.ajax({
@@ -129,3 +103,4 @@ var changepwdVM = new Vue({
         }
     }
 });
+

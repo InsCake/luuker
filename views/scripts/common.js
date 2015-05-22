@@ -35,18 +35,15 @@ $(function() {
                 if(res.msg =='failed'){
                     alert('sb');
                 } else{
+                    alert('登陆成功！');
                     $('.max-mask').fadeOut();
                     $('.header-nav').find('.login,.sign-up').hide();
                     $('.header-nav').find('.username').text(res.msg).show();
-                    $('.header-nav').find('.exit').text('退出');
+                    $('.header-nav').find('.exit a').text('退出');
                     $('.userhead').fadeIn();
 
                 }
-
             }
-
-
-
         });
     });
 

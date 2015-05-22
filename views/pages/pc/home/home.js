@@ -112,23 +112,6 @@ var homeEditorVM = new Vue({
     },
 
     methods: {
-        //goEditimg: function () {
-        //    var self = this;
-        //
-        //    $.ajax({
-        //        url: "/backstage/changeHomeBanner",
-        //        type: 'POST',
-        //        data: {
-        //            url: self.banner
-        //        },
-        //        datatype: "json",
-        //        success: function (res) {
-        //            if (res.msg == 'success') {
-        //                $('#edit-headimg').hide();
-        //                window.location.reload();
-        //            }
-        //        }
-        //    })
-        //}
+
     }
 });
