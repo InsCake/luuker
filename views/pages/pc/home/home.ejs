@@ -2,11 +2,15 @@
     <a href="/" class="header-logo"></a>
     <a class="header-slogan" href="/article/write" target="view_window">10分钟创作属于你自己的游记</a>
     <ul class="header-nav">
+        <% if(!user) { %>
         <li class="sign-up"><a>注册</a></li>
         <li class="login"><a>登陆</a></li>
-        <li class="userhead" style="display: none;"><img src="/images/head.jpg"></li>
-        <li class="username"><a href="/user"></a></li>
-        <li class="exit"><a href="/user/log_out"></a></li>
+        <% } %>
+        <% if(user) { %>
+        <li class="userhead"><img src="<%= user.img %>"></li>
+        <li class="username"><a href="/user"><%= user.name %></a></li>
+        <li class="exit"><a href="/user/log_out">登出</a></li>
+        <% } %>
     </ul>
 </header>
 <div class="main clearfix" id="main-banner">

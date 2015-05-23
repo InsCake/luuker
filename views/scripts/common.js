@@ -31,7 +31,6 @@ $(function() {
             },
             datatype: 'json',
             success : function(res) {
-
                 if(res.msg =='failed'){
                     alert('sb');
                 } else{
@@ -41,7 +40,7 @@ $(function() {
                     $('.header-nav').find('.username a').text(res.msg).show();
                     $('.header-nav').find('.exit a').text('退出');
                     $('.userhead').fadeIn();
-
+                    window.location.reload();
                 }
             }
         });

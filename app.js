@@ -61,19 +61,18 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+var session = require('cookie-session');
 var multer = require('multer');
 
 var app = express();
+app.set('trust proxy', 1);
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(session({
-    secret            : 'keyboard cat',
-    resave            : false,
-    saveUninitialized : true
-}));
+    keys : ['key1', 'key2']
+}))
 app.use(multer({ dest : './views/images/uploads' }));
 
 var user = require('./routes/user');
@@ -87,7 +86,8 @@ app.get('/', function(req, res) {
         site         : 'pc',
         header       : false,
         footer       : true,
-        request_urls : false
+        request_urls : false,
+        user         : req.session.user ? req.session.user : false
     };
     res.render('layouts/layout', data);
 });
@@ -108,7 +108,7 @@ app.use('/backstage', backstage);
 app.use('/upload', upload);
 
 
-var server = app.listen(3005, function() {
+var server = app.listen(3000, function() {
 
     var host = server.address().address;
     var port = server.address().port;

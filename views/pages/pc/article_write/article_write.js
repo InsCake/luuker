@@ -57,7 +57,7 @@ var articleWriteVM = new Vue({
                 dataType : 'json',
                 data     : {
                     article : {
-                        name: $('#article_name').html(),
+                        name  : $('#article_name').html(),
                         units : self.units
                     }
                 },

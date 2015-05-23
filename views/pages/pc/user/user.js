@@ -11,13 +11,13 @@ $(document).ready(function() {
         $('.nav-cont').removeClass('active').eq(i).addClass('active');
     });
 
-    $('.alter-mail').on('click',function(){
+    $('.alter-mail').on('click', function() {
         $(this).hide();
         $('#mail_show').hide();
         $('#email').show();
     });
 
-    $('.alter-sch').on('click',function(){
+    $('.alter-sch').on('click', function() {
         $(this).hide();
         $('#school_show').hide();
         $('#foo').show();
@@ -30,21 +30,24 @@ var userVM = new Vue({
     data     : {
         title       : 'title！',
         user        : {
-            name  : '',
-            oname : '',
-            opwd  : '',
-            npwd1 : '',
-            npwd2 : '',
-            title : '',
-            mail  : '',
-            school: '',
-            nmail : '',
-            nschool:''
+            name    : '',
+            oname   : '',
+            opwd    : '',
+            npwd1   : '',
+            npwd2   : '',
+            title   : '',
+            mail    : '',
+            school  : '',
+            nmail   : '',
+            nschool : ''
         },
         current_tab : 'user_info',
-        a : { mail : '' ,
-              school : ''
-        }
+        a           : {
+            mail   : '',
+            school : ''
+        },
+        the_user    : {},
+        articles    : []
 
     },
     compiled : function() {
@@ -74,19 +77,28 @@ var userVM = new Vue({
                 self.user.nmail = res.mail;
                 self.user.nschool = res.school;
 
-                if(res.mail == ''){
+                if(res.mail == '') {
                     self.a.mail = '添加';
-                }else{
+                } else {
                     self.a.mail = '修改';
                 }
 
-                if(res.school == ''){
+                if(res.school == '') {
                     self.a.school = '添加';
-                }else{
+                } else {
                     self.a.school = '修改';
                 }
             }
-        })
+        });
+
+        $.ajax({
+            url     : '/user/getUserData',
+            type    : 'GET',
+            success : function(res) {
+                self.the_user = res.data.user;
+                self.articles = res.data.articles;
+            }
+        });
     },
     methods  : {
         changeHead     : function() {
@@ -125,7 +137,7 @@ var userVM = new Vue({
                 }
             };
         },
-        updatePwd : function() {
+        updatePwd      : function() {
             var self = this;
             $.ajax({
                 url      : '/user/changePwd',
@@ -144,7 +156,7 @@ var userVM = new Vue({
                 }
             });
         },
-        updateTxt : function() {
+        updateTxt      : function() {
 
             var self = this;
             $.ajax({

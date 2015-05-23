@@ -2,12 +2,12 @@
     <div class="wrap user-main">
         <div class="data-box clearfix">
             <div class="head-edit f_l">
-                <img src="/images/head.jpg">
+                <img v-attr="src: the_user.img">
             </div>
             <a class="head-edit-txt" v-on="click: doUploadHead()">点击更换头像</a>
             <input type="file" id="head_logo" style="display: none;" v-on="change: onHeadSelected()">
             <div class="name-edit f_l">
-                <span>{{ user.oname }}</span><br/>
+                <span>{{ the_user.name }}</span><br/>
                 <input class="update-name f_l" placeholder="修改昵称" v-model="user.name">
                 <button class="update-confirm f_l" v-on="click: changeHead()">ok</button>
                 <div></div>
@@ -48,15 +48,9 @@
                 </form>
             </div>
             <div class="user-article nav-cont" id="user_article">
-                <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="/article/3">{{ user.title }}</a><a
+                <div class="article-line" v-repeat="article: articles">
+                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="/article/3">{{ article.name }}</a><a
                         class="update-article">修改</a>
-                </div>
-                <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="#">今年说什么也要去一次日本</a>
-                </div>
-                <div class="article-line">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="#">今年说什么也要去一次日本</a>
                 </div>
             </div>
             <div class="user-pwd nav-cont" id="update_pwd">
