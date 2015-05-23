@@ -168,18 +168,17 @@ router.all('/getUserData', function(req, res) {
         if(err) throw err;
         if(rows.length > 0) {
             var user = rows[0];
+            req.session.user = rows[0];
             connection.query("SELECT * FROM article WHERE user_id = " + user.user_id, function(err, rows) {
                 if(err) throw err;
-                if(rows.length > 0) {
-                    var articles = rows;
-                    res.json({
-                        data : {
-                            user     : user,
-                            articles : articles
-                        }
-                    })
-                    connection.end();
-                }
+                var articles = rows;
+                res.json({
+                    data : {
+                        user     : user,
+                        articles : articles
+                    }
+                })
+                connection.end();
             });
         }
     });

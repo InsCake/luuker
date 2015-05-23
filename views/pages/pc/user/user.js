@@ -96,6 +96,7 @@ var userVM = new Vue({
             type    : 'GET',
             success : function(res) {
                 self.the_user = res.data.user;
+                console.log(self.the_user);
                 self.articles = res.data.articles;
             }
         });
