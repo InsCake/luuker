@@ -52,52 +52,30 @@ var userVM = new Vue({
     },
     compiled : function() {
         var self = this;
-        $.ajax({
-            url     : '/user/showUserName',
-            type    : 'POST',
-            success : function(res) {
-                self.user.oname = res.msg;
-            }
-        });
-
-        $.ajax({
-            url     : '/user/showUserArticle',
-            type    : 'POST',
-            success : function(res) {
-                self.user.title = res.msg;
-            }
-        })
-
-        $.ajax({
-            url     : '/user/showUserTxt',
-            type    : 'POST',
-            success : function(res) {
-                self.user.mail = res.mail;
-                self.user.school = res.school;
-                self.user.nmail = res.mail;
-                self.user.nschool = res.school;
-
-                if(res.mail == '') {
-                    self.a.mail = '添加';
-                } else {
-                    self.a.mail = '修改';
-                }
-
-                if(res.school == '') {
-                    self.a.school = '添加';
-                } else {
-                    self.a.school = '修改';
-                }
-            }
-        });
 
         $.ajax({
             url     : '/user/getUserData',
             type    : 'GET',
             success : function(res) {
                 self.the_user = res.data.user;
-                console.log(self.the_user);
                 self.articles = res.data.articles;
+                self.user.mail = res.data.user.mail;
+                self.user.school = res.data.user.school;
+                self.user.nmail = res.data.user.mail;
+                self.user.nschool = res.data.user.school;
+
+                if(res.data.user.mail == '') {
+                    self.a.mail = '添加';
+                } else {
+                    self.a.mail = '修改';
+                }
+
+                if(res.data.user.school == '') {
+                    self.a.school = '添加';
+                } else {
+                    self.a.school = '修改';
+                }
+
             }
         });
     },
@@ -135,27 +113,32 @@ var userVM = new Vue({
             xhr.onreadystatechange = function() {
                 if(xhr.readyState == 4 && xhr.status == 200) {
                     alert('success');
+                    window.location.reload();
                 }
             };
         },
         updatePwd      : function() {
             var self = this;
-            $.ajax({
-                url      : '/user/changePwd',
-                type     : 'POST',
-                data     : {
-                    user : self.user
-                },
-                dataType : 'json',
-                success  : function(res) {
-                    if(res.msg == 'success') {
-                        alert('修改成功');
-                        window.location.reload();
-                    } else {
-                        alert('sb');
+            if(self.user.npwd1 != self.user.npwd2){
+                alert('两次输入不一致，请重新输入');
+            }else{
+                $.ajax({
+                    url      : '/user/changePwd',
+                    type     : 'POST',
+                    data     : {
+                        user : self.user
+                    },
+                    dataType : 'json',
+                    success  : function(res) {
+                        if(res.msg == 'success') {
+                            alert('修改成功');
+                            window.location.reload();
+                        } else {
+                            alert('旧密码错误，请重新输入');
+                        }
                     }
-                }
-            });
+                });
+            }
         },
         updateTxt      : function() {
 

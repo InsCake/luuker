@@ -18,47 +18,6 @@ router.get('/', function(req, res, next) {
 
 });
 
-//-------用户名更改--------
-router.post('/nameEditorData', function(req, res) {
-    var user = req.body.user;
-
-    var connection = mysql.createConnection(mysql_option);
-
-    connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = '1'", function(err, rows, fields) {
-        res.json({
-            msg : user.name
-        });
-    });
-
-    connection.end();
-})
-
-router.post('/showUserName', function(req, res) {
-    var user = req.body.user;
-
-    var connection = mysql.createConnection(mysql_option);
-
-    connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
-        res.json({ msg : rows[0].name });
-    });
-
-    connection.end();
-});
-
-//-----------显示游记------------
-router.post('/showUserArticle', function(req, res) {
-    var article = req.body.user;
-
-    var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM article WHERE article_id = '3'", function(err, rows) {
-        if(err) throw err;
-        if(rows.length > 0) {
-            res.json({ msg : rows[0].name });
-        }
-    });
-
-    connection.end();
-});
 
 //------------登陆动作------------
 router.post('/login', function(req, res) {
@@ -109,14 +68,24 @@ router.get('/log_out', function(req, res) {
 //------------修改前台密码---------------
 router.post('/changePwd', function(req, res) {
     var pwd = req.body.user
+    var user = req.session.user;
 
     var connection = mysql.createConnection(mysql_option);
 
-    connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = '1'", function(err, rows, fields) {
-        res.json({ msg : 'success' });
+    connection.query(" SELECT * FROM user WHERE user_id = " + user.user_id, function(err, rows, fields){
+        if(err) throw err;
+        if(pwd.opwd != rows[0].password){
+            res.json({ msg : 'wrong' });
+        }else{
+            connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = " + user.user_id, function(err, rows, fields) {
+                console.log(pwd.npwd1)
+                res.json({ msg : 'success' });
+                connection.end();
+            });
+        }
     });
 
-    connection.end();
+
 
 });
 
@@ -134,27 +103,14 @@ router.post('/uploadHeadImage', function(req, res) {
     connection.end();
 });
 
-//------------显示邮箱学校--------------
-router.post('/showUserTxt', function(req, res) {
-    var txt = req.body.user;
-
-    var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
-        res.json({
-            mail   : rows[0].mail,
-            school : rows[0].school
-        })
-    });
-    connection.end();
-});
-
-//------------更新资料------------------
+//------------更新资料--------------------------------------------------
 router.post('/changeTxt', function(req, res) {
     var txt = req.body.user;
+    var user = req.session.user;
 
     var connection = mysql.createConnection(mysql_option);
     connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool +
-                     "' WHERE user_id = '1'", function(err, rows) {
+                     "' WHERE user_id = " + user.user_id, function(err, rows) {
         res.json({ msg : 'success' });
     });
     connection.end();
@@ -183,5 +139,22 @@ router.all('/getUserData', function(req, res) {
         }
     });
 });
+
+//-------用户名更改--------
+router.post('/nameEditorData', function(req, res) {
+    var user = req.body.user;
+    var user_now = req.session.user;
+
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = " + user_now.user_id, function(err, rows, fields) {
+        console.log(user_now.user_id)
+        res.json({
+            msg : user.name
+        });
+    });
+
+    connection.end();
+})
 
 module.exports = router;

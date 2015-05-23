@@ -32,12 +32,12 @@
                     <fieldset>
                         <div class="pure-control-group txt-line">
                             <label for="email">您的邮箱</label>
-                                <span id="mail_show">{{ user.mail }}</span><a class="alter-mail">{{ a.mail }}</a>
+                                <span id="mail_show">{{ the_user.mail }}</span><a class="alter-mail">{{ a.mail }}</a>
                             <input v-model="user.nmail" id="email" type="email" placeholder="请输入邮箱" style="display: none">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的学校</label>
-                            <span id="school_show">{{ user.school }}</span><a class="alter-sch">{{ a.school }}</a>
+                            <span id="school_show">{{ the_user.school }}</span><a class="alter-sch">{{ a.school }}</a>
                             <input v-model="user.nschool" id="foo" type="text" placeholder="请输入学校名" style="display: none">
                         </div>
                         <div class="pure-controls">
