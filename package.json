@@ -15,6 +15,7 @@
         "bower"           : "^1.4.1",
         "formidable"      : "~1.0.0",
         "util"            : "~0.10.0",
-        "multer"            : "~0.1.8"
+        "multer"          : "~0.1.8",
+        "cookie-session"  : "^1.1.0"
     }
 }

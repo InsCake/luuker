@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
         site         : 'pc',
         header       : true,
         footer       : true,
-        request_urls : false
+        request_urls : false,
+        user         : req.session.user ? req.session.user : false
 
     };
     res.render('layouts/layout', data);
@@ -18,7 +19,7 @@ router.get('/', function(req, res, next) {
 });
 
 //-------用户名更改--------
-router.post('/nameEditorData', function(req, res, next) {
+router.post('/nameEditorData', function(req, res) {
     var user = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
@@ -32,7 +33,7 @@ router.post('/nameEditorData', function(req, res, next) {
     connection.end();
 })
 
-router.post('/showUserName', function(req, res, next) {
+router.post('/showUserName', function(req, res) {
     var user = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
@@ -45,31 +46,30 @@ router.post('/showUserName', function(req, res, next) {
 });
 
 //-----------显示游记------------
-router.post('/showUserArticle', function(req, res, next) {
+router.post('/showUserArticle', function(req, res) {
     var article = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
-
-    connection.query("SELECT * FROM article WHERE article_id = '3'", function(err, rows, fields) {
-        res.json({ msg : rows[0].name });
+    connection.query("SELECT * FROM article WHERE article_id = '3'", function(err, rows) {
+        if(err) throw err;
+        if(rows.length > 0) {
+            res.json({ msg : rows[0].name });
+        }
     });
 
     connection.end();
 });
 
 //------------登陆动作------------
-router.post('/login', function(req, res, next) {
+router.post('/login', function(req, res) {
     var user = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
-
-    connection.query("SELECT * FROM user WHERE name = '" + user.name + "'", function(err, rows, fields) {
+    connection.query("SELECT * FROM user WHERE name = '" + user.name + "'", function(err, rows) {
         if(err) throw err;
-
         if(rows.length > 0) {
             if(user.name == rows[0].name && user.pwd == rows[0].password) {
                 req.session.user = rows[0];
-
                 res.json({
                     msg : rows[0].name
                 });
@@ -80,13 +80,10 @@ router.post('/login', function(req, res, next) {
             }
         }
     });
-
     connection.end();
-
-
 });
 
-router.post('/join', function(req, res, next) {
+router.post('/join', function(req, res) {
     var new_user = req.body.new_user;
 
     var connection = mysql.createConnection(mysql_option);
@@ -104,13 +101,13 @@ router.post('/join', function(req, res, next) {
 });
 
 //------------登出动作------------
-router.get('/log_out', function (req, res, next) {
+router.get('/log_out', function(req, res) {
     req.session.user = null;
     res.redirect('/');
 });
 
 //------------修改前台密码---------------
-router.post('/changePwd', function(req, res, next) {
+router.post('/changePwd', function(req, res) {
     var pwd = req.body.user
 
     var connection = mysql.createConnection(mysql_option);
@@ -138,11 +135,10 @@ router.post('/uploadHeadImage', function(req, res) {
 });
 
 //------------显示邮箱学校--------------
-router.post('/showUserTxt', function(req, res, next) {
+router.post('/showUserTxt', function(req, res) {
     var txt = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
-
     connection.query("SELECT * FROM user WHERE user_id = '1'", function(err, rows, fields) {
         res.json({
             mail   : rows[0].mail,
@@ -153,15 +149,40 @@ router.post('/showUserTxt', function(req, res, next) {
 });
 
 //------------更新资料------------------
-router.post('/changeTxt', function(req, res, next) {
-    var txt = req.body.user
+router.post('/changeTxt', function(req, res) {
+    var txt = req.body.user;
 
     var connection = mysql.createConnection(mysql_option);
-
-    connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool + "' WHERE user_id = '1'", function(err, rows, fields) {
+    connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool +
+                     "' WHERE user_id = '1'", function(err, rows) {
         res.json({ msg : 'success' });
     });
     connection.end();
+});
+
+router.all('/getUserData', function(req, res) {
+    var user = req.session.user;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("SELECT * FROM user WHERE user_id = " + user.user_id, function(err, rows) {
+        if(err) throw err;
+        if(rows.length > 0) {
+            var user = rows[0];
+            connection.query("SELECT * FROM article WHERE user_id = " + user.user_id, function(err, rows) {
+                if(err) throw err;
+                if(rows.length > 0) {
+                    var articles = rows;
+                    res.json({
+                        data : {
+                            user     : user,
+                            articles : articles
+                        }
+                    })
+                    connection.end();
+                }
+            });
+        }
+    });
 });
 
 module.exports = router;
