@@ -4,7 +4,6 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 
 router.get('/', function(req, res, next) {
-
     var data = {
         page         : 'user',
         site         : 'pc',
@@ -12,10 +11,8 @@ router.get('/', function(req, res, next) {
         footer       : true,
         request_urls : false,
         user         : req.session.user ? req.session.user : false
-
     };
     res.render('layouts/layout', data);
-
 });
 
 

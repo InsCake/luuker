@@ -79,6 +79,7 @@ var user = require('./routes/user');
 var article = require('./routes/article');
 var backstage = require('./routes/backstage');
 var upload = require('./routes/upload');
+var go = require('./routes/go');
 
 app.get('/', function(req, res) {
     var data = {
@@ -91,21 +92,23 @@ app.get('/', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
-app.get('/go', function(req, res) {
-    var data = {
-        page         : 'destination',
-        site         : 'pc',
-        header       : true,
-        footer       : true,
-        request_urls : false
-    };
-    res.render('layouts/layout', data);
-});
+//app.get('/go', function(req, res) {
+//    var data = {
+//        page         : 'destination',
+//        site         : 'pc',
+//        header       : true,
+//        footer       : true,
+//        request_urls : false,
+//        user         : req.session.user ? req.session.user : false
+//    };
+//    res.render('layouts/layout', data);
+//});
 
 app.use('/user', user);
 app.use('/article', article);
 app.use('/backstage', backstage);
 app.use('/upload', upload);
+app.use('/go', go);
 
 
 var server = app.listen(3000, function() {

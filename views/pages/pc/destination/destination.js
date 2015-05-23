@@ -13,3 +13,26 @@ $(function(){
     });
 });
 
+
+var goVM = new Vue({
+    el       : '#page_des',
+    data     : {
+        title       : 'title！',
+        the_des    : {}
+    },
+    compiled : function() {
+        var self = this;
+
+        $.ajax({
+            url     : '/go/getDesData',
+            type    : 'GET',
+            success : function(res) {
+                self.the_des = res.data.des;
+            }
+        });
+    },
+    methods  : {
+
+    }
+
+});

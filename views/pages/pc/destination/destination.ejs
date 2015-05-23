@@ -1,17 +1,18 @@
-<div class="des-page">
+<div class="des-page" id="page_des">
     <div class="des-header">
+        <img v-attr="src: the_des.img">
         <div class="header-main">
-            <span class="chn-name">日本</span>
-            <span class="eng-name">Japan</span>
+            <span class="chn-name">{{ the_des.chname }}</span>
+            <span class="eng-name">{{ the_des.egname }}</span>
         </div>
     </div>
     <div class="des-content wrap">
         <div class="des-intro">
-            <p>日本（Japan），全称日本国，位于亚洲东部、太平洋西北部，是一个高度发达的资本主义国家。其国名取“日出之国”之意，领土由本州、四国、九州、北海道四大岛及7200多个小岛组成，总面积37.8万平方千米。日本以大和民族为主体民族，通用日语，总人口为1.26亿。</p>
+            <p>{{ the_des.intro }}</p>
         </div>
         <div class="des-book-box clearfix">
             <div class="det-social f_l">
-                <img src="http://ec4.images-amazon.com/images/I/711MU0d%2BF5L._SL1416_.jpg">
+                <img v-attr="src: the_des.book">
             </div>
             <div class="des-book f_l">
                 <h2>相关游记</h2>

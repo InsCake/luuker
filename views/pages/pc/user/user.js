@@ -29,18 +29,18 @@ var userVM = new Vue({
     el       : '#page_user',
     data     : {
         title       : 'title！',
-        user        : {
-            name    : '',
-            oname   : '',
-            opwd    : '',
-            npwd1   : '',
-            npwd2   : '',
-            title   : '',
-            mail    : '',
-            school  : '',
-            nmail   : '',
-            nschool : ''
-        },
+        //user        : {
+        //    name    : '',
+        //    oname   : '',
+        //    opwd    : '',
+        //    npwd1   : '',
+        //    npwd2   : '',
+        //    title   : '',
+        //    mail    : '',
+        //    school  : '',
+        //    nmail   : '',
+        //    nschool : ''
+        //},
         current_tab : 'user_info',
         a           : {
             mail   : '',
