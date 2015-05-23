@@ -4,6 +4,8 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var mysql_option = require('../config/database.js');
+
 
 //------后台主页页面渲染-------
 router.get('/', function (req, res, next) {
@@ -32,7 +34,7 @@ router.get('/sign_in', function (req, res, next) {
     res.render('layouts/layout_backstage', data);
 });
 
-//------模块管理页面渲染------
+//------首页管理页面渲染------
 router.get('/editor', function (req, res, next) {
 
     if (req.session.user == null) {
@@ -49,6 +51,41 @@ router.get('/editor', function (req, res, next) {
         res.render('layouts/layout_backstage', data);
     }
 
+
+});
+
+//------目的地管理页面渲染--------------------
+router.get('/editor_city', function (req, res, next) {
+
+    if (req.session.user == null) {
+        res.redirect('/backstage/sign_in');
+    } else {
+        var data = {
+            page: 'editor_city',
+            site: 'backstage',
+            header: true,
+            footer:true,
+            user: req.session.user
+        };
+
+        res.render('layouts/layout_backstage', data);
+    }
+
+
+});
+
+//------目的地管理输入数据------
+router.post('/intoCityData',function (req, res, next){
+    var city = req.body.city;
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("INSERT INTO city (chname, egname, img, intro, book) VALUES ('" + city.chname + "','" + city.egname +
+    "','" + city.img + "','" + city.intro + "','" + city.book + "')", function(err, result){
+        if(err) throw err;
+        res.json({
+            msg      : 'success'
+        })
+    });
 
 });
 
