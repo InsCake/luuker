@@ -81,7 +81,9 @@ router.get('/:article_id', function(req, res) {
         footer       : true,
         request_urls : {
             getArticleData : '/article/articleData/' + article_id
-        }
+        },
+        user         : req.session.user ? req.session.user : false
+
     });
 });
 

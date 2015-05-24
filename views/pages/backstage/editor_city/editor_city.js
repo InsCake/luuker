@@ -13,14 +13,18 @@ var cityEditorVM = new Vue({
             book        : ''
         }
     },
-    method  :{
+    methods  :{
         intoCity    : function() {
             var self = this;
 
             $.ajax({
                 url     : '/backstage/intoCityData',
-                type    : 'GET',
-                success : function() {
+                type    : 'POST',
+                data     : {
+                    city : self.city
+                },
+                dataType : 'json',
+                success : function(res) {
                     if(res.msg == 'success'){
                         alert('添加成功！');
                     }

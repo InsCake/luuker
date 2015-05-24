@@ -34,7 +34,7 @@ var homeEditorVM = new Vue({
                 datatype: "json",
                 success: function (res) {
                     if (res.msg == 'success') {
-                        $('#edit-headimg').hide();
+                        $('#edit-headimg').modal('hide')
                         window.location.reload();
                     }
                 }

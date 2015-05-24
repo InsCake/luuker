@@ -5,12 +5,11 @@
             <div class="col-md-4 tit-mid">添加目的地</div>
         </div>
         <div class="row city-row">
-            <input type="text" class="form-control" placeholder="输入目的地中文名" v-model="city.chname">
             <input type="text" class="form-control" placeholder="输入目的地英文名" v-model="city.egname">
             <input type="text" class="form-control" placeholder="输入目的地头图地址" v-model="city.img">
             <input type="text" class="form-control" placeholder="输入目的地段介绍" v-model="city.intro">
             <input type="text" class="form-control" placeholder="输入官方攻略封面地址" v-model="city.book">
-            <button type="button" class="btn btn-primary">提交</button>
+            <button type="button" class="btn btn-primary" v-on="click: intoCity()">提交</button>
         </div>
     </div>
 </div>
