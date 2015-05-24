@@ -8,9 +8,10 @@ router.get('/write', function(req, res) {
     var data = {
         page         : 'article_write',
         site         : 'pc',
-        header       : 'common',
+        header       : true,
         footer       : true,
-        request_urls : false
+        request_urls : false,
+        user         : req.session.user ? req.session.user : false
     };
     res.render('layouts/layout', data);
 });

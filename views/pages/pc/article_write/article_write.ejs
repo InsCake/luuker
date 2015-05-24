@@ -4,9 +4,10 @@
             <div class="pure-u-4-24">1</div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
-                    <div class="article-header"
+                    <div class="article-header" v-on="click: uploadHeadImage()"
                          style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
                         <h1 id="article_name" contenteditable="true">点击添加标题</h1>
+                        <input type="file" id="">
                     </div>
                     <div class="article-content">
                         <div class="article-unit" v-repeat="unit: units">
