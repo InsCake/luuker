@@ -29,11 +29,22 @@ var userVM = new Vue({
     el       : '#page_user',
     data     : {
         title       : 'title！',
-
+        user        : {
+            name    : '',
+            oname   : '',
+            opwd    : '',
+            npwd1   : '',
+            npwd2   : '',
+            title   : '',
+            mail    : '',
+            school  : '',
+            nmail   : '',
+            nschool : ''
+        },
         current_tab : 'user_info',
         a           : {
-            mail   : '',
-            school : ''
+            mail    : '',
+            school  : ''
         },
         the_user    : {},
         articles    : []
@@ -84,28 +95,6 @@ var userVM = new Vue({
                 }
             });
         },
-        switchTab      : function(tab) {
-            this.current_tab = tab;
-        },
-        doUploadHead   : function() {
-            $('#head_logo').click();
-        },
-        onHeadSelected : function() {
-            var formData = new FormData();
-            var file = document.getElementById('head_logo').files[0];
-            formData.append('upload', file);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("post", "/user/uploadHeadImage", true);
-            xhr.send(formData);
-
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 200) {
-                    alert('success');
-                    window.location.reload();
-                }
-            };
-        },
         updatePwd      : function() {
             var self = this;
             if(self.user.npwd1 != self.user.npwd2){
@@ -128,6 +117,28 @@ var userVM = new Vue({
                     }
                 });
             }
+        },
+        switchTab      : function(tab) {
+            this.current_tab = tab;
+        },
+        doUploadHead   : function() {
+            $('#head_logo').click();
+        },
+        onHeadSelected : function() {
+            var formData = new FormData();
+            var file = document.getElementById('head_logo').files[0];
+            formData.append('upload', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", "/user/uploadHeadImage", true);
+            xhr.send(formData);
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    alert('success');
+                    window.location.reload();
+                }
+            };
         },
         updateTxt      : function() {
 

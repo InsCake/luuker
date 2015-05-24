@@ -94,7 +94,7 @@ $(function() {
 
 
 var changPwdVM = new Vue({
-    el: '#myModal',
+    el: '#update_pwd',
     data: {
         user: {
             pwd_old: '',
@@ -105,22 +105,27 @@ var changPwdVM = new Vue({
     methods: {
         goUpdate: function () {
             var self = this;
-            $.ajax({
-                url: "/backstage/change_pwd",
-                type: 'POST',
-                data:{
-                    user:self.user
-                },
-                datatype: "json",
-                success: function (res){
-                    if (res.msg == 'success'){
-                        alert('修改成功！')
-                        window.location.href = "/backstage/sign_out";
+            if(self.user.pwd_new_1 != self.user.pwd_new_2){
+                alert('两次输入不一致，请重新输入')
+            }else{
+                $.ajax({
+                    url: "/backstage/change_pwd",
+                    type: 'POST',
+                    data:{
+                        user:self.user
+                    },
+                    datatype: "json",
+                    success: function (res){
+                        if (res.msg == 'success'){
+                            alert('修改成功！')
+                            window.location.href = "/backstage/sign_out";
+                        }else{
+                            alert('旧密码错误，请重新输入');
+                        }
                     }
-                }
+                })
+            }
 
-
-            })
         }
     }
 });

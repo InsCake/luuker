@@ -10,7 +10,9 @@ router.get('/write', function(req, res) {
         site         : 'pc',
         header       : 'common',
         footer       : true,
-        request_urls : false
+        request_urls : false,
+        user         : req.session.user ? req.session.user : false
+
     };
     res.render('layouts/layout', data);
 });
@@ -80,7 +82,9 @@ router.get('/:article_id', function(req, res) {
         footer       : true,
         request_urls : {
             getArticleData : '/article/articleData/' + article_id
-        }
+        },
+        user         : req.session.user ? req.session.user : false
+
     });
 });
 
