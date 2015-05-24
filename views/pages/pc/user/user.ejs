@@ -7,7 +7,7 @@
             <a class="head-edit-txt" v-on="click: doUploadHead()">点击更换头像</a>
             <input type="file" id="head_logo" style="display: none;" v-on="change: onHeadSelected()">
             <div class="name-edit f_l">
-                <span>{{ the_user.name }}</span><br/>
+                <span>{{ the_user.name }}</span><br />
                 <input class="update-name f_l" placeholder="修改昵称" v-model="user.name">
                 <button class="update-confirm f_l" v-on="click: changeHead()">ok</button>
                 <div></div>
@@ -32,16 +32,19 @@
                     <fieldset>
                         <div class="pure-control-group txt-line">
                             <label for="email">您的邮箱</label>
-                                <span id="mail_show">{{ the_user.mail }}</span><a class="alter-mail">{{ a.mail }}</a>
-                            <input v-model="user.nmail" id="email" type="email" placeholder="请输入邮箱" style="display: none">
+                            <span id="mail_show">{{ the_user.mail }}</span><a class="alter-mail">{{ a.mail }}</a>
+                            <input v-model="user.nmail" id="email" type="email" placeholder="请输入邮箱"
+                                   style="display: none">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的学校</label>
                             <span id="school_show">{{ the_user.school }}</span><a class="alter-sch">{{ a.school }}</a>
-                            <input v-model="user.nschool" id="foo" type="text" placeholder="请输入学校名" style="display: none">
+                            <input v-model="user.nschool" id="foo" type="text" placeholder="请输入学校名"
+                                   style="display: none">
                         </div>
                         <div class="pure-controls">
-                            <button v-on="click: updateTxt()" class="pure-button pure-button-warning" style="margin-left: 4px;">提交
+                            <button v-on="click: updateTxt()" class="pure-button pure-button-warning"
+                                    style="margin-left: 4px;">提交
                             </button>
                         </div>
                     </fieldset>
@@ -53,7 +56,7 @@
                         class="update-article">修改</a>
                 </div>
             </div>
-            <div class="user-pwd nav-cont" id="update_pwd">
+            <div class="user-pwd nav-cont">
                 <form class="pure-form pure-form-aligned">
                     <fieldset>
                         <div class="pure-control-group txt-line">

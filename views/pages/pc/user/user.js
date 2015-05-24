@@ -43,12 +43,11 @@ var userVM = new Vue({
         },
         current_tab : 'user_info',
         a           : {
-            mail    : '',
-            school  : ''
+            mail   : '',
+            school : ''
         },
         the_user    : {},
         articles    : []
-
     },
     compiled : function() {
         var self = this;
@@ -63,6 +62,7 @@ var userVM = new Vue({
                 self.user.school = res.data.user.school;
                 self.user.nmail = res.data.user.mail;
                 self.user.nschool = res.data.user.school;
+                console.log(self.user);
 
                 if(res.data.user.mail == '') {
                     self.a.mail = '添加';
@@ -75,7 +75,6 @@ var userVM = new Vue({
                 } else {
                     self.a.school = '修改';
                 }
-
             }
         });
     },
@@ -97,9 +96,9 @@ var userVM = new Vue({
         },
         updatePwd      : function() {
             var self = this;
-            if(self.user.npwd1 != self.user.npwd2){
+            if(self.user.npwd1 != self.user.npwd2) {
                 alert('两次输入不一致，请重新输入');
-            }else{
+            } else {
                 $.ajax({
                     url      : '/user/changePwd',
                     type     : 'POST',
