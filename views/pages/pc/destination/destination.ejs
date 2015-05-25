@@ -16,7 +16,9 @@
             </div>
             <div class="des-book f_l">
                 <h2>相关游记</h2>
-                <a>今年说什么也要去一次日本</a>
+                <div class="city-article-row" v-repeat="city_article : city_articles">
+                    <i class="fa fa-bicycle">&nbsp;&nbsp;&nbsp;</i><a>{{ city_article.name }}</a>
+                </div>
             </div>
         </div>
     </div>

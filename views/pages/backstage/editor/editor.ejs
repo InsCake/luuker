@@ -18,7 +18,7 @@
             <div class="col-md-4 tit-mid">游记推荐管理</div>
         </div>
         <div class="mg-article-left clearfix">
-            <div class="sm-article-item"  v-repeat="article : rec_articles">
+            <div class="sm-article-item"  v-repeat="article : rec_articles" v-class="big: $index == 0">
                 <img v-attr="src: article.img">
             </div>
         </div>

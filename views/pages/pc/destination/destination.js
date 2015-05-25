@@ -18,7 +18,8 @@ var goVM = new Vue({
     el       : '#page_des',
     data     : {
         title       : 'title！',
-        the_des    : {}
+        the_des    : {},
+        city_articles:[]
     },
     compiled : function() {
         var self = this;
@@ -28,6 +29,7 @@ var goVM = new Vue({
             type    : 'GET',
             success : function(res) {
                 self.the_des = res.data.des;
+                self.city_articles = res.data.city_articles;
             }
         });
     },

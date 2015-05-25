@@ -1,5 +1,5 @@
 <header id="header">
-    <a href="/" class="header-logo"></a>
+    <a href="/" class="header-logo">LUUKEr</a>
     <a class="header-slogan" href="/article/write" target="view_window">10分钟创作属于你自己的游记</a>
     <ul class="header-nav">
         <% if(!user) { %>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="wrap clearfix">
-            <div class="rec-article-item" v-repeat="article : rec_articles">
+            <div class="rec-article-item" v-repeat="article : rec_articles" v-class="big: $index == 0">
                 <img v-attr="src: article.img">
                 <div class="sm-cover">
                     <div class="rec-head">

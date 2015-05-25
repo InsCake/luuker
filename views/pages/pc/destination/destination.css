@@ -44,14 +44,20 @@ a{cursor: pointer}
      height: 400px;
      background: #eee;
      margin-left: 30px;
+     padding: 0 20px;
  }
 
  .des-book h2{
+     height: 40px;
+     line-height: 40px;
+     font-size: 18px;
+     margin-left: 20px;
+ }
+.city-article-row{
     height: 40px;
- }
- .des-nav {
+    line-height: 40px;
+}
 
- }
 .nav-header{
     height: 40px;
     width: 100%;
