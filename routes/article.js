@@ -3,7 +3,6 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 var router = express.Router();
 
-
 router.get('/write', function(req, res) {
     var data = {
         page         : 'article_write',
@@ -23,7 +22,7 @@ router.post('/write', function(req, res) {
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("INSERT INTO article (name, img) VALUES ('" + article.name
-                     + "', 'http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg')", function(err, result) {
+                     + "', ' + article + ')", function(err, result) {
         if(err) throw err;
         article_id = result.insertId;
 
@@ -86,6 +85,5 @@ router.get('/:article_id', function(req, res) {
 
     });
 });
-
 
 module.exports = router;
