@@ -171,6 +171,7 @@ router.get('/homeEditorData', function (req, res, next) {
                         }
 
                     });
+                    console.log(head_img)
                     connection.end();
                 }
             })
