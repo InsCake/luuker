@@ -29,7 +29,7 @@ router.all('/getDesData', function(req, res){
             //------------得到游记数据--------------
             connection.query("SELECT * FROM article WHERE status = '1' && city = '日本'", function(err, rows){
                 if(err) throw err;
-                if (rows.length > 0) {
+                if (rows.length >= 0) {
                     var city_articles = rows;
                     res.json({
                         msg: 'success',
@@ -38,7 +38,6 @@ router.all('/getDesData', function(req, res){
                             des     : des
                         }
                     });
-                    console.log(city_articles)
                     connection.end();
                 }
             });
@@ -46,11 +45,5 @@ router.all('/getDesData', function(req, res){
     });
 });
 
-router.get('/getCityArticle', function(req, res) {
-
-    var connection = mysql.createConnection(mysql_option);
-
-
-});
 
 module.exports = router;
