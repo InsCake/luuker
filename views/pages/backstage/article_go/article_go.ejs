@@ -4,7 +4,8 @@
             <div class="col-md-4 tit-mid">游记发布管理</div>
         </div>
         <div class="row article-row" v-repeat="article: articles">
-            <a data-toggle="modal" data-target="#article_view" v-on="click: viewArticle(article.article_id)">{{ article.name }}</a>
+            <a data-toggle="modal" data-target="#article_view" v-on="click: viewArticle(article.article_id)" style="font-weight:bolder">{{ article.name }}</a>
+            <a style="margin-left: 20px;color: #398439">游记id={{ article.article_id }}</a>
         </div>
     </div>
 

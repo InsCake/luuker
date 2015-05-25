@@ -7,7 +7,8 @@ var homeEditorVM = new Vue({
     data: {
         banner: {
             img_url: '',
-            new_img_url: ''
+            new_img_url: '',
+            new_txt:''
         },
         rec_articles: [],
         new_article : {
@@ -42,6 +43,22 @@ var homeEditorVM = new Vue({
                     if (res.msg == 'success') {
                         $('#edit-headimg').modal('hide')
                         window.location.reload();
+                    }
+                }
+            })
+        },
+        goEditingTxt: function(){
+            var self = this;
+            $.ajax({
+                url: "/backstage/changeHomeTxt",
+                type: 'POST',
+                data: {
+                    txt: self.banner
+                },
+                datatype: "json",
+                success: function (res) {
+                    if (res.msg == 'success'){
+                        alert('修改成功');
                     }
                 }
             })

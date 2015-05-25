@@ -2,7 +2,8 @@ var homeEditorVM = new Vue({
     el       : '#page_home',
     data     : {
         banner : {
-            img_url : ''
+            img_url : '',
+            txt:''
         },
         rec_articles: []
     },
@@ -14,6 +15,7 @@ var homeEditorVM = new Vue({
             type    : 'GET',
             success : function(res) {
                 self.banner.img_url = res.data.head_img.url;
+                self.banner.txt = res.data.head_img.txt;
                 self.rec_articles = res.data.rec_articles;
             }
 

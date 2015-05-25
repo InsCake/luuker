@@ -171,7 +171,6 @@ router.get('/homeEditorData', function (req, res, next) {
                         }
 
                     });
-                    console.log(head_img)
                     connection.end();
                 }
             })
@@ -188,6 +187,25 @@ router.post('/changeHomeBanner', function (req, res, next) {
 
     connection.query("UPDATE headimg SET url = '" + url.new_img_url + "'", function (err, rows, fields) {
         res.json({msg: 'success'});
+    });
+
+    connection.end();
+});
+
+router.post('/changeHomeTxt', function (req, res, next) {
+    var txt = req.body.txt;
+
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("UPDATE headimg SET txt = '" + txt.new_txt +"'" , function (err, rows, fields) {
+        if (err) throw err;
+        if (rows.affectedRows > 0){
+            res.json({
+                msg: 'success'
+            });
+            console.log(txt.new_txt)
+
+        }
     });
 
     connection.end();

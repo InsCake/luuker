@@ -1,4 +1,16 @@
 <div class="container page" id="home_editor">
+    <!--------------首页语管理--------------->
+    <div class="mg-main-txt">
+        <div class="row edit-row">
+            <div class="col-md-4 tit-mid">首页语管理</div>
+            <div class="col-md-4"><a class="btn btn-default" v-on="click: goEditingTxt()">修改</a></div>
+        </div>
+        <div class="row" style="padding-left: 15px; width: 515px;">
+            <input class="form-control mid-input" placeholder="首页语" v-model="banner.new_txt">
+        </div>
+    </div>
+
+
     <!--------------首页头图管理--------------->
     <div class="mg-head-img">
         <div class="row edit-row">
