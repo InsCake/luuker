@@ -4,15 +4,19 @@ var mysql_option = require('../config/database.js');
 var router = express.Router();
 
 router.get('/write', function(req, res) {
-    var data = {
-        page         : 'article_write',
-        site         : 'pc',
-        header       : true,
-        footer       : true,
-        request_urls : false,
-        user         : req.session.user ? req.session.user : false
-    };
-    res.render('layouts/layout', data);
+    if(!req.session.user) {
+        res.redirect('../');
+    }else{
+        var data = {
+            page         : 'article_write',
+            site         : 'pc',
+            header       : true,
+            footer       : true,
+            request_urls : false,
+            user         : req.session.user ? req.session.user : false
+        };
+        res.render('layouts/layout', data);
+    }
 });
 
 router.post('/write', function(req, res) {

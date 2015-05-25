@@ -13,137 +13,120 @@
         <% } %>
     </ul>
 </header>
-<div class="main clearfix" id="main-banner">
-    <div class="banner">
-        <img v-attr="src: banner.img_url">
-    </div>
-    <h1 id="main-text">你好，我是baymax。</h1>
-    <div class="search-cover"></div>
-    <div class="main-area">
-        <div class="search-area">
-            <div class="image-nav"></div>
-            <div class="image-nav"></div>
-            <div class="image-nav"></div>
-            <div id="main-search">
-                <input>
+<div id="page_home">
+    <div class="main clearfix" id="main-banner">
+        <div class="banner">
+            <img v-attr="src: banner.img_url">
+        </div>
+        <h1 id="main-text">你好，我是baymax。</h1>
+        <div class="search-cover"></div>
+        <div class="main-area">
+            <div class="search-area">
+                <div class="image-nav"></div>
+                <div class="image-nav"></div>
+                <div class="image-nav"></div>
+                <div id="main-search">
+                    <input>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="middle">
-    <div class="mid-header">
-        <div class="wrap">
-            <h2>出门看世界</h2>
+    <div id="middle">
+        <div class="mid-header">
+            <div class="wrap">
+                <h2>出门看世界</h2>
+            </div>
         </div>
-    </div>
-    <div class="wrap">
-        <div class="top-item clearfix">
-            <div class="top-left">
-                <img src="http://m2.quanjing.com/2m/alamyrf001/axr3d5.jpg">
+        <div class="wrap clearfix">
+            <div class="rec-article-item" v-repeat="article : rec_articles">
+                <img v-attr="src: article.img">
                 <div class="sm-cover">
                     <div class="rec-head">
                         <img src="/images/head.jpg">
-                        <h3>今年说什么也要去一次日本</h3>
+                        <h3>{{ article.name }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="top-right">
-                <img src="http://www.jscts.com/photo/des/2011-11/O_201111231435022663.JPG">
-                <div class="sm-cover"></div>
-            </div>
-        </div>
-        <div class="bottom-item clearfix">
-            <div class="bottom-left">
-                <img src="http://www.jscts.com/photo/des/2011-11/O_201111231435022663.JPG">
-                <div class="sm-cover"></div>
-            </div>
-            <div class="bottom-mid">
-                <img src="http://www.jscts.com/photo/des/2011-11/O_201111231435022663.JPG">
-                <div class="sm-cover"></div>
-            </div>
-            <div class="bottom-right">
-                <img src="http://www.jscts.com/photo/des/2011-11/O_201111231435022663.JPG">
-                <div class="sm-cover"></div>
-            </div>
         </div>
     </div>
-</div>
-<div class="middle">
-    <div class="mid-header">
+    <div class="middle">
+        <div class="mid-header">
+            <div class="wrap">
+                <h2>当季热门</h2>
+            </div>
+        </div>
         <div class="wrap">
-            <h2>当季热门</h2>
-        </div>
-    </div>
-    <div class="wrap">
-        <div class="hot-text clearfix">
-            <div class="hot-item">
-                <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-            </div>
-            <div class="hot-item">
-                <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-            </div>
-            <div class="hot-item">
-                <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-            </div>
-            <div class="hot-item">
-                <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+            <div class="hot-text clearfix">
+                <div class="hot-item">
+                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+                </div>
+                <div class="hot-item">
+                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+                </div>
+                <div class="hot-item">
+                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+                </div>
+                <div class="hot-item">
+                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="max-mask" style="display: none">
-    <div class="login-container" style="display: none">
-        <div class="login-header">
-            <div class="login-logo">
-                <img src="">
+    <div class="max-mask" style="display: none">
+        <div class="login-container" style="display: none">
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="">
+                </div>
+                <div class="login-exit">
+                </div>
             </div>
-            <div class="login-exit">
+            <div class="login-body clearfix">
+                <ul class="login-method clearfix">
+                    <li class="login-weibo"></li>
+                    <li class="login-qq"></li>
+                    <li class="login-wechat"></li>
+                </ul>
+                <h3>或</h3>
+                <div class="login-box">
+                    <input class="login-email">
+                    <input class="login-pwd">
+                </div>
+                <div class="login-confirm">
+                    <a href="javascript:;">登 陆</a>
+                </div>
+                <div class="login-footer">
+                    还不是luuker? 欢迎<a class="go-regist">注册</a>
+                </div>
             </div>
         </div>
-        <div class="login-body clearfix">
-            <ul class="login-method clearfix">
-                <li class="login-weibo"></li>
-                <li class="login-qq"></li>
-                <li class="login-wechat"></li>
-            </ul>
-            <h3>或</h3>
-            <div class="login-box">
-                <input class="login-email">
-                <input class="login-pwd">
+        <div class="register-container" style="display: none">
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="">
+                </div>
+                <div class="login-exit">
+                </div>
             </div>
-            <div class="login-confirm">
-                <a href="javascript:;">登 陆</a>
-            </div>
-            <div class="login-footer">
-                还不是luuker? 欢迎<a class="go-regist">注册</a>
+            <div class="login-body clearfix">
+                <ul class="login-method clearfix">
+                    <li class="login-weibo"></li>
+                    <li class="login-qq"></li>
+                    <li class="login-wechat"></li>
+                </ul>
+                <h3>或</h3>
+                <div class="login-box">
+                    <input class="join-email">
+                    <input class="join-pwd">
+                </div>
+                <div class="join-confirm">
+                    <a href="javascript:;">注 册</a>
+                </div>
+                <div class="login-footer">
+                    已是luuker? 直接<a class="go-login">登陆</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="register-container" style="display: none">
-        <div class="login-header">
-            <div class="login-logo">
-                <img src="">
-            </div>
-            <div class="login-exit">
-            </div>
-        </div>
-        <div class="login-body clearfix">
-            <ul class="login-method clearfix">
-                <li class="login-weibo"></li>
-                <li class="login-qq"></li>
-                <li class="login-wechat"></li>
-            </ul>
-            <h3>或</h3>
-            <div class="login-box">
-                <input class="join-email">
-                <input class="join-pwd">
-            </div>
-            <div class="join-confirm">
-                <a href="javascript:;">注 册</a>
-            </div>
-            <div class="login-footer">
-                已是luuker? 直接<a class="go-login">登陆</a>
-            </div>
-        </div>
-    </div>
+
 </div>

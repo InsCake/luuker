@@ -4,15 +4,19 @@ var mysql = require('mysql');
 var mysql_option = require('../config/database.js');
 
 router.get('/', function(req, res, next) {
-    var data = {
-        page         : 'user',
-        site         : 'pc',
-        header       : true,
-        footer       : true,
-        request_urls : false,
-        user         : req.session.user ? req.session.user : false
-    };
-    res.render('layouts/layout', data);
+    if(!req.session.user) {
+        res.redirect('../');
+    }else{
+        var data = {
+            page         : 'user',
+            site         : 'pc',
+            header       : true,
+            footer       : true,
+            request_urls : false,
+            user         : req.session.user ? req.session.user : false
+        };
+        res.render('layouts/layout', data);
+    }
 });
 
 
