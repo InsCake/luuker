@@ -62,15 +62,15 @@ var userVM = new Vue({
                 self.user.school = res.data.user.school;
                 self.user.nmail = res.data.user.mail;
                 self.user.nschool = res.data.user.school;
-                console.log(self.user);
 
-                if(res.data.user.mail == '') {
+                console.log(res.data.user.school);
+                if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';
                 } else {
                     self.a.mail = '修改';
                 }
 
-                if(res.data.user.school == '') {
+                if(res.data.user.school == ''||res.data.user.school == null) {
                     self.a.school = '添加';
                 } else {
                     self.a.school = '修改';

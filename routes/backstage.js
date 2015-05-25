@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
             page: 'home',
             site: 'backstage',
             header: true,
-            footer:true,
+            footer: true,
             user: req.session.admin
         };
     }
@@ -29,7 +29,7 @@ router.get('/sign_in', function (req, res, next) {
         page: 'sign_in',
         site: 'backstage',
         header: false,
-        footer:false
+        footer: false
     };
     res.render('layouts/layout_backstage', data);
 });
@@ -44,7 +44,7 @@ router.get('/editor', function (req, res, next) {
             page: 'editor',
             site: 'backstage',
             header: true,
-            footer:true,
+            footer: true,
             user: req.session.admin
         };
 
@@ -64,7 +64,7 @@ router.get('/editor_city', function (req, res, next) {
             page: 'editor_city',
             site: 'backstage',
             header: true,
-            footer:true,
+            footer: true,
             user: req.session.admin
         };
 
@@ -83,7 +83,7 @@ router.get('/article_go', function (req, res, next) {
             page: 'article_go',
             site: 'backstage',
             header: true,
-            footer:true,
+            footer: true,
             user: req.session.admin
         };
 
@@ -94,99 +94,118 @@ router.get('/article_go', function (req, res, next) {
 });
 
 //------游记审核动作--------------------------
-router.get('/getArticleData', function(req, res, next) {
+router.get('/getArticleData', function (req, res, next) {
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM article WHERE status = '0'", function(err, rows) {
-        if(err) throw err;
-        if(rows.length > 0) {
+    connection.query("SELECT * FROM article WHERE status = '0'", function (err, rows) {
+        if (err) throw err;
+        if (rows.length > 0) {
             var articles = rows;
             res.json({
-                data : {
-                    articles     : articles
+                data: {
+                    articles: articles
                 }
             });
             connection.end();
         }
-        });
+    });
 });
 
-router.post('/passArticleData', function(req, res, next) {
+router.post('/passArticleData', function (req, res, next) {
     var article_id = req.body.article_id;
     var article_city = req.body.article_city;
     var connection = mysql.createConnection(mysql_option);
-    connection.query("UPDATE article SET status = '1' , city = '"+ article_city + "'WHERE article_id = " + article_id, function (err, rows) {
-        if(err) throw err;
-        if(rows.affectedRows > 0){
+    connection.query("UPDATE article SET status = '1' , city = '" + article_city + "'WHERE article_id = " + article_id, function (err, rows) {
+        if (err) throw err;
+        if (rows.affectedRows > 0) {
             res.json({msg: 'success'});
         }
     });
 });
 
-router.post('/unpassArticleData', function(req, res, next) {
+router.post('/unpassArticleData', function (req, res, next) {
     var article_id = req.body.article_id;
     var connection = mysql.createConnection(mysql_option);
-    connection.query("UPDATE article SET status = '2' WHERE article_id = " +article_id, function (err, rows) {
-        if(err) throw err;
-        if(rows.affectedRows > 0){
+    connection.query("UPDATE article SET status = '2' WHERE article_id = " + article_id, function (err, rows) {
+        if (err) throw err;
+        if (rows.affectedRows > 0) {
             res.json({msg: 'success'});
         }
     });
 });
 
 //------目的地管理输入数据------
-router.post('/intoCityData',function (req, res, next){
+router.post('/intoCityData', function (req, res, next) {
     var city = req.body.city;
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("INSERT INTO city (chname, egname, img, intro, book) VALUES ('" + city.chname + "','" + city.egname +
-    "','" + city.img + "','" + city.intro + "','" + city.book + "')", function(err, result){
-        if(err) throw err;
+    "','" + city.img + "','" + city.intro + "','" + city.book + "')", function (err, result) {
+        if (err) throw err;
         res.json({
-            msg      : 'success'
+            msg: 'success'
         })
     });
 
 });
 
-//------首页头图更改动作------
+//------网站运营（头图，推荐游记）更改动作------
 router.get('/homeEditorData', function (req, res, next) {
     var connection = mysql.createConnection(mysql_option);
 
-    connection.query("SELECT * FROM headimg WHERE id = '1'", function (err, rows, fields) {
-
+    connection.query("SELECT * FROM headimg WHERE id = '1'", function (err, rows) {
         if (err) throw err;
         if (rows.length > 0) {
+            var head_img = rows[0];
 
+            // 获取推荐游记表数据
+            connection.query("SELECT * FROM recommend LEFT JOIN article on recommend.article_id = article.article_id", function (err, rows) {
+                if (err) throw err;
+                if (rows.length > 0) {
+                    var rec_articles = rows;
+                    res.json({
+                        msg: 'success',
+                        data: {
+                            rec_articles: rec_articles,
+                            head_img    : head_img
+                        }
 
-            res.json({
-                msg: 'success',
-                data: {banner_image_url: rows[0].url}
+                    });
+                    connection.end();
+                }
             })
         } else {
             res.json({msg: 'null'});
         }
     });
-
-    connection.end();
-})
+});
 
 router.post('/changeHomeBanner', function (req, res, next) {
-    var url = req.body.url
+    var url = req.body.url;
 
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'root',
-        database: 'luuker'
-    });
+    var connection = mysql.createConnection(mysql_option);
 
     connection.query("UPDATE headimg SET url = '" + url.new_img_url + "'", function (err, rows, fields) {
         res.json({msg: 'success'});
     });
 
     connection.end();
+});
+
+router.post('/changeRecArticle', function (req, res, next) {
+    var rec_id = req.body.rec_id;
+    var new_id = req.body.new_id;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("UPDATE recommend SET article_id = '" + new_id + "' WHERE rec_id = " + rec_id, function(err, rows){
+        if (err) throw err;
+        if (rows.affectedRows > 0){
+            res.json({
+                msg: 'success'
+            });
+        }
+    });
+
 });
 
 //------登陆动作-------------
@@ -225,13 +244,13 @@ router.post('/change_pwd', function (req, res, next) {
 
     var connection = mysql.createConnection(mysql_option);
 
-    connection.query("SELECT * FROM admin WHERE admin_id = "+ user.admin_id, function (err, rows, fields) {
-        if(err) throw err;
-        if(pwd.pwd_old != rows[0].password){
-            res.json({ msg : 'wrong' });
-        }else{
-            connection.query("UPDATE admin SET password = '" + pwd.pwd_new_1 + "'", function (err, rows, fields){
-                res.json({ msg : 'success' });
+    connection.query("SELECT * FROM admin WHERE admin_id = " + user.admin_id, function (err, rows, fields) {
+        if (err) throw err;
+        if (pwd.pwd_old != rows[0].password) {
+            res.json({msg: 'wrong'});
+        } else {
+            connection.query("UPDATE admin SET password = '" + pwd.pwd_new_1 + "'", function (err, rows, fields) {
+                res.json({msg: 'success'});
                 connection.end();
             });
         }

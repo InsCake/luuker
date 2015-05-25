@@ -17,47 +17,17 @@
         <div class="row edit-row">
             <div class="col-md-4 tit-mid">游记推荐管理</div>
         </div>
-        <div class="mg-article-left">
-            <div class="small-top clearfix">
-                <div class="top-left"></div>
-                <div class="top-right"></div>
-            </div>
-            <div class="small-bottom clearfix">
-                <div class="bottom-left"></div>
-                <div class="bottom-mid"></div>
-                <div class="bottom-right"></div>
+        <div class="mg-article-left clearfix">
+            <div class="sm-article-item"  v-repeat="article : rec_articles">
+                <img v-attr="src: article.img">
             </div>
         </div>
         <div class="mg-article-right">
-            <div class="row article-item-row">
-                <div class="col-md-8 article-item" >游记题目</div>
-                <input class="form-control article-input" style="display: none">
-                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
-                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
-            </div>
-            <div class="row article-item-row">
-                <div class="col-md-8 article-item">游记题目</div>
-                <input class="form-control article-input" style="display: none">
-                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
-                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
-            </div>
-            <div class="row article-item-row">
-                <div class="col-md-8 article-item">游记题目</div>
-                <input class="form-control article-input" style="display: none">
-                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
-                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
-            </div>
-            <div class="row article-item-row">
-                <div class="col-md-8 article-item">游记题目</div>
-                <input class="form-control article-input" style="display: none">
-                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
-                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
-            </div>
-            <div class="row article-item-row">
-                <div class="col-md-8 article-item">游记题目</div>
-                <input class="form-control article-input" style="display: none">
-                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" >修改</a></div>
-                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" >提交</a></div>
+            <div class="row article-item-row" v-repeat="rec_article: rec_articles">
+                <div class="col-md-8 article-item" v-show="current_rec != $index">{{ rec_article.name }}</div>
+                <input class="form-control article-input" v-model="new_article.new_id" v-show="current_rec == $index">
+                <div class="col-md-2 update-btn"><a class="btn btn-default" data-toggle="modal" v-on="click:showInput($index)" >修改</a></div>
+                <div class="col-md-2 sub-btn"><a class="btn btn-default" data-toggle="modal" v-on="click: updateRec(rec_article.rec_id)">提交</a></div>
             </div>
         </div>
     </div>

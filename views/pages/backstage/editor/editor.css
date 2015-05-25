@@ -27,34 +27,26 @@ a:hover{
 }
 
 .mg-article-left{
-    width: 500px;
+    width: 512px;
     float:left;
 }
 .mg-article-right{
     float: left;
     width: 564px;
-    margin-left: 40px;
 }
 
 .small-top{
     margin-bottom: 10px;
 }
 
-.top-left{
-    width:330px;
-    height: 150px;
-    float:left;
-    background-color: #0078e7;
-}
-.top-right,.bottom-left,.bottom-mid,.bottom-right{
-    width: 160px;
-    height: 150px;
+.sm-article-item{
     float: left;
-    background-color: #2b542c;
 }
 
-.top-right,.bottom-mid,.bottom-right{
-    margin-left: 10px;
+.sm-article-item img{
+    width: 160px;
+    height: 150px;
+    margin: 0 10px 10px 0;
 }
 
 .col-md-8{
