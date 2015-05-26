@@ -16,6 +16,30 @@
                         </div>
                     </div>
                 </article>
+                <section class="comments">
+                    <div class="comment pure-g" v-repeat="comment: article.comments">
+                        <div class="comment-user pure-u-1-4">
+                            <img v-attr="src: comment.img">
+                            <div class="user-name">{{ comment.name }}</div>
+                        </div>
+                        <div class="comment-text pure-u-3-4">{{ comment.content }}</div>
+                    </div>
+                    <div class="add-comment pure-g pure-form">
+                        <div class="comment-user pure-u-1-4 pt-10">
+                            <img src="<%= user.img %>">
+                            <div class="user-name"><%= user.name %></div>
+                        </div>
+                        <div class="pure-u-3-4 comment-text">
+                            <textarea class="pure-input-1" placeholder="添加文字"
+                                      v-model="add_comment"></textarea>
+                            <div class="add-bar clearfix pt-10">
+                                <div class="fr">
+                                    <button class="pure-button button-success" v-on="click: doAddComment()">评论</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="pure-u-4-24">
                 <div class="article-op">

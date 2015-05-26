@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/write', function(req, res) {
     if(!req.session.user) {
         res.redirect('../');
-    }else{
+    } else {
         var data = {
             page         : 'article_write',
             site         : 'pc',
@@ -63,15 +63,39 @@ router.get('/articleData/:article_id', function(req, res) {
                 if(err) throw err;
                 if(rows.length > 0) {
                     var article_units = rows;
-                    res.json({
-                        data : {
-                            article       : article,
-                            article_units : article_units
+                    connection.query("SELECT * FROM comment LEFT JOIN user on user.user_id = comment.user_id WHERE article_id = " +
+                                     article_id, function(err, rows) {
+                        if(err) throw err;
+                        if(rows.length > 0) {
+                            var comments = rows;
+                            res.json({
+                                data : {
+                                    article       : article,
+                                    article_units : article_units,
+                                    comments      : comments
+                                }
+                            });
+                            connection.end();
                         }
                     });
                 }
             });
         }
+    });
+});
+
+router.post('/addComment', function(req, res) {
+    var comment = req.body.comment;
+    var article_id = req.body.article_id;
+    var user_id = req.session.user.user_id;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("INSERT INTO comment (content, article_id, user_id) VALUES ('" + comment + "', " + article_id +
+                     ", " + user_id + ")", function(err, result) {
+        if(err) throw err;
+        res.json({
+            msg : 'success'
+        });
     });
 });
 

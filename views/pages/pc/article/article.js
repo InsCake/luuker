@@ -1,7 +1,8 @@
 var articleVM = new Vue({
     el       : '#article',
     data     : {
-        article : {}
+        article     : {},
+        add_comment : ''
     },
     compiled : function() {
         var self = this;
@@ -14,5 +15,23 @@ var articleVM = new Vue({
             }
         });
     },
-    methods  : {}
+    methods  : {
+        doAddComment : function() {
+            var self = this;
+            $.ajax({
+                url      : '/article/addComment',
+                data     : {
+                    comment    : self.add_comment,
+                    article_id : self.article.article.article_id
+                },
+                type     : 'POST',
+                dataType : 'json',
+                success  : function(res) {
+                    if(res.msg == 'success') {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+    }
 });

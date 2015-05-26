@@ -11,6 +11,14 @@
 .page-article .unit-text          { font-size: 14px; line-height: 22px; color: #666; padding: 5px 0; text-indent: 2em; }
 .page-article .unit-image         { width: 100%; padding: 5px 0; }
 
+.page-article .comments                 { margin: 60px 0 0 0; }
+.page-article .comment                  { margin: 10px 0 0 0; }
+.page-article .comment-user             { text-align: center; font-size: 12px; }
+.page-article .comment-user img         { width: 40px; height: 40px; border-radius: 50%; }
+.page-article .comment-text             { padding: 15px; background-color: #fff; }
+.page-article .add-comment              { margin: 10px 0 0 0; }
+.page-article .comment-text             { background-color: #fff; padding: 10px; }
+.page-article .comment-text textarea    { font-size: 14px; height: 80px; resize: none; }
 
 
 
