@@ -4,8 +4,7 @@
             <div class="pure-u-4-24">1</div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
-                    <div class="article-header"
-                         style="height: 300px; background: url('http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg') no-repeat center -85px; background-size: cover;">
+                    <div class="article-header" v-style="background-image: 'url(' + article.article.img + ')'">
                         <h1 id="article_name">{{ article.article.name }}</h1>
                     </div>
                     <div class="article-content">

@@ -66,17 +66,16 @@ router.get('/articleData/:article_id', function(req, res) {
                     connection.query("SELECT * FROM comment LEFT JOIN user on user.user_id = comment.user_id WHERE article_id = " +
                                      article_id, function(err, rows) {
                         if(err) throw err;
-                        if(rows.length > 0) {
-                            var comments = rows;
-                            res.json({
-                                data : {
-                                    article       : article,
-                                    article_units : article_units,
-                                    comments      : comments
-                                }
-                            });
-                            connection.end();
-                        }
+                        var comments = rows;
+                        console.log(article);
+                        res.json({
+                            data : {
+                                article       : article,
+                                article_units : article_units,
+                                comments      : comments
+                            }
+                        });
+                        connection.end();
                     });
                 }
             });

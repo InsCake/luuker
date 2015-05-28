@@ -3,7 +3,7 @@
 .page-article .article-panel          { padding : 0 0 50px; background-color : #fff; }
 .page-article .article-op             { padding-left : 20px; }
 .page-article .article-op > button    { margin-bottom : 10px; width : 100%; }
-.page-article .article-header         { position: relative; }
+.page-article .article-header         { position: relative; height: 350px; background-repeat: no-repeat; background-position: center center; background-size: cover; }
 .page-article .article-header h1      { position: absolute; bottom: 20px; left: 0; padding: 15px 30px; font-size: 36px; background-color: rgba(0,0,0,0.3); color: #fff; }
 
 .page-article .article-content    { padding: 25px 80px; }

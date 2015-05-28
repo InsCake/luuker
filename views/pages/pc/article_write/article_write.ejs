@@ -5,8 +5,8 @@
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
                     <div class="article-header" v-on="click: uploadHeadImage()"
-                         v-style="background: 'url(' + banner + ') no-repeat center -85px'"
-                         style="height: 300px; background-size: cover;">
+                         v-style="background: 'url(' + banner + ') no-repeat center center'"
+                         style="height: 300px; background-size: 100% auto;">
                         <h1 id="article_name" contenteditable="true" v-on="click: stopEvent($event)">点击添加标题</h1>
                         <input type="file" id="article_banner" style="display: none;" v-on="change : onBannerSelect()">
                     </div>
