@@ -38,6 +38,10 @@ router.post('/login', function(req, res) {
                     msg : 'failed'
                 });
             }
+        }else{
+            res.json({
+                msg:'null'
+            })
         }
     });
     connection.end();

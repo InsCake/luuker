@@ -116,9 +116,25 @@ input,button,select,textarea{outline:none}
     width: 300px;
     margin: 1px 10px;
     color: #3c3c3c;
+    position: absolute;
 
 }
 
+.search-btn{
+    background-color: #aaa;
+    width: 50px;
+    height: 40px;
+    display: block;
+    position: relative;
+    left: 320px;
+    border-radius: 3px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bolder;
+    cursor: pointer;
+}
 .main{
     height:550px;
 }
