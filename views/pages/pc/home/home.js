@@ -21,5 +21,10 @@ var homeEditorVM = new Vue({
 
         });
     },
-    methods  : {}
+    methods  : {
+        goCity: function(){
+            var self = this;
+
+        }
+    }
 });

@@ -73,12 +73,8 @@ $(function() {
                 } else{
                     alert('sb');
                 }
-
             }
-
-
         });
-
     });
 
     $('.go-login').on('click',function(){
@@ -90,8 +86,6 @@ $(function() {
         $('.login-container').css('display','none');
         $('.register-container').css('display','block');
     })
-
-
 });
 
 
@@ -127,7 +121,6 @@ var changPwdVM = new Vue({
                     }
                 })
             }
-
         }
     }
 });

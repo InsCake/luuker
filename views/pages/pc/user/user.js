@@ -35,7 +35,7 @@ var userVM = new Vue({
             opwd    : '',
             npwd1   : '',
             npwd2   : '',
-            title   : '',
+            //title   : '',
             mail    : '',
             school  : '',
             nmail   : '',
@@ -44,7 +44,8 @@ var userVM = new Vue({
         current_tab : 'user_info',
         a           : {
             mail   : '',
-            school : ''
+            school : '',
+            alter  : ''
         },
         the_user    : {},
         articles    : []
@@ -62,8 +63,8 @@ var userVM = new Vue({
                 self.user.school = res.data.user.school;
                 self.user.nmail = res.data.user.mail;
                 self.user.nschool = res.data.user.school;
+                console.log(res.data.articles.status);
 
-                console.log(res.data.user.school);
                 if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';
                 } else {
@@ -74,6 +75,12 @@ var userVM = new Vue({
                     self.a.school = '添加';
                 } else {
                     self.a.school = '修改';
+                }
+
+                if(res.data.articles.status == 0||res.data.articles.status == 2){
+                    self.a.alter = '修改';
+                } else {
+                    self.a.alter = '';
                 }
             }
         });
