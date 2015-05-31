@@ -21,13 +21,13 @@ router.get('/', function(req, res) {
 router.all('/getDesData', function(req, res){
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM city WHERE id = '1'", function(err, rows){
+    connection.query("SELECT * FROM city WHERE id = '7'", function(err, rows){
         if(err) throw err;
         if(rows.length > 0) {
             var des = rows[0];
 
             //------------得到游记数据--------------
-            connection.query("SELECT * FROM article WHERE status = '1' && city = '日本'", function(err, rows){
+            connection.query("SELECT * FROM article WHERE status = '1' && city_id = '台北'", function(err, rows){
                 if(err) throw err;
                 if (rows.length >= 0) {
                     var city_articles = rows;

@@ -74,3 +74,23 @@ a:hover{
     line-height: 40px;
 }
 
+.city-item-edit{
+    width: 100px;
+}
+
+.item-edit-txt{
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+}
+.item-img-show{
+    margin-bottom: 10px;
+}
+
+.item-img-show img{
+    margin-left: 20px;
+}
+

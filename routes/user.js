@@ -133,6 +133,7 @@ router.all('/getUserData', function(req, res) {
             connection.query("SELECT * FROM article WHERE user_id = " + user.user_id, function(err, rows) {
                 if(err) throw err;
                 var articles = rows;
+                console.log(rows)
                 res.json({
                     data : {
                         user     : user,

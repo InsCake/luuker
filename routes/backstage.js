@@ -115,7 +115,7 @@ router.post('/passArticleData', function (req, res, next) {
     var article_id = req.body.article_id;
     var article_city = req.body.article_city;
     var connection = mysql.createConnection(mysql_option);
-    connection.query("UPDATE article SET status = '1' , city = '" + article_city + "'WHERE article_id = " + article_id, function (err, rows) {
+    connection.query("UPDATE article SET status = '1' , city_id = '" + article_city + "'WHERE article_id = " + article_id, function (err, rows) {
         if (err) throw err;
         if (rows.affectedRows > 0) {
             res.json({msg: 'success'});
@@ -147,6 +147,33 @@ router.post('/intoCityData', function (req, res, next) {
         })
     });
 
+});
+
+router.post('/intoCityItem', function (req, res, next){
+    var city_item = req.body.city_item;
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("INSERT INTO city_item (title, txt, img) VALUES ('" + city_item.title +
+    "','" + city_item.txt + "','" + city_item.img + "')",function (err, result){
+        if (err) throw err;
+        res.json({
+            msg: 'success'
+        })
+    })
+});
+
+router.post('/uploadItemImage', function(req, res) {
+    var image = req.files;
+    var city_item = req.body.city_item;
+
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("UPDATE city_item SET img = '" + image.upload.path.slice(5) +
+    "' WHERE city_item_id = '1'", function(err, result) {
+        if(err) throw err;
+        console.log(111);
+        res.json({ msg : 'success' });
+    });
+    connection.end();
 });
 
 //------网站运营（头图，推荐游记）更改动作------

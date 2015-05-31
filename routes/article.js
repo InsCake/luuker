@@ -27,7 +27,7 @@ router.post('/write', function(req, res) {
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("INSERT INTO article (name, img, user_id, type) VALUES ('" + article.name
-                     + "', '" + article + "', '" + user_id + "', 'travel_notes')", function(err, result) {
+                     + "', '" + article.banner + "', '" + user_id + "', 'travel_notes')", function(err, result) {
         if(err) throw err;
         article_id = result.insertId;
 
