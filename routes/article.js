@@ -26,8 +26,8 @@ router.post('/write', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
 
-    connection.query("INSERT INTO article (name, img, user_id, type) VALUES ('" + article.name
-                     + "', '" + article.banner + "', '" + user_id + "', 'travel_notes')", function(err, result) {
+    connection.query("INSERT INTO article (name, img, user_id, type, author) VALUES ('" + article.name
+                     + "', '" + article.banner + "', '" + user_id + "', 'travel_notes', '" + article.head + "')", function(err, result) {
         if(err) throw err;
         article_id = result.insertId;
 
@@ -56,7 +56,10 @@ router.get('/articleData/:article_id', function(req, res) {
     var article_id = req.params.article_id;
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM article WHERE article_id = " + article_id, function(err, rows) {
+    connection.query({
+        sql : "SELECT * FROM article LEFT JOIN user ON article.user_id = user.user_id WHERE article_id = " + article_id,
+        nestTables : '_'
+    }, function(err, rows) {
         if(err) throw err;
         if(rows.length > 0) {
             var article = rows[0];

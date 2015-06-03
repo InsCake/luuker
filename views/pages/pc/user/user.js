@@ -68,7 +68,6 @@ var userVM = new Vue({
                 self.user.nschool = res.data.user.school;
                 self.user.nage = res.data.user.age;
                 self.user.age = res.data.user.age;
-                console.log(res.data.user.age);
 
                 if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';
@@ -88,11 +87,7 @@ var userVM = new Vue({
                     self.a.age = '修改';
                 }
 
-                if(res.data.articles.status == 0||res.data.articles.status == 2){
-                    self.a.alter = '修改';
-                } else {
-                    self.a.alter = '';
-                }
+
             }
         });
     },

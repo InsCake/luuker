@@ -6,7 +6,19 @@ var articleWriteVM = new Vue({
             type  : '',
             value : ''
         },
-        banner   : 'http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg'
+        banner   : 'http://hitour.qiniudn.com/aa7385576820bceafbff649897579a86.jpg',
+        the_user    : {}
+    },
+    compiled : function(){
+        var self = this;
+
+        $.ajax({
+            url     : '/user/getUserData',
+            type    : 'GET',
+            success : function(res){
+                self.the_user = res.data.user;
+            }
+        })
     },
     methods : {
         showAddUnit     : function(unit_type) {
@@ -60,11 +72,12 @@ var articleWriteVM = new Vue({
                     article : {
                         name   : $('#article_name').html(),
                         banner : self.banner,
-                        units  : self.units
+                        units  : self.units,
+                        head   : self.the_user.img
                     }
                 },
                 success  : function(res) {
-                    console.log(res);
+                    alert('上传成功');
                 }
             })
         },

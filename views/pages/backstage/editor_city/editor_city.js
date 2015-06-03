@@ -14,6 +14,7 @@ var cityEditorVM = new Vue({
         },
 
         city_item: {
+            id      : '',
             type    : '',
             title   : '',
             txt     : '',
@@ -61,6 +62,7 @@ var cityEditorVM = new Vue({
             $('#item_img').click();
         },
         onItemSelected : function() {
+            var self = this;
             var formData = new FormData();
             var file = document.getElementById('item_img').files[0];
             formData.append('upload', file);
@@ -71,10 +73,9 @@ var cityEditorVM = new Vue({
 
             xhr.onreadystatechange = function() {
                 if(xhr.readyState == 4 && xhr.status == 200) {
-                    alert('success');
-                    window.location.reload();
+                    self.city_item.img = xhr.response;
                 }
             };
-        },
+        }
     }
 });

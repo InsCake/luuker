@@ -151,10 +151,10 @@ router.post('/intoCityData', function (req, res, next) {
 
 router.post('/intoCityItem', function (req, res, next){
     var city_item = req.body.city_item;
-    var connection = mysql.createConnection(mysql_option);
 
-    connection.query("INSERT INTO city_item (title, txt, img) VALUES ('" + city_item.title +
-    "','" + city_item.txt + "','" + city_item.img + "')",function (err, result){
+    var connection = mysql.createConnection(mysql_option);
+    connection.query("INSERT INTO city_item (city_item_id, title, txt, img, type) VALUES ('" + city_item.id +"','" + city_item.title +
+    "','" + city_item.txt + "','" + city_item.img + "','" + city_item.type + "')",function (err, result){
         if (err) throw err;
         res.json({
             msg: 'success'
@@ -164,16 +164,9 @@ router.post('/intoCityItem', function (req, res, next){
 
 router.post('/uploadItemImage', function(req, res) {
     var image = req.files;
-    var city_item = req.body.city_item;
+    console.log(image);
+    res.send(image.upload.path.slice(5));
 
-    var connection = mysql.createConnection(mysql_option);
-    connection.query("UPDATE city_item SET img = '" + image.upload.path.slice(5) +
-    "' WHERE city_item_id = '1'", function(err, result) {
-        if(err) throw err;
-        console.log(111);
-        res.json({ msg : 'success' });
-    });
-    connection.end();
 });
 
 //------网站运营（头图，推荐游记）更改动作------
@@ -285,8 +278,8 @@ router.get('/sign_out', function (req, res, next) {
 
 //------修改密码动作---------
 router.post('/change_pwd', function (req, res, next) {
-    var pwd = req.body.user
-    var user = req.session.admin
+    var pwd = req.body.user;
+    var user = req.session.admin;
 
     var connection = mysql.createConnection(mysql_option);
 

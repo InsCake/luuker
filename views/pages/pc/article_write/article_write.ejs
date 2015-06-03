@@ -1,9 +1,12 @@
 <div class="page-article-write" id="article-write">
     <div class="wrap">
         <div class="pure-g">
-            <div class="pure-u-4-24">1</div>
+            <div class="pure-u-4-24"></div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
+                    <div class="writing-user">
+                        <img v-attr="src: the_user.img">
+                    </div>
                     <div class="article-header" v-on="click: uploadHeadImage()"
                          v-style="background: 'url(' + banner + ') no-repeat center center'"
                          style="height: 300px; background-size: 100% auto;">

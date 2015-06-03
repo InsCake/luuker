@@ -37,7 +37,7 @@
                 <h2>出门看世界</h2>
             </div>
         </div>
-        <div class="wrap clearfix">
+        <div class="wrap clearfix" style="width: 1200px;">
             <a class="rec-article-item" v-repeat="article : rec_articles" v-class="big: $index == 0"
                v-attr="href: '/article/' + article.article_id" style="display: block;" >
                 <img v-attr="src: article.img">
@@ -58,12 +58,12 @@
         </div>
         <div class="wrap">
             <div class="hot-text clearfix" >
-                <div class="hot-item" v-repeat="hot_city : hot_city">
+                <a class="hot-item" v-repeat="hot_city : hot_city" v-attr="href: '/go' ">
                     <div class="hot-sm-cover" >
                         <h3>{{ hot_city.city_id }}</h3>
                     </div>
                     <img v-attr="src: hot_city.img">
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
                 <h3>或</h3>
                 <div class="login-box">
                     <input class="login-email">
-                    <input class="login-pwd">
+                    <input class="login-pwd" type="password">
                 </div>
                 <div class="login-confirm">
                     <a href="javascript:;">登 陆</a>

@@ -1,9 +1,12 @@
 <div class="page-article" id="article">
     <div class="wrap">
         <div class="pure-g">
-            <div class="pure-u-4-24">1</div>
+            <div class="pure-u-4-24"></div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
+                    <div class="writing-user">
+                        <img v-attr="src: the_user.img">
+                    </div>
                     <div class="article-header" v-style="background-image: 'url(' + article.article.img + ')'">
                         <h1 id="article_name">{{ article.article.name }}</h1>
                     </div>

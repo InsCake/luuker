@@ -1,6 +1,6 @@
 .page-article { padding: 0 0 70px; }
 .page-article .article-panel-wrap {}
-.page-article .article-panel          { padding : 0 0 50px; background-color : #fff; }
+.page-article .article-panel          { padding : 0 0 50px; background-color : #fff; position: relative;}
 .page-article .article-op             { padding-left : 20px; }
 .page-article .article-op > button    { margin-bottom : 10px; width : 100%; }
 .page-article .article-header         { position: relative; height: 350px; background-repeat: no-repeat; background-position: center center; background-size: cover; }
@@ -21,5 +21,21 @@
 .page-article .comment-text textarea    { font-size: 14px; height: 80px; resize: none; }
 
 
+.writing-user{
+    width: 70px;
+    height: 70px;
+    background-color: #000;
+    position: absolute;
+    top: 310px;
+    left: 610px;
+    z-index: 99;
+    border-radius: 50%;
+}
+
+.writing-user img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
 
 

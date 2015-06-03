@@ -110,11 +110,10 @@ app.get('/homeEditorData', function(req, res) {
                     var rec_articles = rows;
 
                     //获取热门地点数据
-                    connection.query("SELECT city_id, COUNT(*) FROM city JOIN article ON city.chname = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC", function(err, rows){
+                    connection.query("SELECT city_id, city.img, COUNT(*) FROM city JOIN article ON city.chname = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC", function(err, rows){
                         if (err) throw err;
                         if (rows.length > 0){
                             var hot_city = rows;
-                            console.log(rows)
                             res.json({
                                 msg: 'success',
                                 data: {
@@ -144,11 +143,11 @@ app.use('/upload', upload);
 app.use('/go', go);
 
 
-var server = app.listen(3006, function() {
+var server = app.listen(3005, function() {
 
     var host = server.address().address;
     var port = server.address().port;
 
-    //console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Example app listening at http://%s:%s', host, port);
 
 });

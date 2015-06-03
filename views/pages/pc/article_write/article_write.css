@@ -1,6 +1,6 @@
 .page-article-write { padding: 0 0 70px; }
 .page-article-write .article-panel-wrap {}
-.page-article-write .article-panel          { padding : 0 0 50px; background-color : #fff; }
+.page-article-write .article-panel          { padding : 0 0 50px; background-color : #fff; position: relative; }
 .page-article-write .article-op             { padding-left : 20px; }
 .page-article-write .article-op > button    { margin-bottom : 10px; width : 100%; }
 .page-article-write .article-header         { position: relative; }
@@ -12,6 +12,22 @@
 .page-article-write .unit-image         { width: 100%; padding: 5px 0; }
 
 
+.writing-user{
+    width: 70px;
+    height: 70px;
+    background-color: #000;
+    position: absolute;
+    top: 260px;
+    left: 610px;
+    z-index: 99;
+    border-radius: 50%;
+}
+
+.writing-user img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
 
 
 

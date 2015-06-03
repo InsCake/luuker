@@ -4,17 +4,17 @@ $(function() {
         $('.max-mask').fadeIn();
         $('.ogin-container').hide();
         $('.register-container').fadeIn();
-    })
+    });
 
     $('.login').on('click',function(){
         $('.max-mask').fadeIn();
         $('.register-container').hide();
         $('.login-container').fadeIn();
-    })
+    });
 
     $('.login-exit').on('click', function() {
         $('.max-mask').fadeOut();
-    })
+    });
 
     $('.login-confirm').on('click',function(){
         var user_name = $('.login-email').val();
@@ -55,26 +55,33 @@ $(function() {
         var new_user_name = $('.join-email').val();
         var new_pwd = $('.join-pwd').val();
 
-        $.ajax({
-            url: '/user/join',
-            type : 'POST',
-            data : {
-                new_user: {
-                    name: new_user_name,
-                    pwd: new_pwd
-                }
-            },
-            datatype: 'json',
-            success : function(res) {
+        if(new_pwd.length < 10){
+            alert('密码长度过小');
+        }else if(new_user_name == null || new_user_name == ''){
+            alert('用户名不能为空');
+        }else{
+            $.ajax({
+                url: '/user/join',
+                type : 'POST',
+                data : {
+                    new_user: {
+                        name: new_user_name,
+                        pwd: new_pwd
+                    }
+                },
+                datatype: 'json',
+                success : function(res) {
 
-                if(res.msg =='success'){
-                    alert(res.new_user.name);
-                    $('.max-mask').fadeOut();
-                } else{
-                    alert('sb');
+                    if(res.msg =='success'){
+                        alert(res.new_user.name);
+                        $('.max-mask').fadeOut();
+                    } else{
+                        alert('sb');
+                    }
                 }
-            }
-        });
+            });
+        }
+
     });
 
     $('.go-login').on('click',function(){
@@ -103,6 +110,8 @@ var changPwdVM = new Vue({
             var self = this;
             if(self.user.pwd_new_1 != self.user.pwd_new_2){
                 alert('两次输入不一致，请重新输入')
+            }else if(self.user.pwd_new_1.length < 4){
+                alert('密码过短');
             }else{
                 $.ajax({
                     url: "/backstage/change_pwd",
@@ -113,7 +122,7 @@ var changPwdVM = new Vue({
                     datatype: "json",
                     success: function (res){
                         if (res.msg == 'success'){
-                            alert('修改成功！')
+                            alert('修改成功！');
                             window.location.href = "/backstage/sign_out";
                         }else{
                             alert('旧密码错误，请重新输入');
@@ -121,6 +130,7 @@ var changPwdVM = new Vue({
                     }
                 })
             }
+
         }
     }
 });

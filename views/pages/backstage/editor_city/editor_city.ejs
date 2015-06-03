@@ -20,7 +20,8 @@
         </div>
         <div class="row city-row">
             <div class="city-item-left">
-                <select class="form-control city-item-edit">
+                <input type="text" class="form-control" v-model="city_item.id" placeholder="目的地编号" style="width:100px;">
+                <select class="form-control city-item-edit" v-model="city_item.type">
                     <option value="-1">选择类型</option>
                     <option>风景</option>
                     <option>美食</option>
@@ -28,16 +29,16 @@
                     <option>名校</option>
                 </select>
                 <input type="text" class="form-control" placeholder="标题" v-model="city_item.title" style="width:200px;">
-
                 <textarea class="item-edit-txt" v-model="city_item.txt"></textarea>
-                <button class="f_l" v-on="click: doUploadItem()" style="  position: absolute;left: 600px;top: 520px;">上传附图</button>
+                <button class="f_l" v-on="click: doUploadItem()" style="  position: absolute;left: 600px;top: 540px;">
+                    上传附图
+                </button>
                 <input type="file" id="item_img" style="display: none;" v-on="change: onItemSelected()">
 
                 <div class="item-img-show">
                     <img v-attr="src: city_item.img">
                 </div>
                 <button type="button" class="btn btn-primary" v-on="click: intoCityItem()">提交</button>
-
             </div>
             <div class="city-item-right">
                 <div>
