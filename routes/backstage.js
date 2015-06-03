@@ -153,7 +153,7 @@ router.post('/intoCityItem', function (req, res, next){
     var city_item = req.body.city_item;
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("INSERT INTO city_item (city_item_id, title, txt, img, type) VALUES ('" + city_item.id +"','" + city_item.title +
+    connection.query("INSERT INTO city_item (city_id, title, txt, img, type) VALUES ('" + city_item.id +"','" + city_item.title +
     "','" + city_item.txt + "','" + city_item.img + "','" + city_item.type + "')",function (err, result){
         if (err) throw err;
         res.json({

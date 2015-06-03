@@ -114,6 +114,7 @@ app.get('/homeEditorData', function(req, res) {
                         if (err) throw err;
                         if (rows.length > 0){
                             var hot_city = rows;
+                            console.log(hot_city)
                             res.json({
                                 msg: 'success',
                                 data: {
@@ -148,6 +149,6 @@ var server = app.listen(3005, function() {
     var host = server.address().address;
     var port = server.address().port;
 
-    console.log('Example app listening at http://%s:%s', host, port);
+    //console.log('Example app listening at http://%s:%s', host, port);
 
 });
