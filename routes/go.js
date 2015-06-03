@@ -55,9 +55,9 @@ router.all('/getDesData/:city_id', function(req, res) {
                                             var city_culture = rows;
 
                                             //----------得到校园数据------------
-                                            connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '名校'", function(err, rows) {
-                                                if(err) throw err;
-                                                if(rows.length >= 0) {
+                                            connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '名校'", function (err, rows) {
+                                                if (err) throw err;
+                                                if (rows.length >= 0) {
                                                     var city_school = rows;
 
                                                     res.json({

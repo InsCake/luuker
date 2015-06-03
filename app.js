@@ -110,7 +110,7 @@ app.get('/homeEditorData', function(req, res) {
                     var rec_articles = rows;
 
                     //获取热门地点数据
-                    connection.query("SELECT city_id, city.img, COUNT(*) FROM city JOIN article ON city.chname = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC", function(err, rows){
+                    connection.query("SELECT city.chname, city.img, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY chname ORDER BY COUNT(*) DESC", function(err, rows){
                         if (err) throw err;
                         if (rows.length > 0){
                             var hot_city = rows;
