@@ -26,7 +26,7 @@
                 <div class="image-nav"></div>
                 <div class="image-nav"></div>
                 <div id="main-search">
-                    <input><span class="search-btn">Go</span>
+                    <input type="search" v-model="search_key"><span class="search-btn" v-on="click: doSearch()">Go</span>
                 </div>
             </div>
         </div>

@@ -1,12 +1,13 @@
 var homeEditorVM = new Vue({
-    el       : '#page_home',
-    data     : {
-        banner : {
+    el   : '#page_home',
+    data : {
+        banner       : {
             img_url : '',
-            txt:''
+            txt     : ''
         },
-        rec_articles: [],
-        hot_city    : ''
+        rec_articles : [],
+        hot_city     : '',
+        search_key   : ''
     },
 
     compiled : function() {
@@ -24,9 +25,20 @@ var homeEditorVM = new Vue({
         });
     },
     methods  : {
-        goCity: function(){
+        goCity   : function() {
             var self = this;
 
+        },
+        doSearch : function() {
+            var self = this;
+            $.ajax({
+                url     : '/go/searchDes?city_name=' + self.search_key,
+                type    : 'GET',
+                success : function(res) {
+                    console.log(res.city);
+                    window.location.href = '/go/' + res.city.city_id;
+                }
+            });
         }
     }
 });
