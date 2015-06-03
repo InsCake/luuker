@@ -179,6 +179,7 @@ input,button,select,textarea{outline:none}
 .hot-text .hot-item{
     float:left;
     margin-left: 20px;
+    position: relative;
 }
 .hot-text .hot-item img{
     border-radius: 5px;
@@ -381,6 +382,21 @@ input,button,select,textarea{outline:none}
     font-weight: bolder;
     margin-left: 80px;
     margin-top: -20px;
+}
+
+.hot-sm-cover{
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 200px;
+    line-height: 70px;
+}
+
+.hot-sm-cover h3{
+    color: #fff;
+    font-weight: bolder;
+    margin-left: 20px;
 }
 
 

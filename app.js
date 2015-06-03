@@ -63,6 +63,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 var multer = require('multer');
+var mysql = require('mysql');
+var mysql_option = require('./config/database.js');
+
 
 var app = express();
 app.set('trust proxy', 1);
@@ -92,8 +95,46 @@ app.get('/', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
-app.get('homeData', function(req, res) {
-    var query = "SELECT city_id, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC";
+app.get('/homeEditorData', function(req, res) {
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("SELECT * FROM headimg WHERE id = '1'", function (err, rows) {
+        if (err) throw err;
+        if (rows.length > 0) {
+            var head_img = rows[0];
+
+            // 获取推荐游记表数据
+            connection.query("SELECT * FROM recommend LEFT JOIN article on recommend.article_id = article.article_id", function (err, rows) {
+                if (err) throw err;
+                if (rows.length > 0) {
+                    var rec_articles = rows;
+
+                    //获取热门地点数据
+                    connection.query("SELECT city_id, COUNT(*) FROM city JOIN article ON city.chname = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC", function(err, rows){
+                        if (err) throw err;
+                        if (rows.length > 0){
+                            var hot_city = rows;
+                            console.log(rows)
+                            res.json({
+                                msg: 'success',
+                                data: {
+                                    rec_articles: rec_articles,
+                                    head_img    : head_img,
+                                    hot_city    : hot_city
+                                }
+
+                            });
+                            connection.end();
+                        }
+                    });
+
+                }
+            })
+        } else {
+            res.json({msg: 'null'});
+        }
+    });
+    //var query = "SELECT city_id, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC";
 });
 
 app.use('/user', user);
@@ -108,6 +149,6 @@ var server = app.listen(3006, function() {
     var host = server.address().address;
     var port = server.address().port;
 
-    console.log('Example app listening at http://%s:%s', host, port);
+    //console.log('Example app listening at http://%s:%s', host, port);
 
 });

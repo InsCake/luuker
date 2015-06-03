@@ -5,18 +5,20 @@ var homeEditorVM = new Vue({
             img_url : '',
             txt:''
         },
-        rec_articles: []
+        rec_articles: [],
+        hot_city    : ''
     },
 
     compiled : function() {
         var self = this;
         $.ajax({
-            url     : '/backstage/homeEditorData',
+            url     : '/homeEditorData',
             type    : 'GET',
             success : function(res) {
                 self.banner.img_url = res.data.head_img.url;
                 self.banner.txt = res.data.head_img.txt;
                 self.rec_articles = res.data.rec_articles;
+                self.hot_city = res.data.hot_city;
             }
 
         });

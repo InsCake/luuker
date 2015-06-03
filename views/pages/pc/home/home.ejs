@@ -57,18 +57,12 @@
             </div>
         </div>
         <div class="wrap">
-            <div class="hot-text clearfix">
-                <div class="hot-item">
-                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-                </div>
-                <div class="hot-item">
-                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-                </div>
-                <div class="hot-item">
-                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
-                </div>
-                <div class="hot-item">
-                    <img src="https://a0.muscache.com/ic/discover/377?interpolation=lanczos-none&output-format=jpg&output-quality=70&v=33b4f2&downsize=326px:326px">
+            <div class="hot-text clearfix" >
+                <div class="hot-item" v-repeat="hot_city : hot_city">
+                    <div class="hot-sm-cover" >
+                        <h3>{{ hot_city.city_id }}</h3>
+                    </div>
+                    <img v-attr="src: hot_city.img">
                 </div>
             </div>
         </div>
