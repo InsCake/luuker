@@ -30,7 +30,7 @@ var goVM = new Vue({
         var self = this;
 
         $.ajax({
-            url     : '/go/getDesData',
+            url     : $request_urls.getDesData,
             type    : 'GET',
             success : function(res) {
                 self.the_des = res.data.des;
