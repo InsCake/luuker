@@ -43,7 +43,7 @@
                 <img v-attr="src: article.img">
                 <div class="sm-cover">
                     <div class="rec-head" >
-                        <img src="/images/head.jpg">
+                        <!--<img src="/images/head.jpg">-->
                         <h3>{{ article.name }}</h3>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
             <div class="hot-text clearfix" >
                 <a class="hot-item" v-repeat="hot_city : hot_city" v-attr="href: '/go' ">
                     <div class="hot-sm-cover" >
-                        <h3>{{ hot_city.city_id }}</h3>
+                        <h3>{{ hot_city.chname }}</h3>
                     </div>
                     <img v-attr="src: hot_city.img">
                 </a>

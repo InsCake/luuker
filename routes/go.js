@@ -27,7 +27,7 @@ router.all('/getDesData', function(req, res) {
             var des = rows[0];
 
             //------------得到游记数据--------------
-            connection.query("SELECT * FROM article WHERE status = '1' && city_id = '7'", function (err, rows) {
+            connection.query("SELECT * FROM article WHERE status = '1' && city_id = '7' LIMIT 0,6", function (err, rows) {
                 if (err) throw err;
                 if (rows.length >= 0) {
                     var city_articles = rows;

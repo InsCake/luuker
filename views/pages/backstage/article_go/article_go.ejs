@@ -23,7 +23,7 @@
                     <iframe v-attr="src:'/article/' + current_article_id" style="width: 100%; height: 400px;"></iframe>
                 </div>
                 <div class="modal-footer form-inline">
-                    <input type="text" class="form-control" placeholder="输入游记所属目的地" v-model="current_article_city">
+                    <input type="text" class="form-control" placeholder="输入游记所属目的地id" v-model="current_article_city">
                     <button type="button" class="btn btn-primary" v-on="click: passArticle()">审核通过</button>
                     <button type="button" class="btn btn-warning" v-on="click: unpassArticle()">审核不通过</button>
                 </div>

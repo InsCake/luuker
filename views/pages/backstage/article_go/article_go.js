@@ -7,7 +7,7 @@ var articleGo = new Vue({
         title       : 'title！',
 
         articles    : [],
-        current_article_id : 0,
+        current_article_id : '',
         current_article_city: ''
     },
     compiled : function() {

@@ -38,7 +38,7 @@ router.post('/write', function(req, res) {
                              + i + ", "
                              + article_id + ")", function(err, result) {
                 if(err) throw err;
-                console.log(result.insertId);
+                //console.log(result.insertId);
             });
             if(i + 1 >= article.units.length) {
                 connection.end();
@@ -63,6 +63,7 @@ router.get('/articleData/:article_id', function(req, res) {
         if(err) throw err;
         if(rows.length > 0) {
             var article = rows[0];
+            console.log(article)
             connection.query("SELECT * FROM article_unit WHERE article_id = " + article_id, function(err, rows) {
                 if(err) throw err;
                 if(rows.length > 0) {
@@ -71,7 +72,6 @@ router.get('/articleData/:article_id', function(req, res) {
                                      article_id, function(err, rows) {
                         if(err) throw err;
                         var comments = rows;
-                        console.log(article);
                         res.json({
                             data : {
                                 article       : article,
