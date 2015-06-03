@@ -17,7 +17,11 @@
             <div class="des-book f_l">
                 <h2>相关游记</h2>
                 <div class="city-article-row" v-repeat="city_article : city_articles">
-                    <i class="fa fa-bicycle">&nbsp;&nbsp;&nbsp;</i><a>{{ city_article.name }}</a>
+                    <!--<i class="fa fa-bicycle">&nbsp;&nbsp;&nbsp;</i><a>{{ city_article.name }}</a>-->
+                    <div class="article-list">
+                        <img v-attr="src: city_article.img">
+                        <a v-attr="href: '/article/' + city_article.article_id">{{ city_article.name }}</a>
+                    </div>
                 </div>
             </div>
         </div>

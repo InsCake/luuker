@@ -115,7 +115,7 @@ router.post('/changeTxt', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
     connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool +
-                     "' WHERE user_id = " + user.user_id, function(err, rows) {
+                     "', age = '" + txt.nage + "' WHERE user_id = " + user.user_id, function(err, rows) {
         res.json({ msg : 'success' });
     });
     connection.end();

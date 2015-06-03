@@ -38,15 +38,16 @@
             </div>
         </div>
         <div class="wrap clearfix">
-            <div class="rec-article-item" v-repeat="article : rec_articles" v-class="big: $index == 0">
+            <a class="rec-article-item" v-repeat="article : rec_articles" v-class="big: $index == 0"
+               v-attr="href: '/article/' + article.article_id" style="display: block;" >
                 <img v-attr="src: article.img">
                 <div class="sm-cover">
-                    <div class="rec-head">
+                    <div class="rec-head" >
                         <img src="/images/head.jpg">
                         <h3>{{ article.name }}</h3>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="middle">

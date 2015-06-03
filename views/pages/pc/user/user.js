@@ -39,13 +39,16 @@ var userVM = new Vue({
             mail    : '',
             school  : '',
             nmail   : '',
-            nschool : ''
+            nschool : '',
+            age     : '',
+            nage    : ''
         },
         current_tab : 'user_info',
         a           : {
             mail   : '',
             school : '',
-            alter  : ''
+            alter  : '',
+            age    : ''
         },
         the_user    : {},
         articles    : []
@@ -63,7 +66,9 @@ var userVM = new Vue({
                 self.user.school = res.data.user.school;
                 self.user.nmail = res.data.user.mail;
                 self.user.nschool = res.data.user.school;
-                console.log(res.data.articles.status);
+                self.user.nage = res.data.user.age;
+                self.user.age = res.data.user.age;
+                console.log(res.data.user.age);
 
                 if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';
@@ -75,6 +80,12 @@ var userVM = new Vue({
                     self.a.school = '添加';
                 } else {
                     self.a.school = '修改';
+                }
+
+                if(res.data.user.age == ''||res.data.user.age == null) {
+                    self.a.age = '添加';
+                } else {
+                    self.a.age = '修改';
                 }
 
                 if(res.data.articles.status == 0||res.data.articles.status == 2){

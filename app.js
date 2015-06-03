@@ -92,6 +92,9 @@ app.get('/', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
+app.get('homeData', function(req, res) {
+    var query = "SELECT city_id, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY city_id ORDER BY COUNT(*) DESC";
+});
 
 app.use('/user', user);
 app.use('/article', article);

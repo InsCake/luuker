@@ -88,9 +88,13 @@ a:hover{
 }
 .item-img-show{
     margin-bottom: 10px;
+    position: absolute;
+    top: 566px;
+    left: 600px;
 }
 
 .item-img-show img{
-    margin-left: 20px;
+    width: 400px;
+    height: 160px;
 }
 

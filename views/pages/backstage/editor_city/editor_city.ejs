@@ -16,7 +16,7 @@
     <hr style="margin-left: -15px;">
     <div class="mg-city-book">
         <div class="row edit-row">
-            <div class="col-md-4 tit-mid">添加目的地官方攻略</div>
+            <div class="col-md-4 tit-mid">添加目的地官方资讯</div>
         </div>
         <div class="row city-row">
             <div class="city-item-left">
@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" placeholder="标题" v-model="city_item.title" style="width:200px;">
 
                 <textarea class="item-edit-txt" v-model="city_item.txt"></textarea>
-                <button class="f_l" v-on="click: doUploadItem()">上传附图</button>
+                <button class="f_l" v-on="click: doUploadItem()" style="  position: absolute;left: 600px;top: 520px;">上传附图</button>
                 <input type="file" id="item_img" style="display: none;" v-on="change: onItemSelected()">
 
                 <div class="item-img-show">
