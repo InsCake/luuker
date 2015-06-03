@@ -21,37 +21,37 @@ router.get('/', function(req, res) {
 router.all('/getDesData', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("SELECT * FROM city WHERE id = '7'", function (err, rows) {
+    connection.query("SELECT * FROM city WHERE city_id = '7'", function (err, rows) {
         if (err) throw err;
         if (rows.length > 0) {
             var des = rows[0];
 
             //------------得到游记数据--------------
-            connection.query("SELECT * FROM article WHERE status = '1' && city_id = '台北'", function (err, rows) {
+            connection.query("SELECT * FROM article WHERE status = '1' && city_id = '7'", function (err, rows) {
                 if (err) throw err;
                 if (rows.length >= 0) {
                     var city_articles = rows;
 
                     //----------得到美食数据------------
-                    connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '美食'", function (err, rows) {
+                    connection.query("SELECT * FROM city_item WHERE city_id = '7' && type = '美食'", function (err, rows) {
                         if (err) throw err;
                         if (rows.length >= 0) {
                             var city_food = rows;
 
                             //----------得到风景数据------------
-                            connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '风景'", function (err, rows) {
+                            connection.query("SELECT * FROM city_item WHERE city_id = '7' && type = '风景'", function (err, rows) {
                                 if (err) throw err;
                                 if (rows.length >= 0) {
                                     var city_sight = rows;
 
                                     //----------得到文化数据------------
-                                    connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '文化'", function (err, rows) {
+                                    connection.query("SELECT * FROM city_item WHERE city_id = '7' && type = '文化'", function (err, rows) {
                                         if (err) throw err;
                                         if (rows.length >= 0) {
                                             var city_culture = rows;
 
                                             //----------得到校园数据------------
-                                            connection.query("SELECT * FROM city_item WHERE city_item_id = '7' && type = '名校'", function (err, rows) {
+                                            connection.query("SELECT * FROM city_item WHERE city_id = '7' && type = '名校'", function (err, rows) {
                                                 if (err) throw err;
                                                 if (rows.length >= 0) {
                                                     var city_school = rows;

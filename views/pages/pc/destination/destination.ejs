@@ -35,7 +35,7 @@
 
         <div class="nav-cont wrap active" id="des_food" >
             <div class="pure-g des-row" v-repeat="city_food : city_food">
-                <div class="cont-item pure-u-1-2"><img sv-attr="src: city_food.img"></div>
+                <div class="cont-item pure-u-1-2"><img v-attr="src: city_food.img"></div>
                 <div class="cont-item item-txt pure-u-1-2">
                     <h2>{{ city_food.title }}</h2>
                     <p>{{ city_food.txt }}</p>
@@ -45,7 +45,7 @@
 
         <div class="nav-cont wrap" id="des_sight" >
             <div class="pure-g des-row" v-repeat="city_sight : city_sight">
-                <div class="cont-item pure-u-1-2"><img src="http://m2.quanjing.com/2m/alamyrf001/axr3d5.jpg"></div>
+                <div class="cont-item pure-u-1-2"><img v-attr="src: city_sight.img"></div>
                 <div class="cont-item item-txt pure-u-1-2">
                     <h2>{{ city_sight.title }}</h2>
                     <p>{{ city_sight.txt }}</p>
@@ -55,7 +55,7 @@
 
         <div class="nav-cont wrap" id="des_school">
             <div class="pure-g des-row" v-repeat="city_school : city_school">
-                <div class="cont-item pure-u-1-2"><img src="http://www.cnjpetr.org/uploads/allimg/120316/529-1203161II2.jpg"></div>
+                <div class="cont-item pure-u-1-2"><img v-attr="src: city_school.img"></div>
                 <div class="cont-item item-txt pure-u-1-2">
                     <h2>{{ city_school.title }}</h2>
                     <p>{{ city_school.txt }}</p>
@@ -65,7 +65,7 @@
 
         <div class="nav-cont wrap" id="des_culture">
             <div class="pure-g des-row" v-repeat="city_culture : city_culture">
-                <div class="cont-item pure-u-1-2"><img src="http://i1.w.hjfile.cn/doc/201107/0899628.jpg"></div>
+                <div class="cont-item pure-u-1-2"><img v-attr="src: city_culture.img"></div>
                 <div class="cont-item item-txt pure-u-1-2">
                     <h2>{{ city_culture.title }}</h2>
                     <p>{{ city_culture.txt }}</p>
