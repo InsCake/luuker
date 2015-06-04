@@ -36,7 +36,6 @@ router.get('/sign_in', function (req, res, next) {
 
 //------首页管理页面渲染------
 router.get('/editor', function (req, res, next) {
-
     if (req.session.admin == null) {
         res.redirect('/backstage/sign_in');
     } else {
@@ -47,11 +46,8 @@ router.get('/editor', function (req, res, next) {
             footer: true,
             user: req.session.admin
         };
-
         res.render('layouts/layout_backstage', data);
     }
-
-
 });
 
 //------目的地管理页面渲染--------------------
@@ -294,6 +290,53 @@ router.post('/change_pwd', function (req, res, next) {
             });
         }
     });
+});
+
+router.get('/add_guide', function(req, res, next) {
+    if (req.session.admin == null) {
+        res.redirect('/backstage/sign_in');
+    } else {
+        var data = {
+            page: 'add_guide',
+            site: 'backstage',
+            header: true,
+            footer: false,
+            user: req.session.admin
+        };
+        res.render('layouts/layout_backstage', data);
+    }
+});
+
+router.post('/add_guide', function(req, res) {
+    var article = req.body.article;
+    var article_id;
+
+    var connection = mysql.createConnection(mysql_option);
+
+    connection.query("INSERT INTO article (name, img, type) VALUES ('" + article.name
+                     + "', '" + article.banner + "', 'official_notes')", function(err, result) {
+        if(err) throw err;
+        article_id = result.insertId;
+
+        for(var i = 0; i < article.units.length; i++) {
+            connection.query("INSERT INTO article_unit (type, value, display_order, article_id) VALUES ('"
+                             + article.units[i].type + "', '"
+                             + article.units[i].value + "', "
+                             + i + ", "
+                             + article_id + ")", function(err, result) {
+                if(err) throw err;
+                //console.log(result.insertId);
+            });
+            if(i + 1 >= article.units.length) {
+                connection.end();
+            }
+        }
+    });
+
+
+    res.json({
+        msg : 'success'
+    })
 });
 
 module.exports = router;

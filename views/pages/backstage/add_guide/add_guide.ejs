@@ -1,0 +1,66 @@
+<div class="page-article-write" id="article-write">
+    <div class="wrap">
+        <div class="pure-g">
+            <div class="pure-u-4-24"></div>
+            <div class="pure-u-16-24 article-panel-wrap">
+                <article class="article-panel">
+                    <div class="writing-user">
+                        <img v-attr="src: the_user.img">
+                    </div>
+                    <div class="article-header" v-on="click: uploadHeadImage()"
+                         v-style="background: 'url(' + banner + ') no-repeat center center'"
+                         style="height: 300px; background-size: 100% auto;">
+                        <h1 id="article_name" contenteditable="true" v-on="click: stopEvent($event)">点击添加标题</h1>
+                        <input type="file" id="article_banner" style="display: none;" v-on="change : onBannerSelect()">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-unit" v-repeat="unit: units">
+                            <h3 class="unit-p-title" v-if="unit.type == 'p-title'">{{ unit.value }}</h3>
+                            <p class="unit-text" v-if="unit.type == 'text'">{{ unit.value }}</p>
+                            <img class="unit-image" v-attr="src: unit.value" v-if="unit.type == 'image'">
+                        </div>
+                    </div>
+                </article>
+                <section class="article-add-unit pt-20">
+                    <div class="pure-form" v-show="add_unit.type != ''"
+                         style="padding: 10px; background-color: #fff;">
+                        <div class="add-para-title" v-if="add_unit.type == 'p-title'">
+                            <textarea class="pure-input-1" placeholder="添加段落标题"
+                                      v-model="add_unit.value"
+                                      style="font-size: 20px; height: 42px; resize: none;"></textarea></div>
+                        <div class="add-text" v-if="add_unit.type == 'text'">
+                            <textarea class="pure-input-1" placeholder="添加文字"
+                                      v-model="add_unit.value"
+                                      style="font-size: 14px; height: 80px; resize: none;"></textarea></div>
+                        <div class="add-photos" v-if="add_unit.type == 'image'">
+                            <img v-attr="src: add_unit.value" style="width: 100%;">
+                            <input type="file" class="image-input" v-on="change: onImagesSelect($event)">
+                        </div>
+                        <div class="add-bar clearfix pt-10">
+                            <div class="fr">
+                                <button class="pure-button" v-on="click: showAddUnit('')">取消</button>
+                                <button class="pure-button button-success" v-on="click: addArticleUnit()">添加</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-10">
+                        <button class="pure-button" v-on="click: showAddUnit('p-title')">
+                            <i class="fa fa-font"></i> 添加段落标题
+                        </button>
+                        <button class="pure-button" v-on="click: showAddUnit('text')">
+                            <i class="fa fa-font"></i> 添加文字
+                        </button>
+                        <button class="pure-button" v-on="click: showAddUnit('image')">
+                            <i class="fa fa-picture-o"></i> 添加图片
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <div class="pure-u-4-24">
+                <div class="article-op">
+                    <button class="pure-button" v-on="click: submitArticle()"><i class="fa fa-check"></i> 完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
