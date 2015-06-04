@@ -22,11 +22,8 @@
         <div class="search-cover"></div>
         <div class="main-area">
             <div class="search-area">
-                <div class="image-nav"></div>
-                <div class="image-nav"></div>
-                <div class="image-nav"></div>
                 <div id="main-search">
-                    <input type="search" v-model="search_key"><span class="search-btn" v-on="click: doSearch()">Go</span>
+                    <input type="search" v-model="search_key" placeholder="想去哪儿"><span class="search-btn" v-on="click: doSearch()">Go</span>
                 </div>
             </div>
         </div>
@@ -58,7 +55,7 @@
         </div>
         <div class="wrap">
             <div class="hot-text clearfix" >
-                <a class="hot-item" v-repeat="hot_city : hot_city" v-attr="href: '/go' ">
+                <a class="hot-item" v-repeat="hot_city : hot_city" v-attr="href: '/go/'+ hot_city.city_id">
                     <div class="hot-sm-cover" >
                         <h3>{{ hot_city.chname }}</h3>
                     </div>

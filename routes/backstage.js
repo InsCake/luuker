@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
         res.redirect('/backstage/sign_in');
     } else {
         var data = {
-            page: 'home',
+            page: 'article_go',
             site: 'backstage',
             header: true,
             footer: true,

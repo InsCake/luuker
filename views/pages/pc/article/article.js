@@ -10,8 +10,8 @@ var articleVM = new Vue({
             url     : $request_urls.getArticleData,
             type    : 'GET',
             success : function(res) {
+
                 self.article = res.data;
-                console.log(self.article);
             }
         });
     },
@@ -29,6 +29,8 @@ var articleVM = new Vue({
                 success  : function(res) {
                     if(res.msg == 'success') {
                         window.location.reload();
+                    }else{
+                        alert('未登录不能评论');
                     }
                 }
             });

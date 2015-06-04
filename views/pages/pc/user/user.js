@@ -41,14 +41,16 @@ var userVM = new Vue({
             nmail   : '',
             nschool : '',
             age     : '',
-            nage    : ''
+            nage    : '',
+            nsex    : ''
         },
         current_tab : 'user_info',
         a           : {
             mail   : '',
             school : '',
             alter  : '',
-            age    : ''
+            age    : '',
+            sex    : ''
         },
         the_user    : {},
         articles    : []
@@ -68,6 +70,8 @@ var userVM = new Vue({
                 self.user.nschool = res.data.user.school;
                 self.user.nage = res.data.user.age;
                 self.user.age = res.data.user.age;
+                self.user.nsex = res.data.user.sex;
+                self.user.sex = res.data.user.sex;
 
                 if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';

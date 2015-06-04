@@ -30,6 +30,14 @@
             <div class="user-txt nav-cont active">
                 <form class="pure-form pure-form-aligned">
                     <fieldset>
+                        <!--<div class="pure-control-group txt-line">-->
+                            <!--<label for="foo">您的性别</label>-->
+                            <!--<span id="school_show">{{ the_user.sex }}</span><a class="alter-sch">{{ a.sex }}</a>-->
+                            <!--<form class="pure-form" v-model="user.nsex" style="display: none">-->
+                                <!--<input id="option-two" type="radio" name="optionsRadios" value="option1" checked style="width: 12px;">男&nbsp;&nbsp;&nbsp;-->
+                                <!--<input id="option-three" type="radio" name="optionsRadios" value="option2" style="width: 12px;">女-->
+                            <!--</form>-->
+                        <!--</div>-->
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的年龄</label>
                             <span id="school_show">{{ the_user.age }}</span><a class="alter-sch">{{ a.age }}</a>
@@ -58,8 +66,8 @@
                 </form>
             </div>
             <div class="user-article nav-cont" id="user_article">
-                <div class="article-line" v-repeat="article: articles">
-                    <i class="fa fa-book fa-2x">&nbsp;</i><a href="/article/3">{{ article.name }}</a>
+                <div class="article-line" v-repeat="article: articles" >
+                    <i class="fa fa-book fa-2x">&nbsp;</i><a v-attr="href: '/article/' + article.article_id">{{ article.name }}</a>
                     <a class="update-article" v-show="article.status == 0">未审核</a>
                     <a class="update-article" v-show="article.status == 1">审核通过</a>
                     <a class="update-article" v-show="article.status == 2">审核不通过</a>

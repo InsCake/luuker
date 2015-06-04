@@ -104,7 +104,7 @@ input,button,select,textarea{outline:none}
     width: 350px;
     background-color: #fff;
     border-radius: 3px;
-    margin-top:70px;
+    margin-top:12px;
 
 
 
@@ -117,7 +117,7 @@ input,button,select,textarea{outline:none}
     margin: 1px 10px;
     color: #3c3c3c;
     position: absolute;
-
+    top:111px;
 }
 
 .search-btn{
@@ -166,7 +166,7 @@ input,button,select,textarea{outline:none}
     height: 150px;
     background-color: rgba(0,0,0,0.6);
     position: relative;
-    top:400px;
+    top:350px;
 }
 
 
@@ -383,8 +383,6 @@ input,button,select,textarea{outline:none}
     color: #fff;
     font-size: 18px;
     font-weight: bolder;
-    /*margin-left: 80px;*/
-    /*margin-top: -20px;*/
     position: relative;
     top:25px;
     left: 10px;

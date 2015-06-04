@@ -95,6 +95,7 @@ app.get('/', function(req, res) {
     };
     res.render('layouts/layout', data);
 });
+
 app.get('/homeEditorData', function(req, res) {
     var connection = mysql.createConnection(mysql_option);
 
@@ -110,7 +111,7 @@ app.get('/homeEditorData', function(req, res) {
                     var rec_articles = rows;
 
                     //获取热门地点数据
-                    connection.query("SELECT city.chname, city.img, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY chname ORDER BY COUNT(*) DESC", function(err, rows){
+                    connection.query("SELECT city.chname, city.city_id, city.img, COUNT(*) FROM city JOIN article ON city.city_id = article.city_id GROUP BY chname ORDER BY COUNT(*) DESC LIMIT 0, 4", function(err, rows){
                         if (err) throw err;
                         if (rows.length > 0){
                             var hot_city = rows;

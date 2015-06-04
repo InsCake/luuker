@@ -8,7 +8,7 @@
                         <img v-attr="src: article.article.user_img">
                     </div>
                     <div class="article-header" v-style="background-image: 'url(' + article.article.article_img + ')'">
-                        <h1 id="article_name">{{ article.article.name }}</h1>
+                        <h1 id="article_name">{{ article.article.article_name }}</h1>
                     </div>
                     <div class="article-content">
                         <div class="article-unit" v-repeat="unit: article.article_units">

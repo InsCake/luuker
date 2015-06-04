@@ -83,7 +83,7 @@ router.post('/changePwd', function(req, res) {
             res.json({ msg : 'wrong' });
         }else{
             connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = " + user.user_id, function(err, rows, fields) {
-                console.log(pwd.npwd1)
+                //console.log(pwd.npwd1)
                 res.json({ msg : 'success' });
                 connection.end();
             });
@@ -102,7 +102,7 @@ router.post('/uploadHeadImage', function(req, res) {
     connection.query("UPDATE user SET img = '" + image.upload.path.slice(5) +
                      "' WHERE user_id = " + user.user_id, function(err, result) {
         if(err) throw err;
-        console.log(111);
+        //console.log(111);
         res.json({ msg : 'success' });
     });
     connection.end();
@@ -115,7 +115,7 @@ router.post('/changeTxt', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
     connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool +
-                     "', age = '" + txt.nage + "' WHERE user_id = " + user.user_id, function(err, rows) {
+                     "', age = '" + txt.nage + "',sex = '" + txt.nsex + "' WHERE user_id = " + user.user_id, function(err, rows) {
         res.json({ msg : 'success' });
     });
     connection.end();
@@ -133,6 +133,7 @@ router.all('/getUserData', function(req, res) {
             connection.query("SELECT * FROM article WHERE user_id = " + user.user_id, function(err, rows) {
                 if(err) throw err;
                 var articles = rows;
+                console.log(rows);
                 res.json({
                     data : {
                         user     : user,
@@ -153,13 +154,13 @@ router.post('/nameEditorData', function(req, res) {
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = " + user_now.user_id, function(err, rows, fields) {
-        console.log(user_now.user_id)
+        //console.log(user_now.user_id)
         res.json({
             msg : user.name
         });
     });
 
     connection.end();
-})
+});
 
 module.exports = router;
