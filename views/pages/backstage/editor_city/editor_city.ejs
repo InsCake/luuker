@@ -20,9 +20,9 @@
         </div>
         <div class="row city-row">
             <div class="city-item-left">
-                <input type="text" class="form-control" v-model="city_item.id" placeholder="目的地编号" style="width:100px;">
+                <input type="text" class="form-control" v-model="city_item.name" placeholder="目的地" style="width:100px;">
                 <select class="form-control city-item-edit" v-model="city_item.type">
-                    <option value="-1">选择类型</option>
+                    <option selected="selected">选择类型</option>
                     <option>风景</option>
                     <option>美食</option>
                     <option>文化</option>
@@ -40,11 +40,11 @@
                 </div>
                 <button type="button" class="btn btn-primary" v-on="click: intoCityItem()">提交</button>
             </div>
-            <div class="city-item-right">
-                <div>
-                    <img>
-                </div>
-            </div>
+            <!--<div class="city-item-right">-->
+                <!--<div>-->
+                    <!--<img>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
     <hr>

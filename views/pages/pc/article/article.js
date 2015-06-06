@@ -10,7 +10,6 @@ var articleVM = new Vue({
             url     : $request_urls.getArticleData,
             type    : 'GET',
             success : function(res) {
-
                 self.article = res.data;
             }
         });
@@ -21,6 +20,7 @@ var articleVM = new Vue({
             $.ajax({
                 url      : '/article/addComment',
                 data     : {
+
                     comment    : self.add_comment,
                     article_id : self.article.article.article_id
                 },

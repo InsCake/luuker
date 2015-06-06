@@ -23,6 +23,12 @@ $(document).ready(function() {
         $('#foo').show();
     });
 
+    $('.alter-age').on('click', function() {
+        $(this).hide();
+        $('#age_show').hide();
+        $('#age').show();
+    });
+
 });
 
 var userVM = new Vue({
@@ -41,16 +47,14 @@ var userVM = new Vue({
             nmail   : '',
             nschool : '',
             age     : '',
-            nage    : '',
-            nsex    : ''
+            nage    : ''
         },
         current_tab : 'user_info',
         a           : {
             mail   : '',
             school : '',
             alter  : '',
-            age    : '',
-            sex    : ''
+            age    : ''
         },
         the_user    : {},
         articles    : []
@@ -70,8 +74,6 @@ var userVM = new Vue({
                 self.user.nschool = res.data.user.school;
                 self.user.nage = res.data.user.age;
                 self.user.age = res.data.user.age;
-                self.user.nsex = res.data.user.sex;
-                self.user.sex = res.data.user.sex;
 
                 if(res.data.user.mail == ''||res.data.user.mail == null) {
                     self.a.mail = '添加';
@@ -115,7 +117,9 @@ var userVM = new Vue({
             var self = this;
             if(self.user.npwd1 != self.user.npwd2) {
                 alert('两次输入不一致，请重新输入');
-            } else {
+            } else if(self.user.npwd1.length < 10){
+                alert('密码长度过短')
+            }else{
                 $.ajax({
                     url      : '/user/changePwd',
                     type     : 'POST',

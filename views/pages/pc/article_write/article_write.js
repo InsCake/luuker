@@ -32,7 +32,7 @@ var articleWriteVM = new Vue({
                 formData.append('upload', file);
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("post", "/upload/images", true);
+                xhr.open("post", "/uploads/images", true);
                 xhr.send(formData);
 
                 xhr.onreadystatechange = function() {
@@ -94,7 +94,7 @@ var articleWriteVM = new Vue({
             formData.append('upload', file);
 
             var xhr = new XMLHttpRequest();
-            xhr.open("post", "/upload/images", true);
+            xhr.open("post", "/uploads/images", true);
             xhr.send(formData);
 
             xhr.onreadystatechange = function() {

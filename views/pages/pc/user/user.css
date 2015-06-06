@@ -126,7 +126,7 @@ a {
     font-weight : bold;
 }
 
-.alter-mail, .alter-sch{
+.alter-mail, .alter-sch, .alter-age{
     margin-left: 10px;
     cursor: pointer;
     text-decoration: underline;

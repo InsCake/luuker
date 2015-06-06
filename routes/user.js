@@ -52,16 +52,28 @@ router.post('/join', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
 
-    connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd +
-                     "')", function(err, result) {
+    connection.query("SELECT * FROM user WHERE name = '" + new_user.name + "'",function(err, rows){
         if(err) throw err;
-        res.json({
-            msg      : 'success',
-            new_user : new_user
-        })
+        if(rows.length > 0){
+            res.json({
+                msg:'already'
+            })
+        }else{
+            connection.query("INSERT INTO user (name, password) VALUES ('" + new_user.name + "','" + new_user.pwd +
+            "')", function(err, result) {
+                if(err) throw err;
+                res.json({
+                    msg      : 'success',
+                    new_user : new_user
+                })
+            });
+        }
+        connection.end();
+
     });
 
-    connection.end();
+
+
 });
 
 //------------登出动作------------
@@ -83,7 +95,6 @@ router.post('/changePwd', function(req, res) {
             res.json({ msg : 'wrong' });
         }else{
             connection.query("UPDATE user SET password = '" + pwd.npwd1 + "' WHERE user_id = " + user.user_id, function(err, rows, fields) {
-                //console.log(pwd.npwd1)
                 res.json({ msg : 'success' });
                 connection.end();
             });
@@ -102,7 +113,6 @@ router.post('/uploadHeadImage', function(req, res) {
     connection.query("UPDATE user SET img = '" + image.upload.path.slice(5) +
                      "' WHERE user_id = " + user.user_id, function(err, result) {
         if(err) throw err;
-        //console.log(111);
         res.json({ msg : 'success' });
     });
     connection.end();
@@ -112,10 +122,11 @@ router.post('/uploadHeadImage', function(req, res) {
 router.post('/changeTxt', function(req, res) {
     var txt = req.body.user;
     var user = req.session.user;
+    console.log(txt)
 
     var connection = mysql.createConnection(mysql_option);
     connection.query("UPDATE user SET mail = '" + txt.nmail + "', school = '" + txt.nschool +
-                     "', age = '" + txt.nage + "',sex = '" + txt.nsex + "' WHERE user_id = " + user.user_id, function(err, rows) {
+                     "', age = '" + txt.nage + "' WHERE user_id = " + user.user_id, function(err, rows) {
         res.json({ msg : 'success' });
     });
     connection.end();
@@ -130,10 +141,9 @@ router.all('/getUserData', function(req, res) {
         if(rows.length > 0) {
             var user = rows[0];
             req.session.user = rows[0];
-            connection.query("SELECT * FROM article WHERE user_id = " + user.user_id, function(err, rows) {
+            connection.query("SELECT * FROM article WHERE user_id = '" + user.user_id + "' AND status = '1'" , function(err, rows) {
                 if(err) throw err;
                 var articles = rows;
-                console.log(rows);
                 res.json({
                     data : {
                         user     : user,
@@ -154,7 +164,6 @@ router.post('/nameEditorData', function(req, res) {
     var connection = mysql.createConnection(mysql_option);
 
     connection.query("UPDATE user SET name = '" + user.name + "'WHERE user_id = " + user_now.user_id, function(err, rows, fields) {
-        //console.log(user_now.user_id)
         res.json({
             msg : user.name
         });

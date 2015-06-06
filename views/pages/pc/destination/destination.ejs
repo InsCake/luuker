@@ -11,9 +11,9 @@
             <p>{{ the_des.intro }}</p>
         </div>
         <div class="des-book-box clearfix">
-            <div class="det-social f_l">
+            <a class="det-social f_l" v-attr="href: '/article/' + official.article_id">
                 <img v-attr="src: the_des.book">
-            </div>
+            </a>
             <div class="des-book f_l">
                 <h2>相关游记</h2>
                 <div class="city-article-row" v-repeat="city_article : city_articles">

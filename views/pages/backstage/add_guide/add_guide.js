@@ -32,7 +32,7 @@ var articleWriteVM = new Vue({
                 formData.append('upload', file);
 
                 var xhr = new XMLHttpRequest();
-                xhr.open("post", "/upload/images", true);
+                xhr.open("post", "/uploads/images", true);
                 xhr.send(formData);
 
                 xhr.onreadystatechange = function() {
@@ -74,7 +74,7 @@ var articleWriteVM = new Vue({
                         banner : self.banner,
                         units  : self.units,
                         head   : self.the_user.img
-                    },
+                    }
                 },
                 success  : function(res) {
                     alert('上传成功');
@@ -94,7 +94,7 @@ var articleWriteVM = new Vue({
             formData.append('upload', file);
 
             var xhr = new XMLHttpRequest();
-            xhr.open("post", "/upload/images", true);
+            xhr.open("post", "/uploads/images", true);
             xhr.send(formData);
 
             xhr.onreadystatechange = function() {

@@ -4,7 +4,7 @@
             <div class="pure-u-4-24"></div>
             <div class="pure-u-16-24 article-panel-wrap">
                 <article class="article-panel">
-                    <div class="writing-user">
+                    <div class="writing-user" v-if="article.article.article_type == 'travel_notes'">
                         <img v-attr="src: article.article.user_img">
                     </div>
                     <div class="article-header" v-style="background-image: 'url(' + article.article.article_img + ')'">

@@ -19,17 +19,6 @@ router.get('/write', function(req, res) {
     }
 });
 
-router.get('/nopublish', function(req, res) {
-    var data = {
-        page         : 'nopublish',
-        site         : 'pc',
-        header       : false,
-        footer       : false,
-        request_urls : false,
-        user         : req.session.user ? req.session.user : false
-    };
-    res.render('layouts/layout', data);
-});
 
 router.post('/write', function(req, res) {
     var article = req.body.article;
@@ -100,51 +89,45 @@ router.get('/articleData/:article_id', function(req, res) {
 });
 
 router.post('/addComment', function(req, res) {
+    console.log(1)
+
     var comment = req.body.comment;
     var article_id = req.body.article_id;
-    if(!req.session.user) {
-        res.json({
-            msg : 'no'
-        });
-    }
-    var user_id = req.session.user.user_id;
+    if(req.session.user == null){
 
-    var connection = mysql.createConnection(mysql_option);
-    connection.query("INSERT INTO comment (content, article_id, user_id) VALUES ('" + comment + "', " + article_id +
-                     ", " + user_id + ")", function(err, result) {
-        if(err) throw err;
+        res.json({
+            msg : 'null'
+        });
+    }else{
+        var user_id = req.session.user.user_id;
+
+        var connection = mysql.createConnection(mysql_option);
+        connection.query("INSERT INTO comment (content, article_id, user_id) VALUES ('" + comment + "', " + article_id +
+        ", " + user_id + ")", function(err, result) {
+            if(err) throw err;
             res.json({
                 msg : 'success'
             });
 
-    });
+        });
+    }
+
 });
 
 router.get('/:article_id', function(req, res) {
     var article_id = req.params.article_id;
 
-    var connection = mysql.createConnection(mysql_option);
+    res.render('layouts/layout', {
+        page         : 'article',
+        site         : 'pc',
+        header       : 'common',
+        footer       : true,
+        request_urls : {
+            getArticleData : '/article/articleData/' + article_id
+        },
+        user         : req.session.user ? req.session.user : false
 
-    connection.query("SELECT * FROM article WHERE article_id = " + article_id, function(err, rows){
-        if(err) throw err;
-        if(rows[0].status == 1){
-            res.render('layouts/layout', {
-                page         : 'article',
-                site         : 'pc',
-                header       : 'common',
-                footer       : true,
-                request_urls : {
-                    getArticleData : '/article/articleData/' + article_id
-                },
-                user         : req.session.user ? req.session.user : false
-
-            });
-        }else{
-            res.redirect('/article/nopublish');
-        }
-        connection.end();
     });
-
 
 });
 

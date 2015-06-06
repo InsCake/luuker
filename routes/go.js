@@ -9,13 +9,20 @@ var mysql_option = require('../config/database.js');
 
 router.get('/searchDes', function(req, res) {
     var city_name = req.query.city_name;
-    console.log(city_name);
+    //console.log(city_name);
 
     var connection = mysql.createConnection(mysql_option);
     connection.query("SELECT * FROM city WHERE chname = '" + city_name + "'", function(err, rows) {
-       res.json({
-           city : rows[0]
-       });
+        if(rows.length>0){
+            res.json({
+                city : rows[0]
+            });
+        }else{
+            res.json({
+                msg : 'null'
+            });
+        }
+
     });
 });
 
@@ -42,10 +49,10 @@ router.all('/getDesData/:city_id', function(req, res) {
         if(err) throw err;
         if(rows.length > 0) {
             var des = rows[0];
-            console.log(des);
+            //console.log(des);
 
             //------------得到游记数据--------------
-            connection.query("SELECT * FROM article WHERE status = '1' && city_id = " + city_id +
+            connection.query("SELECT * FROM article WHERE status = '1' AND city_id = " + city_id + " AND type = 'travel_notes'" +
                              " LIMIT 0, 6", function(err, rows) {
                 if(err) throw err;
                 if(rows.length >= 0) {
@@ -79,18 +86,30 @@ router.all('/getDesData/:city_id', function(req, res) {
                                                 if(rows.length >= 0) {
                                                     var city_school = rows;
 
-                                                    res.json({
-                                                        msg  : 'success',
-                                                        data : {
-                                                            city_articles : city_articles,
-                                                            des           : des,
-                                                            city_food     : city_food,
-                                                            city_sight    : city_sight,
-                                                            city_culture  : city_culture, city_food : city_food,
-                                                            city_school   : city_school
+                                                    connection.query("SELECT * FROM article WHERE status = '1' AND city_id = '" + city_id + "' AND type = 'official_notes' LIMIT 0, 1", function(err, rows){
+                                                        if(err) throw err;
+                                                        if(rows.length >= 0){
+                                                            var official = rows[0];
+                                                            console.log(rows)
+                                                            res.json({
+                                                                msg  : 'success',
+                                                                data : {
+                                                                    city_articles : city_articles,
+                                                                    des           : des,
+                                                                    city_food     : city_food,
+                                                                    city_sight    : city_sight,
+                                                                    city_culture  : city_culture,
+                                                                    city_school   : city_school,
+                                                                    official      : official
+                                                                }
+                                                            });
                                                         }
+                                                        connection.end();
+
+
                                                     });
-                                                    connection.end();
+
+
                                                 }
                                             });
                                         }

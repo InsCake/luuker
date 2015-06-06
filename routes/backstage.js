@@ -110,13 +110,24 @@ router.get('/getArticleData', function (req, res, next) {
 router.post('/passArticleData', function (req, res, next) {
     var article_id = req.body.article_id;
     var article_city = req.body.article_city;
+
     var connection = mysql.createConnection(mysql_option);
-    connection.query("UPDATE article SET status = '1' , city_id = '" + article_city + "'WHERE article_id = " + article_id, function (err, rows) {
+    connection.query("SELECT * FROM city WHERE chname = '" + article_city + "'", function(err, rows){
         if (err) throw err;
-        if (rows.affectedRows > 0) {
-            res.json({msg: 'success'});
+        if (rows.length > 0){
+            var city_id = rows[0].city_id;
+
+            connection.query("UPDATE article SET status = '1' , city_id = '" + city_id + "'WHERE article_id = " + article_id, function (err, rows) {
+                if (err) throw err;
+                if (rows.affectedRows > 0) {
+                    res.json({msg: 'success'});
+                }
+            });
         }
+
     });
+
+
 });
 
 router.post('/unpassArticleData', function (req, res, next) {
@@ -145,22 +156,32 @@ router.post('/intoCityData', function (req, res, next) {
 
 });
 
-router.post('/intoCityItem', function (req, res, next){
+router.post('/intoCityItem', function (req, res, next) {
     var city_item = req.body.city_item;
+    console.log(city_item.name);
+
 
     var connection = mysql.createConnection(mysql_option);
-    connection.query("INSERT INTO city_item (city_id, title, txt, img, type) VALUES ('" + city_item.id +"','" + city_item.title +
-    "','" + city_item.txt + "','" + city_item.img + "','" + city_item.type + "')",function (err, result){
+    connection.query("SELECT * FROM city WHERE chname = '" + city_item.name + "'", function (err, rows) {
         if (err) throw err;
-        res.json({
-            msg: 'success'
-        })
-    })
+
+        if (rows.length > 0) {
+
+            var city_id = rows[0].city_id;
+            connection.query("INSERT INTO city_item (city_id, title, txt, img, type) VALUES ('" + city_id + "','" + city_item.title +
+            "','" + city_item.txt + "','" + city_item.img + "','" + city_item.type + "')", function (err, result) {
+                if (err) throw err;
+                res.json({
+                    msg: 'success'
+                })
+            })
+        }
+    });
 });
 
 router.post('/uploadItemImage', function(req, res) {
     var image = req.files;
-    console.log(image);
+    //console.log(image);
     res.send(image.upload.path.slice(5));
 
 });
@@ -219,7 +240,7 @@ router.post('/changeHomeTxt', function (req, res, next) {
             res.json({
                 msg: 'success'
             });
-            console.log(txt.new_txt)
+            //console.log(txt.new_txt)
 
         }
     });

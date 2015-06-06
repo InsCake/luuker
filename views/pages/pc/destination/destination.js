@@ -23,7 +23,8 @@ var goVM = new Vue({
         city_food:'',
         city_sight:'',
         city_culture:'',
-        city_school:''
+        city_school:'',
+        official:''
 
     },
     compiled : function() {
@@ -39,6 +40,8 @@ var goVM = new Vue({
                 self.city_sight = res.data.city_sight;
                 self.city_culture = res.data.city_culture;
                 self.city_school = res.data.city_school;
+                self.official = res.data.official;
+                console.log(res.data.official.article_id)
             }
         });
     },

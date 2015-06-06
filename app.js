@@ -141,15 +141,15 @@ app.get('/homeEditorData', function(req, res) {
 app.use('/user', user);
 app.use('/article', article);
 app.use('/backstage', backstage);
-app.use('/upload', upload);
+app.use('/uploads', upload);
 app.use('/go', go);
 
 
-var server = app.listen(3005, function() {
+var server = app.listen(3006, function() {
 
     var host = server.address().address;
     var port = server.address().port;
 
-    //console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Example app listening at http://%s:%s', host, port);
 
 });

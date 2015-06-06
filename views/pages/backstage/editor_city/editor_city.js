@@ -14,7 +14,7 @@ var cityEditorVM = new Vue({
         },
 
         city_item: {
-            id      : '',
+            name    : '',
             type    : '',
             title   : '',
             txt     : '',

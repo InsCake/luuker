@@ -35,8 +35,13 @@ var homeEditorVM = new Vue({
                 url     : '/go/searchDes?city_name=' + self.search_key,
                 type    : 'GET',
                 success : function(res) {
-                    console.log(res.city);
-                    window.location.href = '/go/' + res.city.city_id;
+                    if(res.msg == 'null'){
+                        alert('没有此地点的数据');
+                    }else{
+                        //console.log(res.city);
+                        window.location.href = '/go/' + res.city.city_id;
+                    }
+
                 }
             });
         }

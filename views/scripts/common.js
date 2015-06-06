@@ -19,33 +19,38 @@ $(function() {
     $('.login-confirm').on('click',function(){
         var user_name = $('.login-email').val();
         var pwd = $('.login-pwd').val();
+        if(pwd == null){
+            alert('输入不能为空');
+        }else{
+            $.ajax({
+                url: '/user/login',
+                type : 'POST',
+                data : {
+                    user: {
+                        name: user_name,
+                        pwd: pwd
+                    }
+                },
+                datatype: 'json',
+                success : function(res) {
+                    if(res.msg =='failed'){
+                        alert('登录失败，请检查输入信息');
+                    } else if(res.msg =='null'){
+                        alert('此用户不存在');
+                    }else{
+                        alert('登陆成功！');
+                        $('.max-mask').fadeOut();
+                        $('.header-nav').find('.login,.sign-up').hide();
+                        $('.header-nav').find('.username a').text(res.msg).show();
+                        $('.header-nav').find('.exit a').text('退出');
+                        $('.userhead').fadeIn();
+                        window.location.reload();
+                    }
+                }
+            });
+        }
 
-        $.ajax({
-            url: '/user/login',
-            type : 'POST',
-            data : {
-                user: {
-                    name: user_name,
-                    pwd: pwd
-                }
-            },
-            datatype: 'json',
-            success : function(res) {
-                if(res.msg =='failed'){
-                    alert('sb');
-                } else if(res.msg =='null'){
-                    alert('此用户不存在');
-                }else{
-                    alert('登陆成功！');
-                    $('.max-mask').fadeOut();
-                    $('.header-nav').find('.login,.sign-up').hide();
-                    $('.header-nav').find('.username a').text(res.msg).show();
-                    $('.header-nav').find('.exit a').text('退出');
-                    $('.userhead').fadeIn();
-                    window.location.reload();
-                }
-            }
-        });
+
     });
 
 
@@ -57,8 +62,8 @@ $(function() {
 
         if(new_pwd.length < 10){
             alert('密码长度过小');
-        }else if(new_user_name == null || new_user_name == ''){
-            alert('用户名不能为空');
+        }if(new_user_name == null || new_user_name == ''|| new_pwd == null){
+            alert('输入不能为空');
         }else{
             $.ajax({
                 url: '/user/join',
@@ -73,10 +78,10 @@ $(function() {
                 success : function(res) {
 
                     if(res.msg =='success'){
-                        alert(res.new_user.name);
+                        alert(res.new_user.name+'注册成功');
                         $('.max-mask').fadeOut();
                     } else{
-                        alert('sb');
+                        alert('用户名已存在，请另取一个');
                     }
                 }
             });
@@ -110,9 +115,12 @@ var changPwdVM = new Vue({
             var self = this;
             if(self.user.pwd_new_1 != self.user.pwd_new_2){
                 alert('两次输入不一致，请重新输入')
-            }else if(self.user.pwd_new_1.length < 4){
+            }if(self.user.pwd_new_1.length < 4){
                 alert('密码过短');
-            }else{
+            }if(self.user.pwd_new_1 == null){
+                alert('输入不能为空')
+            }
+            else{
                 $.ajax({
                     url: "/backstage/change_pwd",
                     type: 'POST',

@@ -40,8 +40,8 @@
                         <!--</div>-->
                         <div class="pure-control-group txt-line">
                             <label for="foo">您的年龄</label>
-                            <span id="school_show">{{ the_user.age }}</span><a class="alter-sch">{{ a.age }}</a>
-                            <input v-model="user.nage" id="foo" type="text" placeholder="请输入年龄"
+                            <span id="age_show">{{ the_user.age }}</span><a class="alter-age">{{ a.age }}</a>
+                            <input v-model="user.nage" id="age" type="text" placeholder="请输入年龄"
                                    style="display: none">
                         </div>
 
@@ -68,9 +68,9 @@
             <div class="user-article nav-cont" id="user_article">
                 <div class="article-line" v-repeat="article: articles" >
                     <i class="fa fa-book fa-2x">&nbsp;</i><a v-attr="href: '/article/' + article.article_id">{{ article.name }}</a>
-                    <a class="update-article" v-show="article.status == 0">未审核</a>
-                    <a class="update-article" v-show="article.status == 1">审核通过</a>
-                    <a class="update-article" v-show="article.status == 2">审核不通过</a>
+                    <!--<a class="update-article" v-show="article.status == 0">未审核</a>-->
+                    <!--<a class="update-article" v-show="article.status == 1">审核通过</a>-->
+                    <!--<a class="update-article" v-show="article.status == 2">审核不通过</a>-->
                 </div>
             </div>
             <div class="user-pwd nav-cont">
@@ -78,15 +78,15 @@
                     <fieldset>
                         <div class="pure-control-group txt-line">
                             <label for="email">旧密码</label>
-                            <input placeholder="请输入旧密码" id="old_pwd" v-model="user.opwd">
+                            <input type="password" placeholder="请输入旧密码" id="old_pwd" v-model="user.opwd">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">新密码</label>
-                            <input type="text" placeholder="请输入新密码" id="new_pwd" v-model="user.npwd1">
+                            <input type="password" placeholder="请输入新密码" id="new_pwd" v-model="user.npwd1">
                         </div>
                         <div class="pure-control-group txt-line">
                             <label for="foo">重复密码</label>
-                            <input type="text" placeholder="请重复新密码" id="new_pwd" v-model="user.npwd2">
+                            <input type="password" placeholder="请重复新密码" id="new_pwd" v-model="user.npwd2">
                         </div>
                         <div class="pure-controls">
                             <a class="pure-button pure-button-warning" style="margin-left: 4px;"
