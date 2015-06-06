@@ -58,7 +58,8 @@ router.get('/articleData/:article_id', function(req, res) {
 
     var connection = mysql.createConnection(mysql_option);
     connection.query({
-        sql : "SELECT * FROM article LEFT JOIN user ON article.user_id = user.user_id WHERE article_id = " + article_id,
+        sql        : "SELECT * FROM article LEFT JOIN user ON article.user_id = user.user_id WHERE article_id = " +
+                     article_id,
         nestTables : '_'
     }, function(err, rows) {
         if(err) throw err;
@@ -89,21 +90,20 @@ router.get('/articleData/:article_id', function(req, res) {
 });
 
 router.post('/addComment', function(req, res) {
-    console.log(1)
-
     var comment = req.body.comment;
     var article_id = req.body.article_id;
-    if(req.session.user == null){
-
+    console.log(req.session.user);
+    if(req.session.user == null) {
         res.json({
             msg : 'null'
         });
-    }else{
+    } else {
         var user_id = req.session.user.user_id;
 
         var connection = mysql.createConnection(mysql_option);
-        connection.query("INSERT INTO comment (content, article_id, user_id) VALUES ('" + comment + "', " + article_id +
-        ", " + user_id + ")", function(err, result) {
+        connection.query("INSERT INTO comment (content, article_id, user_id) VALUES ('" + comment + "', '" +
+                         article_id +
+                         "', '" + user_id + "')", function(err, result) {
             if(err) throw err;
             res.json({
                 msg : 'success'

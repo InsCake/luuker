@@ -22,7 +22,7 @@ var articleVM = new Vue({
                 data     : {
 
                     comment    : self.add_comment,
-                    article_id : self.article.article.article_id
+                    article_id : self.article.article.article_article_id
                 },
                 type     : 'POST',
                 dataType : 'json',
